@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Spreading variables to create tidy data | Intro to Data Wrangling and Analysis Using R</title>
+<meta name="author" content="Emily Nordmann &amp; Javan Carter">
+<meta name="description" content="This still isn't quite right because whilst we have sorted out the names, the score variable contains three different types of measurement (the intubation time, whether it was a success or...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Spreading variables to create tidy data | Intro to Data Wrangling and Analysis Using R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis/spreading-variables-to-create-tidy-data.html">
+<meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<meta property="og:description" content="This still isn't quite right because whilst we have sorted out the names, the score variable contains three different types of measurement (the intubation time, whether it was a success or...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Spreading variables to create tidy data | Intro to Data Wrangling and Analysis Using R">
+<meta name="twitter:description" content="This still isn't quite right because whilst we have sorted out the names, the score variable contains three different types of measurement (the intubation time, whether it was a success or...">
+<meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Intro to Data Wrangling and Analysis Using R</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="prerequisites.html"><span class="header-section-number">1</span> Pre-requisites R</a></li>
+<li><a class="" href="wrangle.html"><span class="header-section-number">2</span> Data wrangling</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></li>
+<li><a class="active" href="spreading-variables-to-create-tidy-data.html"><span class="header-section-number">4</span> Spreading variables to create tidy data</a></li>
+<li><a class="" href="live-office-hour-1.html"><span class="header-section-number">5</span> Live Office Hour 1</a></li>
+<li><a class="" href="live-office-hour-2.html"><span class="header-section-number">6</span> Live Office Hour 2</a></li>
+<li><a class="" href="completion-quiz.html"><span class="header-section-number">7</span> Completion Quiz</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="glossary.html"><span class="header-section-number">A</span> Glossary</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="spreading-variables-to-create-tidy-data" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Spreading variables to create tidy data<a class="anchor" aria-label="anchor" href="#spreading-variables-to-create-tidy-data"><i class="fas fa-link"></i></a>
+</h1>
+<p>This still isn't quite right because whilst we have sorted out the names, the <code>score</code> variable contains three different types of measurement (the intubation time, whether it was a success or failure, and the assignment method). Instead we need an additional step where we spread these measurements across different variables:</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">laryn_tidy4</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"age"</span>, <span class="st">"gender"</span>, <span class="st">"Randomization"</span>, <span class="st">"attempt"</span><span class="op">)</span>,
+              names_from <span class="op">=</span> <span class="st">"measurement"</span>, 
+              values_from <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span></code></pre></div>
+<div class="info">
+<p>Technically, you can skip setting the <code>id_cols</code> argument, because all of the columns apart from the <code>names_from</code> column and the <code>values_from</code> column identify the observation (e.g., each observation is identified by the unique combination of <code>id</code>, <code>age</code>, <code>gender</code> etc). You only have to set the <code>id_cols</code> argument when this is not the case although it can be a useful exercise to help ensure you understand the structure of your data.</p>
+</div>
+<div id="correcting-factors" class="section level3" number="4.0.1">
+<h3>
+<span class="header-section-number">4.0.1</span> Correcting factors<a class="anchor" aria-label="anchor" href="#correcting-factors"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, we can also tidy up some of the categorical variables: <code>gender</code>, <code>Randomization</code> and <code>S_F</code> are represented as numerical data but they're actually categories. We could just tell R that this data is a factor and leave the values as they are:</p>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">laryn_tidy4</span><span class="op">)</span>
+
+<span class="va">laryn_tidy5</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span>,
+         Randomization <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Randomization</span><span class="op">)</span>,
+         S_F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">S_F</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">laryn_tidy5</span><span class="op">)</span></code></pre></div>
+<pre><code>## tibble [297 x 8] (S3: tbl_df/tbl/data.frame)
+##  $ id             : int [1:297] 1 1 1 2 2 2 3 3 3 4 ...
+##  $ age            : num [1:297] 51 51 51 52 52 52 37 37 37 20 ...
+##  $ gender         : num [1:297] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ Randomization  : num [1:297] 0 0 0 0 0 0 0 0 0 0 ...
+##  $ attempt        : chr [1:297] "attempt1" "attempt2" "attempt3" "attempt1" ...
+##  $ time           : num [1:297] 29 NA NA 29 NA NA 31 60 NA 31 ...
+##  $ S_F            : num [1:297] 1 NA NA 1 NA NA 0 1 NA 0 ...
+##  $ assigned_method: num [1:297] NA NA NA NA NA NA NA 1 NA NA ...
+## tibble [297 x 8] (S3: tbl_df/tbl/data.frame)
+##  $ id             : int [1:297] 1 1 1 2 2 2 3 3 3 4 ...
+##  $ age            : num [1:297] 51 51 51 52 52 52 37 37 37 20 ...
+##  $ gender         : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Randomization  : Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ attempt        : chr [1:297] "attempt1" "attempt2" "attempt3" "attempt1" ...
+##  $ time           : num [1:297] 29 NA NA 29 NA NA 31 60 NA 31 ...
+##  $ S_F            : Factor w/ 2 levels "0","1": 2 NA NA 2 NA NA 1 2 NA 1 ...
+##  $ assigned_method: num [1:297] NA NA NA NA NA NA NA 1 NA NA ...</code></pre>
+<p>But we might as well take the opportunity to make our dataset more readable. The great thing about working in R is that you don't have to have everything coded numerically as you would in e.g., SPSS. Instead, we can use text labels which means we don't have to remember what 0 and 1 means.</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">laryn_tidy6</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, 
+                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,
+                         labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span><span class="op">)</span>,
+    Randomization <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Randomization</span>, 
+                                levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, 
+                                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Standard"</span>, <span class="st">"AWS"</span><span class="op">)</span><span class="op">)</span>,
+         S_F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">S_F</span>, 
+                      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, 
+                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"failure"</span>, <span class="st">"success"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">laryn_tidy6</span><span class="op">)</span></code></pre></div>
+<pre><code>## tibble [297 x 8] (S3: tbl_df/tbl/data.frame)
+##  $ id             : int [1:297] 1 1 1 2 2 2 3 3 3 4 ...
+##  $ age            : num [1:297] 51 51 51 52 52 52 37 37 37 20 ...
+##  $ gender         : Factor w/ 2 levels "female","male": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ Randomization  : Factor w/ 2 levels "Standard","AWS": 1 1 1 1 1 1 1 1 1 1 ...
+##  $ attempt        : chr [1:297] "attempt1" "attempt2" "attempt3" "attempt1" ...
+##  $ time           : num [1:297] 29 NA NA 29 NA NA 31 60 NA 31 ...
+##  $ S_F            : Factor w/ 2 levels "failure","success": 2 NA NA 2 NA NA 1 2 NA 1 ...
+##  $ assigned_method: num [1:297] NA NA NA NA NA NA NA 1 NA NA ...</code></pre>
+<p>Now the data are finally in tidy format we can use our tidyverse functions to easily summarize and visualize by different variables:</p>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">laryn_tidy6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">attempt</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_time <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">time</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">laryn_tidy6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S_F</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove NAs from plot</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">S_F</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">attempt</span><span class="op">)</span></code></pre></div>
+<img src="03-tidying_files/figure-html/unnamed-chunk-18-1.png" width="100%" style="display: block; margin: auto;"><div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+attempt
+</th>
+<th style="text-align:right;">
+mean_time
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+attempt1
+</td>
+<td style="text-align:right;">
+33.40909
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:right;">
+42.90000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+attempt3
+</td>
+<td style="text-align:right;">
+21.33333
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div id="pipes" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Pipes<a class="anchor" aria-label="anchor" href="#pipes"><i class="fas fa-link"></i></a>
+</h2>
+<div style="width: 200px; float: right;">
+<div class="inline-figure"><img src="images/tidy/pipe_sticker.png" style="width: 100%"></div>
+</div>
+<p>We've used pipes <code>%&gt;%</code> throughout this course but this type of data processing is where they really start to shine, as they can significantly reduce the amount of code you write.</p>
+<p>As a recap, a pipe takes the result of the previous function and sends it to the next function as its first argument, which means that you do not need to create intermediate objects. Below is all the code we've used in this chapter, and in the process we created multiple objects. This can get very confusing in longer scripts.</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># read in data</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span>
+
+<span class="co"># select subset of data</span>
+<span class="va">laryn_subset</span> <span class="op">&lt;-</span> <span class="va">laryngoscope</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">Randomization</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span>
+
+<span class="co"># add ID column</span>
+<span class="va">laryn_subset</span> <span class="op">&lt;-</span> <span class="va">laryn_subset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># create untidy long-form data</span>
+<span class="va">laryn_tidy3</span> <span class="op">&lt;-</span> <span class="va">laryn_subset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">attempt1_time</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span>,
+               names_pattern <span class="op">=</span> <span class="st">'(.*?)_(.*)'</span>,
+               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"attempt"</span>, <span class="st">"measurement"</span><span class="op">)</span>, 
+               values_to <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span>
+
+<span class="co"># finalise tidy data by spreading variables</span>
+<span class="va">laryn_tidy4</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"age"</span>, <span class="st">"gender"</span>, <span class="st">"Randomization"</span>, <span class="st">"attempt"</span><span class="op">)</span>,
+              names_from <span class="op">=</span> <span class="st">"measurement"</span>, 
+              values_from <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span>
+
+
+<span class="co"># correct factors</span>
+<span class="va">laryn_tidy6</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, 
+                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,
+                         labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span><span class="op">)</span>,
+    Randomization <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Randomization</span>, 
+                                levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, 
+                                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Standard"</span>, <span class="st">"AWS"</span><span class="op">)</span><span class="op">)</span>,
+         S_F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">S_F</span>, 
+                      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, 
+                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"failure"</span>, <span class="st">"success"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="warning">
+<p>You <em>can</em> give each object the same name and keep replacing the old data object with the new one at each step. This will keep your environment clean, but it makes debugging code much harder.</p>
+</div>
+<p>For longer series of steps like the one above, using pipes can eliminate many intermediate objects. This also makes it easier to add an intermediate step to your process without having to think of a new table name and edit the table input to the next step (which is really easy to accidentally miss).</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span>
+
+<span class="va">laryn_tidy</span> <span class="op">&lt;-</span>  <span class="va">laryngoscope</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">Randomization</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">attempt1_time</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span>,
+               names_pattern <span class="op">=</span> <span class="st">'(.*?)_(.*)'</span>,
+               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"attempt"</span>, <span class="st">"measurement"</span><span class="op">)</span>, 
+               values_to <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"age"</span>, <span class="st">"gender"</span>, <span class="st">"Randomization"</span>, <span class="st">"attempt"</span><span class="op">)</span>,
+              names_from <span class="op">=</span> <span class="st">"measurement"</span>, 
+              values_from <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, 
+                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,
+                         labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"female"</span>, <span class="st">"male"</span><span class="op">)</span><span class="op">)</span>,
+    Randomization <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Randomization</span>, 
+                                levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, 
+                                labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Standard"</span>, <span class="st">"AWS"</span><span class="op">)</span><span class="op">)</span>,
+         S_F <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">S_F</span>, 
+                      levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, 
+                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"failure"</span>, <span class="st">"success"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>You can read the code above like this:</p>
+<ol style="list-style-type: decimal">
+<li><p>Read the data with <code><a href="https://rdrr.io/r/utils/data.html">data()</a></code> <strong>and then</strong></p></li>
+<li><p>Select the columns we're interested in with <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> <strong>and then</strong></p></li>
+<li><p>Add on an ID column with <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> <strong>and then</strong></p></li>
+<li><p>Move the ID column to the start of the dataset with <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> <strong>and then</strong></p></li>
+<li><p>Reshape the data longer with <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> <strong>and then</strong></p></li>
+<li><p>Reshape the data wider with <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> <strong>and then</strong></p></li>
+<li><p>Set the categorical variables to factors with update labels.</p></li>
+</ol>
+<p>Don't feel like you always need to get all of your data wrangling code into a single pipeline. You should make intermediate objects whenever you need to break up your code because it's getting too complicated or if you need to debug something.</p>
+<div class="info">
+<p>You can debug a pipe by highlighting from the beginning to just before the pipe you want to stop at. Try this by highlighting from <code>laryn_tidy &lt;-</code> to the end of the <code>pivot_longer</code> function (just before the next pipe) and typing command-enter (mac) or control-enter (PC). What does <code>laryn_tidy</code> look like now?</p>
+</div>
+</div>
+<div id="exercises" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Exercises<a class="anchor" aria-label="anchor" href="#exercises"><i class="fas fa-link"></i></a>
+</h2>
+<p>As noted, reshaping data is one of the most difficult tasks to learn because every dataset is different. To help you practice, here are a few more examples that you can work through on your own.</p>
+<ul>
+<li>In the set-up code chunk, load the <code class="package">tidyverse</code> then load the two data files in using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> and name the objects <code>wide1</code> and <code>wide2</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">wide1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/ads-v1/data/wide_exercise-1.csv"</span><span class="op">)</span>
+<span class="va">wide2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/ads-v1/data/wide_exercise-2.csv"</span><span class="op">)</span></code></pre></div>
+<p>The two datasets represent simulated data from a patient satisfaction survey. We'll do them one at a time, as they differ in complexity.</p>
+<div id="survey-1" class="section level3" number="4.2.1">
+<h3>
+<span class="header-section-number">4.2.1</span> Survey 1<a class="anchor" aria-label="anchor" href="#survey-1"><i class="fas fa-link"></i></a>
+</h3>
+<p><code>wide1</code> has data from 50 patients who were asked five questions about their most recent experience at a health centre. The results from this questionnaire are typically reported as a single overall satisfaction score, which is calculated by taking the mean of the five responses. Additionally, the survey also records whether the patient was attending the clinic for the first time, or as a repeat patient.</p>
+<ul>
+<li>Use your method of choice to look at the dataset and familiarise yourself with its structure and data.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<p>You can click on the object to view it in the viewing pane or you could use any of the following:</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">wide1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">wide1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">wide1</span><span class="op">)</span></code></pre></div>
+</div>
+<p>As noted, it's important to think through what your tidied data should look like. Often, the problem with data wrangling in R isn't actually the code, it's a lack of understanding of the data that's being worked on.</p>
+<ol style="list-style-type: decimal">
+<li>How many <strong>variables</strong> should the long-form version of <code>wide</code> have? <input class="webex-solveme nospaces" size="1" data-answer='["4"]'>
+</li>
+<li>How many <strong>observations</strong> should the long-form version of <code>wide1</code> have? <input class="webex-solveme nospaces" size="3" data-answer='["250"]'>
+</li>
+</ol>
+<div class="webex-solution">
+<button>
+Explain these answers
+</button>
+<ol style="list-style-type: decimal">
+<li>There should be four variables, as there are 4 types of data: patient id, whether they are a repeat patient, the question they were asked, and their response.</li>
+<li>There will be 250 observations or rows of data because each patient will have 5 rows of data (one per question) and there are 50 patients (50 * 5 = 250).</li>
+</ol>
+</div>
+</div>
+<div id="tidy-1" class="section level3" number="4.2.2">
+<h3>
+<span class="header-section-number">4.2.2</span> Tidy 1<a class="anchor" aria-label="anchor" href="#tidy-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>Transform <code>wide1</code> to long-form using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and store it in an object named <code>tidy1</code></p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy1</span> <span class="op">&lt;-</span> <span class="va">wide1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">q1</span><span class="op">:</span><span class="va">q5</span>,
+               names_to <span class="op">=</span> <span class="st">"question"</span>, 
+               values_to <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="survey-2" class="section level3" number="4.2.3">
+<h3>
+<span class="header-section-number">4.2.3</span> Survey 2<a class="anchor" aria-label="anchor" href="#survey-2"><i class="fas fa-link"></i></a>
+</h3>
+<p><code>wide2</code> also has data from 50 patients, however, there are now two measures included in the questionnaire. There are still five questions that relate to satisfaction, but there are also five questions that relate to whether the patient would recommend the medical practice to a friend. Both measures are typically reported by calculating an overall mean for each of the five items.</p>
+<ul>
+<li>Use your method of choice to look at the dataset and familiarize yourself with its structure and data.</li>
+</ul>
+<p>This is not as simple as the first exercise because there's actually two potential ways you might tidy this data, depending on what you want to do with it and how you conceptualize the two different measurements. It's important to recognize that many of your coding problems will not have just one solution.</p>
+<div id="tidy-2a" class="section level4" number="4.2.3.1">
+<h4>
+<span class="header-section-number">4.2.3.1</span> Tidy 2a<a class="anchor" aria-label="anchor" href="#tidy-2a"><i class="fas fa-link"></i></a>
+</h4>
+<p>For the first option, we're going to treat the "satisfaction" and "recommendation" measurements as two categories of the same variable. This will be a fully long-form data set with five variables <code>id</code>, <code>repeat_patient</code>, <code>question</code> (the question number), <code>category</code> (whether it's <code>sat</code> or <code>rec</code>), and <code>response</code> (the numerical rating).</p>
+<ul>
+<li>How many <strong>observations</strong> should the fully long-form version of <code>wide2</code> have? <input class="webex-solveme nospaces" size="3" data-answer='["500"]'>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Explain this answer
+</button>
+<p>There will be 500 rows of data because each participant will have 10 rows: 5 for the satisfaction questions and five for the recommendation questions.</p>
+</div>
+<p>Transform <code>wide2</code> to full long-form using <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> and store it in an object named <code>tidy2a</code>.</p>
+<div class="webex-solution">
+<button>
+Hint 1
+</button>
+<p><code>data %&gt;% pivot_longer()</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Hint 2
+</button>
+<p><code>names_to  = c("col1", "col2")</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy2a</span> <span class="op">&lt;-</span> <span class="va">wide2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">q1_sat</span><span class="op">:</span><span class="va">q5_rec</span>,
+               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"question"</span>, <span class="st">"category"</span><span class="op">)</span>, 
+               names_sep <span class="op">=</span> <span class="st">"_"</span>,
+               values_to <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="tidy-2b" class="section level4" number="4.2.3.2">
+<h4>
+<span class="header-section-number">4.2.3.2</span> Tidy 2b<a class="anchor" aria-label="anchor" href="#tidy-2b"><i class="fas fa-link"></i></a>
+</h4>
+<p>The second option is to treat the satisfaction and recommendation scores as two distinct variables. This only makes sense if the satisfaction and recommendation scores for each question number are related to each other (e.g., q1 is about the same thing for both questions), making them part of the same observation.</p>
+<p>This version should also have five variables, but it won't be fully long-form, it'll be a slight mix of the two that we're going to call "semi-long". The variables in the semi-long version will be <code>id</code>, <code>repeat</code>, <code>question</code> (the question number), <code>sat</code> (the response for the satisfaction question), and <code>rec</code> (the response for the recommendation question).</p>
+<ul>
+<li>How many <strong>observations</strong> should the semi-long version of <code>wide2</code> have? <input class="webex-solveme nospaces" size="3" data-answer='["250"]'>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Explain this answer
+</button>
+<p>There will be 250 rows of data because, just like <code>tidy1</code>, each participant will have 5 rows, one for each of the five questions. The different responses to the satisfaction and recommendation questions are in different variables.</p>
+</div>
+<p>This will take multiple steps - you can create different objects or use a pipeline.</p>
+<div class="webex-solution">
+<button>
+Hint 1
+</button>
+<p>You can reuse the code from <code>tidy2a</code>, you just need to add on an extra line that makes the data slightly wider.</p>
+</div>
+<div class="webex-solution">
+<button>
+Hint 2
+</button>
+<p><code>data %&gt;% pivot_longer() %&gt;% pivot_wider()</code></p>
+</div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy2b</span> <span class="op">&lt;-</span> <span class="va">wide2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">q1_sat</span><span class="op">:</span><span class="va">q5_rec</span>,
+               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"question"</span>, <span class="st">"category"</span><span class="op">)</span>, 
+               names_sep <span class="op">=</span> <span class="st">"_"</span>,
+               values_to <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="st">"category"</span>, values_from <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="analysis-and-visualisation" class="section level3" number="4.2.4">
+<h3>
+<span class="header-section-number">4.2.4</span> Analysis and visualisation<a class="anchor" aria-label="anchor" href="#analysis-and-visualisation"><i class="fas fa-link"></i></a>
+</h3>
+<p>Using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>, calculate the mean score for each participant for both satisfaction and recommendation. Do this for both versions of the dataset so that you can see how the structure of the dataset changes the approach you need to take.</p>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tidy2a</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">category</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">tidy2b</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_satisfaction <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sat</span><span class="op">)</span>,
+            mean_rec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">rec</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<p>Replicate the following:</p>
+<div id="plot-1" class="section level4" number="4.2.4.1">
+<h4>
+<span class="header-section-number">4.2.4.1</span> Plot 1<a class="anchor" aria-label="anchor" href="#plot-1"><i class="fas fa-link"></i></a>
+</h4>
+<p>Scatterplot showing the relationship between satisfaction and recommendation scores, by whether the patient is a repeat patient.</p>
+<div class="webex-solution">
+<button>
+Hint
+</button>
+<p><code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code></p>
+</div>
+<div class="inline-figure"><img src="03-tidying_files/figure-html/unnamed-chunk-27-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">tidy2b</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sat</span>, y <span class="op">=</span> <span class="va">rec</span>, colour <span class="op">=</span> <span class="va">repeat_patient</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Satisfaction score"</span>, y <span class="op">=</span> <span class="st">"Recommendation score"</span>, title <span class="op">=</span> <span class="st">"Satisfaction and recommendation scores"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="plot-2" class="section level4" number="4.2.4.2">
+<h4>
+<span class="header-section-number">4.2.4.2</span> Plot 2<a class="anchor" aria-label="anchor" href="#plot-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>Boxplots showing satisfaction and recommends scores for new and repeat patients separately.</p>
+<div class="inline-figure"><img src="03-tidying_files/figure-html/unnamed-chunk-29-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">tidy2a</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">repeat_patient</span>, y <span class="op">=</span> <span class="va">response</span>, fill <span class="op">=</span> <span class="va">repeat_patient</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">category</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="plot-3" class="section level4" number="4.2.4.3">
+<h4>
+<span class="header-section-number">4.2.4.3</span> Plot 3<a class="anchor" aria-label="anchor" href="#plot-3"><i class="fas fa-link"></i></a>
+</h4>
+<p>Histogram showing the distribution of all responses, across questions and categories.</p>
+<div class="inline-figure"><img src="03-tidying_files/figure-html/unnamed-chunk-31-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">tidy2a</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">response</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"Grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Responses across all questions and categories"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="your-data" class="section level3" number="4.2.5">
+<h3>
+<span class="header-section-number">4.2.5</span> Your data<a class="anchor" aria-label="anchor" href="#your-data"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you have a wide-form dataset of your own, try and tidy it into long-form and if you get stuck or you just want to check your solution, post it on the All of Us Research Academy Help and Discussion forum - just remember to be careful about sharing confidential data if it's your own dataset.</p>
+<p>If your head hurts a bit at this point, rest assured it's absolutely normal. As we said at the start, reshaping and tidying data is a conceptual leap and there's no shortcut to the fact it just takes a bit of time and practice with different data sets - you will get there eventually!</p>
+</div>
+</div>
+<div id="glossary-tidy" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> Glossary<a class="anchor" aria-label="anchor" href="#glossary-tidy"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
+<thead><tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:left;">
+definition
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/l.html#long" class="glossary" target="_blank">long</a>
+</td>
+<td style="text-align:left;">
+A data format where each observation is on a separate row
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/o.html#observation" class="glossary" target="_blank">observation</a>
+</td>
+<td style="text-align:left;">
+All of the data about a single trial or question.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/t.html#tidy-data" class="glossary" target="_blank">tidy data</a>
+</td>
+<td style="text-align:left;">
+A format for data that maps the meaning onto the structure.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/v.html#value" class="glossary" target="_blank">value</a>
+</td>
+<td style="text-align:left;">
+A single number or piece of data.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/v.html#variable" class="glossary" target="_blank">variable</a>
+</td>
+<td style="text-align:left;">
+(coding): A word that identifies and stores the value of some data for later use; (stats): An attribute or characteristic of an observation that you can measure, count, or describe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/w.html#wide" class="glossary" target="_blank">wide</a>
+</td>
+<td style="text-align:left;">
+A data format where all of the observations about one subject are in the same row
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="resources-tidy" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> Further resources<a class="anchor" aria-label="anchor" href="#resources-tidy"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf">Data tidying cheat sheet</a></li>
+<li><a href="http://vita.had.co.nz/papers/tidy-data.html">Tidy Data</a></li>
+<li>
+<a href="http://r4ds.had.co.nz/tidy-data.html">Chapter 12: Tidy Data</a> in <em>R for Data Science</em>
+</li>
+<li>
+<a href="http://r4ds.had.co.nz/pipes.html">Chapter 18: Pipes</a> in <em>R for Data Science</em>
+</li>
+</ul>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    $(solveme[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    $(selects[i]).after(" <span class='webex-icon'></span>");
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+
+  // open rdrr links externally
+  $("a[href^='https://rdrr.io']").click(function(){
+    window.open(this.href);
+    return false;
+  });
+
+  // visible second sidebar in mobile
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></div>
+<div class="next"><a href="live-office-hour-1.html"><span class="header-section-number">5</span> Live Office Hour 1</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#spreading-variables-to-create-tidy-data"><span class="header-section-number">4</span> Spreading variables to create tidy data</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#correcting-factors"><span class="header-section-number">4.0.1</span> Correcting factors</a></li></ul>
+</li>
+<li><a class="nav-link" href="#pipes"><span class="header-section-number">4.1</span> Pipes</a></li>
+<li>
+<a class="nav-link" href="#exercises"><span class="header-section-number">4.2</span> Exercises</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#survey-1"><span class="header-section-number">4.2.1</span> Survey 1</a></li>
+<li><a class="nav-link" href="#tidy-1"><span class="header-section-number">4.2.2</span> Tidy 1</a></li>
+<li><a class="nav-link" href="#survey-2"><span class="header-section-number">4.2.3</span> Survey 2</a></li>
+<li><a class="nav-link" href="#analysis-and-visualisation"><span class="header-section-number">4.2.4</span> Analysis and visualisation</a></li>
+<li><a class="nav-link" href="#your-data"><span class="header-section-number">4.2.5</span> Your data</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#glossary-tidy"><span class="header-section-number">4.3</span> Glossary</a></li>
+<li><a class="nav-link" href="#resources-tidy"><span class="header-section-number">4.4</span> Further resources</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/03-tidying.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/03-tidying.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-01-05.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>
