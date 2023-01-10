@@ -2,7 +2,7 @@
 title: "Intro to Data Wrangling and Analysis Using R" # edit
 #subtitle: "optional" 
 author: "Emily Nordmann & Javan Carter" # edit
-date: "2023-01-05"
+date: "2023-01-10"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs

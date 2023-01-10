@@ -92,6 +92,9 @@ one-way-anova
 factorial-anova
 non-parametric-options
 resources-analysis1
+analysis2
+ilo-analysis2
+correlation
 live-office-hour-2
 schedule-and-zoom-link-1
 content-1

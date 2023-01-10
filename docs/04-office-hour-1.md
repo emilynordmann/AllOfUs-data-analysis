@@ -3,7 +3,7 @@
 
 ## Schedule and Zoom link
 
-* The first live office hour session will take place on Wednesday 2nd November 2pm EDT via [Zoom]. 
+* The first live office hour session will take place on Tuesday 21st Feb at 4pm – 5pm EST via [Zoom]. 
 * The password is **** and the waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the *All of Us* Researcher Academy otherwise you may not be allowed entry to the session.
 
 ## Content

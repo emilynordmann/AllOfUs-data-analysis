@@ -1,0 +1,64 @@
+
+
+
+# Correlation and Regression {#analysis2}
+
+## Intended Learning Outcomes {#ilo-analysis2}
+
+By the end of this chapter you should be able to:
+
+* Perform one-sample, independent, and paired-samples t-tests
+* Perform one-way and factorial ANOVAs with post-hoc comparisons
+* Perform non-parametric two-group comparisons
+
+As with Comparing Means, this chapter is unlikely to cover everything you want to know about regression, particularly if you use advanced techniques for your own research. Instead, it will give you the basic coding skills you need to understand how such models are constructed from a programming perspective, and point you towards additional resources that have a heavier focus on statistical theory.
+
+## Walkthrough video {#walkthrough-analysis}
+
+We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).
+
+## Set-up {#setup-wrangle}
+
+* Create and save a new R Markdown document named `chapter_6.Rmd`, get rid of the default template text from line 11 onwards.
+* Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.
+
+
+
+```r
+library(tidyverse)   
+library(broom)
+library(correlation)
+library(performance)
+library(gapminder)
+library(medicaldata)
+data("polyps")
+data("gapminder")
+data("laryngoscope")
+data("theoph")
+```
+
+## Correlation
+
+As with ANOVA, there are a huge number of packages and functions you can use to perform correlations. In this course, we're going to use the <code class='package'>correlation</code> package which is part of the [easystats](https://easystats.github.io/easystats/) framework which tries to provide a unifying framework for analysis similar to how the tidyverse is a collection of packages for data wrangling and visualization.
+
+Once again we'll be jumping between different datasets so do take the time to familiarize yourself with the variables before you get started.
+
+First, we'll use the `polyps` dataset and look at the relationship between the number of polyps
+
+First, we'll use the `gapminder` dataset and look at the relationship between life expectancy and GDP per capita in 2007.
+
+
+```r
+gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(x = lifeExp, y = gdpPercap)) +
+  geom_point() +
+  geom_smooth()
+```
+
+```
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+<img src="06-analysis2_files/figure-html/unnamed-chunk-2-1.png" width="100%" style="display: block; margin: auto;" />
+
