@@ -120,7 +120,7 @@
 <li>Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.</li>
 </ul>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> <span class="co"># for data wrangling</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"theoph"</span><span class="op">)</span>
@@ -369,7 +369,7 @@ Explain this answer
 <h3>
 <span class="header-section-number">3.5.2</span> Tidy data<a class="anchor" aria-label="anchor" href="#tidy-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class="glossary" target="_blank" title="A format for data that maps the meaning onto the structure." href="https://psyteachr.github.io/glossary/t#tidy-data">tidy data</a> in long-form <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Just because a table is long doesn't mean it is tidy (see examples here &lt;a href=&quot;https://kiwidamien.github.io/what-is-tidy-data.html&quot;&gt;here&lt;/a&gt;) but they're often used synonymously which we're going to adopt for the purposes of this chapter.&lt;/p&gt;"><sup>1</sup></a>, which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.</p>
+<p>Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class="glossary" target="_blank" title="A format for data that maps the meaning onto the structure." href="https://psyteachr.github.io/glossary/t#tidy-data">tidy data</a> in long-form <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Just because a table is long doesn't mean it is tidy (see examples &lt;a href=&quot;https://kiwidamien.github.io/what-is-tidy-data.html&quot;&gt;here&lt;/a&gt;) but they're often used synonymously which we're going to adopt for the purposes of this chapter.&lt;/p&gt;"><sup>1</sup></a>, which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.</p>
 <ul>
 <li>Each observation must have its own row</li>
 <li>Each variable must have its own column</li>
@@ -751,7 +751,7 @@ number3m
 </tbody>
 </table></div>
 </div>
-<p>An added benefit is tidy datasets work very well with <code class="package">ggplot</code> (the below plot would be quite tricky to create with the wide-form dataset):</p>
+<p>An added benefit is that tidy datasets work very well with <code class="package">ggplot</code> (the below plot would be quite tricky to create with the wide-form dataset):</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">polyps_tidy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">polyps_n</span>, fill <span class="op">=</span> <span class="va">time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">F</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span>
@@ -2279,7 +2279,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-01-10.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-01-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

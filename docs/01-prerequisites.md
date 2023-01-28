@@ -7,7 +7,7 @@ This course assumes that you are able to:
 * Install and load packages
 * Write code in RMarkdown by creating a new document with code chunks
 * Use <code class='package'>tidyverse</code> functions to perform simple data wrangling tasks, calculate descriptive statistics, and produce data visualisations using `ggplot()`
-* Recognize and use the pipe `%>%` function (it's ok if you don't fully understand it at this point)
+* Recognize and use the pipe `%>%` function (although it's ok if you don't fully understand it at this point)
 
 ## Software
 

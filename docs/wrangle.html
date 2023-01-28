@@ -1280,7 +1280,7 @@ sulindac condition
 </h3>
 <p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> applies summary functions to an entire table (or groups, as you'll see in the next section). However, before we go much further we will need to deal with those pesky missing values.</p>
 <p>Let's say we want to determine the mean, median, min and max number of polyps after treatment. The function <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> allows us to create a table where the column names will be the left-hand value (.e.g, <code>mean_polyps</code>) and the values will be the result of the operation on the right-hand side (e.g., take the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> of the variable <code>total</code>).</p>
-<p>The problem is that our dataset has quite a few missing values which produces a table full of <code>NA</code>s:</p>
+<p>The problem is that our dataset has a few missing values which produces a table full of <code>NA</code>s:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
@@ -2036,7 +2036,7 @@ Not high risk
 <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">1.5</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0
 ## [1] 2</code></pre>
-<p>However, this might throw a monkey wrench into your own systems. For example, at the University of Glasgow, the policy is to round up for course marks at x.5. The solution is to define your own version of <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> (modified from <a href="http://andrewlandgraf.com/2012/06/15/rounding-in-r/" target="_blank">Andrew Landgraf's blog</a>). Put it in a hidden code block at the top of your script, with a clear warning that this is changing the way <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> normally works. You don't need to understand how this function works, just how to use it.</p>
+<p>However, this might throw a monkey wrench into your own systems. For example, at the University of Glasgow, the policy is to round up for course marks at x.5. One solution is to define your own version of <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> (modified from <a href="http://andrewlandgraf.com/2012/06/15/rounding-in-r/" target="_blank">Andrew Landgraf's blog</a>). Put it in a hidden code block at the top of your script, with a clear warning that this is changing the way <code><a href="https://rdrr.io/r/base/Round.html">round()</a></code> normally works. You don't need to understand how this function works, just how to use it.</p>
 <p>when you run this code, a new section will appear in the environment pane labelled "Functions". In addition to using functions from packages, you can also make your own. It's not something we are going to go into detail on in this course, but it's useful to know the functionality exists.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#!!!!!! redefining round so 5s round up !!!!!! </span>
@@ -2366,7 +2366,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-01-10.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-01-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

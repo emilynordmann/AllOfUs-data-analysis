@@ -18,7 +18,7 @@ We encourage you to read the workbook and attempt each step on your own before w
 
 
 ```r
-library(tidyverse) # for data wrangling
+library(tidyverse) 
 library(medicaldata)
 data("polyps")
 data("theoph")
@@ -168,7 +168,7 @@ There are six variables. Four of them are relatively straightforward: `participa
 
 ### Tidy data
 
-[^03-intro-to-viz-1]: Just because a table is long doesn't mean it is tidy (see examples here  [here](https://kiwidamien.github.io/what-is-tidy-data.html)) but they're often used synonymously which we're going to adopt for the purposes of this chapter.
+[^03-intro-to-viz-1]: Just because a table is long doesn't mean it is tidy (see examples [here](https://kiwidamien.github.io/what-is-tidy-data.html)) but they're often used synonymously which we're going to adopt for the purposes of this chapter.
 
 Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class='glossary' target='_blank' title='A format for data that maps the meaning onto the structure.' href='https://psyteachr.github.io/glossary/t#tidy-data'>tidy data</a> in long-form [^03-intro-to-viz-1], which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.
 
@@ -400,7 +400,7 @@ polyps_tidy %>%
 
 </div>
 
-An added benefit is tidy datasets work very well with <code class='package'>ggplot</code> (the below plot would be quite tricky to create with the wide-form dataset):
+An added benefit is that tidy datasets work very well with <code class='package'>ggplot</code> (the below plot would be quite tricky to create with the wide-form dataset):
 
 
 ```r

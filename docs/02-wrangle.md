@@ -737,7 +737,7 @@ polyps5 %>%
 
 Let's say we want to determine the mean, median, min and max number of polyps after treatment. The function `summarise()` allows us to create a table where the column names will be the left-hand value (.e.g, `mean_polyps`) and the values will be the result of the operation on the right-hand side (e.g., take the `mean()` of the variable `total`).
 
-The problem is that our dataset has quite a few missing values which produces a table full of `NA`s:
+The problem is that our dataset has a few missing values which produces a table full of `NA`s:
 
 
 ```r
@@ -1217,7 +1217,7 @@ round(1.5)
 ## [1] 2
 ```
 
-However, this might throw a monkey wrench into your own systems. For example, at the University of Glasgow, the policy is to round up for course marks at x.5. The solution is to define your own version of `round()` (modified from [Andrew Landgraf's blog](http://andrewlandgraf.com/2012/06/15/rounding-in-r/){target="_blank"}). Put it in a hidden code block at the top of your script, with a clear warning that this is changing the way `round()` normally works. You don't need to understand how this function works, just how to use it.
+However, this might throw a monkey wrench into your own systems. For example, at the University of Glasgow, the policy is to round up for course marks at x.5. One solution is to define your own version of `round()` (modified from [Andrew Landgraf's blog](http://andrewlandgraf.com/2012/06/15/rounding-in-r/){target="_blank"}). Put it in a hidden code block at the top of your script, with a clear warning that this is changing the way `round()` normally works. You don't need to understand how this function works, just how to use it.
 
 when you run this code, a new section will appear in the environment pane labelled "Functions". In addition to using functions from packages, you can also make your own. It's not something we are going to go into detail on in this course, but it's useful to know the functionality exists.
 

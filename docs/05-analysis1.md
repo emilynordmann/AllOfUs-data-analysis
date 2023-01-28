@@ -19,7 +19,7 @@ These chapters will likely cause you less trouble than those on data wrangling a
 
 We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).
 
-## Set-up {#setup-wrangle}
+## Set-up {#setup-analysis1}
 
 * Create and save a new R Markdown document named `chapter_5.Rmd`, get rid of the default template text from line 11 onwards.
 * Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.
@@ -46,7 +46,7 @@ We're going to use the `polyps` dataset to run a number of different t-tests. Yo
 
 ```r
 polyps <- polyps %>%
-  drop_na(number12m) %>%
+  drop_na(number12m) %>% # drop missing values
   mutate(reduction = baseline - number12m)
 ```
 
@@ -68,24 +68,15 @@ ggplot(polyps, aes(x = "", y = reduction)) +
 This visualization makes it clear there are a couple of outliers in the data. There's arguments for whether you should retain or remove these values; we won't get into the theoretical weeds, we'll just show you the code for each option.
 
 - `mu` is the true value of the mean, i.e., the value you want to compare your data to
-- `alternative` specifies the direction of the alternative hypothesis, you can choose between `two.sided`, `greater`, or `less`. We'll set this test to `greater` because it would be reasonable to hypothesis that the reduction in polyps after treatment should be more than zero.
+- `alternative` specifies the direction of the alternative hypothesis, you can choose between `two.sided`, `greater`, or `less`. We'll set this test to `greater` because it would be reasonable to hypothesize that the reduction in polyps after treatment should be more than zero.
 - the function `tidy()` comes from the <code class='package'>broom</code> package and takes the somewhat messy output produced by the base R functions and tidies it into a table which is easier to work with.
+- `conf.high` will be displayed as `Inf` because we have specified a one-tailed test.
 
 
 
 ```r
-# keep the outliers, i.e., don't do anything
-t.test(x = polyps$reduction, 
-       mu = 0,
-       alternative = "greater")%>%
-  tidy()
-
-# remove the outliers
-
-polyps_outliers <- polyps %>%
-  filter(reduction < 100) # keep only those values less than 100
-
-t.test(x = polyps_outliers$reduction, 
+# keep the outliers, i.e., use the full dataset as is
+t.test(x = polyps$reduction,
        mu = 0,
        alternative = "greater")%>%
   tidy()
@@ -120,7 +111,22 @@ t.test(x = polyps_outliers$reduction,
 </tbody>
 </table>
 
-</div><div class="kable-table">
+</div>
+
+
+```r
+# remove the outliers
+
+polyps_outliers <- polyps %>%
+  filter(reduction < 100) # keep only those values less than 100
+
+t.test(x = polyps_outliers$reduction, 
+       mu = 0,
+       alternative = "greater")%>%
+  tidy()
+```
+
+<div class="kable-table">
 
 <table>
  <thead>
@@ -151,7 +157,10 @@ t.test(x = polyps_outliers$reduction,
 
 </div>
 
-You can also use the function `do()` combined with `group_by()` to perform this test on different groups. For example, we can run the one-sample t-test on both `treatment` groups.
+
+There's no significant difference in the number of polyps after treatment according to this test, but of course, we've included the data from both the control and treatment group in this analysis.
+
+You can use the function `do()` combined with `group_by()` to perform this test on different groups. For example, we can run the one-sample t-test on both `treatment` groups separately and if we do this we see that the reduction in polyps is significantly different to zero but only for the sulindac condition.
 
 
 ```r
@@ -214,7 +223,7 @@ polyps_outliers %>%
 
 The same `t.test()` function can be used to perform other types of t-tests, we just need to include different arguments. In this example, we conduct an independent t-test to determine whether the reduction in polyps is significantly different between the two groups.
 
-First, we'll visualize this difference using a violin-boxplot (try running this plot with the original outlier dataset to see what a difference the removal makes):
+First, we'll visualize this difference using a violin-boxplot (try running this plot with the original dataset `polyps` to see what a difference removing the outliers makes):
 
 
 ```r
@@ -226,7 +235,9 @@ ggplot(polyps_outliers, aes(x = treatment, y = reduction)) +
   guides(color = "none")
 ```
 
-<img src="05-analysis1_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="05-analysis1_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
+
+Now we'll run the t-test, again using `t.test()`:
 
 - There are two different ways of specifying your variables, you can use the `object$variable` notation or specify the dataset. It is entirely personal preference which one you use.
 - `alternative` = "greater" is the alternative that x has a larger mean than y. x is the first level of your grouping variable and y is the second. In this case, placebo is the first group and sulindac is the second, so if we hypothesize that our treatment group will have a higher reduction than the placebo group, we actually need to specify `less`, because that's the hypothesis that our first group will have a lower mean than our second group. This regularly breaks my brain.
@@ -241,7 +252,7 @@ t.test(reduction ~ treatment,
        var.equal = TRUE) %>% 
   tidy()
 
-# variables
+# call variables
 t.test(polyps$reduction ~ polyps$treatment, 
        alternative = "less",
        var.equal = TRUE) %>% 
@@ -318,7 +329,7 @@ t.test(polyps$reduction ~ polyps$treatment,
 
 ### Paired-samples t-test
 
-The paired-samples t-test throws up our first real need for data wrangling. Let's take a quick detour and use the `gampinder` dataset for a moment (again take a moment to familiarize yourself with the dataset using the help documentation). The `gapminder` dataset is in tidy format, each country has multiple rows of data, one for each year in the dataset. This means that it is easy to conduct a paired-samples t-test. For example, could compare life expectancy between 1997 and 2007.
+The paired-samples t-test throws up our first real need for data wrangling. Let's take a quick detour and use the `gampinder` dataset (again take a moment to familiarize yourself with the dataset using the help documentation). The `gapminder` dataset is in tidy format: each country has multiple rows of data, one for each year in the dataset. This means that it is easy to conduct a paired-samples t-test. For example, could compare life expectancy between 1997 and 2007.
 
 As always, let's visualize it first:
 
@@ -332,10 +343,11 @@ gapminder %>%
 ```
 
 ```
-## Warning: Continuous x aesthetic -- did you forget aes(group=...)?
+## Warning: Continuous x aesthetic
+## i did you forget `aes(group = ...)`?
 ```
 
-<img src="05-analysis1_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="05-analysis1_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" />
 
 Well that doesn't look right does it. The issue here is that year is coded as a numeric variable and we've tried to create a plot that requires a categorical variable on the x-axis. In order to get out plot to work, we need to change year to a factor:
 
@@ -350,22 +362,22 @@ That's better.
 
 ```r
 gapminder %>%
-  filter(year %in% c(1997, 2007)) %>% # just pull out the two years we're interested in
+  filter(year %in% c(1997, 2007)) %>% 
   ggplot(aes(x = year, y = lifeExp)) +
   geom_violin() +
   geom_boxplot(width = .2)
 ```
 
-<img src="05-analysis1_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="05-analysis1_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
 
 Now we can run the t-test to look at life expectancy between 1997 and 2007 collapsing across all countries:
 
 
 ```r
 gapminder %>%
-  filter(year %in% c(1997, 2007)) %>% # just pull out the two years we're interested in
+  filter(year %in% c(1997, 2007)) %>% 
   t.test(lifeExp ~ year, 
-         data = ., # the . replaces the dataset because we've used a pipe
+         data = ., # the . replaces the dataset because we've piped in the data
          paired = TRUE) %>%
   tidy()
 ```
@@ -670,7 +682,7 @@ polyps_tidy %>%
 
 ## Comparing more than two means
 
-We often have more than two means to compare. One approach is to use Analysis of Variance (ANOVA) techniques. There are numerous ways to perform ANOVA in R, in this course, we're going to use the <code class='package'>afex</code> but just be aware that if you Google for help, you might see different approaches.
+We often have more than two means to compare. One approach is to use Analysis of Variance (ANOVA) techniques. There are numerous ways to perform ANOVA in R, in this course, we're going to use the <code class='package'>afex</code> package but just be aware that if you Google for help, you might see different approaches.
 
 ### One-way ANOVA
 
@@ -691,7 +703,7 @@ ggplot(gapminder_2007, aes(x = continent, y = lifeExp, fill = continent)) +
   theme_minimal() 
 ```
 
-<img src="05-analysis1_files/figure-html/unnamed-chunk-16-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="05-analysis1_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" />
 
 It looks like there should be a significant difference with these groups. To run the ANOVA, we use the `aov_ez()` function from the `afex` package. 
 
@@ -885,139 +897,6 @@ posthoc_contrasts <- posthoc$contrasts %>% tidy()
 
 </div>
 
-If you view the table you'll noticed that because the p-values are all very, very small numbers, they've been written in scientific notation. You might be quite happy with this but there's a couple of options if not. First, you could round the column to 3 decimal places (assuming that you would report anything below .001 as <.001 anyway):
-
-
-```r
-posthoc_contrasts <- posthoc_contrasts %>%
-  mutate(adj.p.value.rounded = round(adj.p.value, 3))
-```
-
-<div class="kable-table">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:left;"> contrast </th>
-   <th style="text-align:right;"> null.value </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> adj.p.value </th>
-   <th style="text-align:right;"> adj.p.value.rounded </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Americas </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -18.80208 </td>
-   <td style="text-align:right;"> 1.799652 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -10.44762 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Asia </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -15.92245 </td>
-   <td style="text-align:right;"> 1.645756 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -9.67485 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Europe </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -22.84256 </td>
-   <td style="text-align:right;"> 1.695350 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -13.47366 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-
-Second, you can adjust the options so that R prints the p-values in full:
-
-
-```r
-options(scipen = 999)
-```
-
-
-```r
-posthoc_contrasts %>%
-  head(3)
-```
-
-<div class="kable-table">
-
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:left;"> contrast </th>
-   <th style="text-align:right;"> null.value </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> adj.p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Americas </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -18.80208 </td>
-   <td style="text-align:right;"> 1.799652 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -10.44762 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Asia </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -15.92245 </td>
-   <td style="text-align:right;"> 1.645756 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -9.67485 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Europe </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -22.84256 </td>
-   <td style="text-align:right;"> 1.695350 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -13.47366 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-
-If you want to go back to scientific notation, you can set the options to zero:
-
-
-```r
-options(scipen = 0)
-```
 
 ### Factorial ANOVA
 
@@ -1039,7 +918,7 @@ ggplot(gapminder_noughties, aes(x = continent, y = lifeExp, color = year, group 
   scale_colour_brewer(palette = "Dark2")
 ```
 
-<img src="05-analysis1_files/figure-html/unnamed-chunk-26-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="05-analysis1_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" />
 
 And then we run the ANOVA. The code is much the same as the one-way variant with the addition of the `within` argument to represent our repeated-measures variable. If we had multiple between or within subject variables, you would specify these as `between = c("var1", "var2")`.
 
@@ -1168,7 +1047,7 @@ contrasts_reversed <- posthoc_reversed$contrasts %>%
 
 ## Non-parametric options
 
-Finally, you may also need to compare groups where the data are non-parametric. This might be they violate an assumption of normality or linearity, or it could be that you're working with ordinal data from, for example, Likert scales. 
+Finally, you may also need to compare groups where the data are non-parametric. This might be because they violate an assumption of normality or linearity, or it could be that you're working with ordinal data from, for example, Likert scales. 
 
 In the `polyps` dataset, one option (not a particularly sophisticated option I'll admit but it will suffice for showing the code) might be to conduct a Wilcoxon Rank Sum test (also known as a Mann-Whitney U test) on the `reduction` variable so that the data are transformed into ranks.
 

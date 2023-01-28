@@ -83,6 +83,7 @@ pre-requisites
 analysis1
 ilo-analysis
 walkthrough-analysis
+setup-analysis1
 comparing-two-means
 one-sample-t-test
 independent-samples-t-test
@@ -94,7 +95,15 @@ non-parametric-options
 resources-analysis1
 analysis2
 ilo-analysis2
+walkthrough-analysis2
+setup-analysis2
 correlation
+regression
+linear-regression
+model-performance
+multiple-regression
+prediction
+logistic-regression
 live-office-hour-2
 schedule-and-zoom-link-1
 content-1

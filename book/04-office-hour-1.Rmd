@@ -3,8 +3,8 @@
 
 ## Schedule and Zoom link
 
-* The first live office hour session will take place on Tuesday 21st Feb at 4pm – 5pm EST via [Zoom]. 
-* The password is **** and the waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the *All of Us* Researcher Academy otherwise you may not be allowed entry to the session.
+* The first live office hour session will take place on Tuesday 21st Feb at 4pm – 5pm EST via [Zoom](https://rtiorg.zoom.us/j/95012496562?pwd=ZTYxd2VIM0pOQTJlbUVzNDdEZzhpZz09). 
+* The password is 633989 and the waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the *All of Us* Researcher Academy otherwise you may not be allowed entry to the session.
 
 ## Content
 
@@ -15,5 +15,5 @@ Live office hours are primarily an opportunity for you to ask questions to the i
 
 ## Pre-requisites
 
-* Before joining the office hour, please ensure that you have worked through all the material from Week 1 - consult the [Progress Tracker](\@ref(progress) if you're not sure what you need to do.
-* You can ask questions on the day, but you can also complete the [Q&A form]() in advance to let your instructors know what you would like the session to focus on.
+* Before joining the office hour, please ensure that you have worked through all the material from Week 1 - consult the Progress Tracker if you're not sure what you need to do.
+* You can ask questions on the day, but you can also complete the [Q&A form](https://forms.gle/4WXn5UCcaUmcjdfW7) in advance to let your instructors know what you would like the session to focus on.
