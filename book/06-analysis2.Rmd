@@ -10,8 +10,7 @@ set.seed(12042016)
 By the end of this chapter you should be able to:
 
 * Perform and visualize Pearson and Spearman correlations
-* Construct simple and multiple linear regression models, logistic regression models, and linear mixed effect models
-* Assess and report these models
+* Construct simple and multiple linear and logistic regression models
 
 As with Comparing Means, this chapter is unlikely to cover everything you want to know about regression, particularly if you use advanced techniques for your own research. Instead, it will give you the basic coding skills you need to understand how such models are constructed from a programming perspective, and point you towards additional resources that have a heavier focus on statistical theory.
 
