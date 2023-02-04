@@ -27,7 +27,6 @@ Create a new project for this course and then do the following:
 
 ```r
 library(tidyverse)   
-library(gapminder)
 library(medicaldata)
 data("opt")
 data("polyps")
@@ -535,7 +534,7 @@ polyps2 <- polyps %>%
 
 ```r
 polyps2 <- polyps2 %>%
-  mutate(improvement = total > 0,
+  mutate(improvement = total < 0,
          treatment = as.factor(treatment))
 ```
 
@@ -744,7 +743,7 @@ The problem is that our dataset has a few missing values which produces a table 
 polyps5 %>%
   summarise(
     mean_polyps = mean(total),
-    median_polyps = mean(total),
+    median_polyps = median(total),
     min_polyps = min(total),
     max_polyps = max(total)
   )
@@ -858,7 +857,7 @@ polyps6 <- polyps %>%
 polyps6 %>%
   summarise(
     mean_polyps = mean(total),
-    median_polyps = mean(total),
+    median_polyps = median(total),
     min_polyps = min(total),
     max_polyps = max(total)
   )
@@ -878,7 +877,7 @@ polyps6 %>%
 <tbody>
   <tr>
    <td style="text-align:right;"> -19.85 </td>
-   <td style="text-align:right;"> -19.85 </td>
+   <td style="text-align:right;"> -5 </td>
    <td style="text-align:right;"> -274 </td>
    <td style="text-align:right;"> 26 </td>
   </tr>
@@ -894,7 +893,7 @@ A second option is to tell R to ignore the missing values in its calculations. W
 polyps6 %>%
   summarise(
     mean_polyps = mean(total, na.rm = TRUE),
-    median_polyps = mean(total, na.rm = TRUE),
+    median_polyps = median(total, na.rm = TRUE),
     min_polyps = min(total, na.rm = TRUE),
     max_polyps = max(total, na.rm = TRUE),
     n = n()
@@ -916,7 +915,7 @@ polyps6 %>%
 <tbody>
   <tr>
    <td style="text-align:right;"> -19.85 </td>
-   <td style="text-align:right;"> -19.85 </td>
+   <td style="text-align:right;"> -5 </td>
    <td style="text-align:right;"> -274 </td>
    <td style="text-align:right;"> 26 </td>
    <td style="text-align:right;"> 20 </td>
@@ -1255,6 +1254,9 @@ Just remove your version if you want R to go back to the original method. Rememb
 rm(round)
 ```
 
+## Exercise
+
+To help consolidate what you've learned in this chapter, use a dataset of your own that you're familiar with and replicate the functions we've gone through in this chapter. Additionally, try and identifying other steps in your data cleaning and wrangling process that you typically need to perform and see if you can find the necessary functions or arguments needed to do so. If you're looking for help online, you may find it useful to append "r dplyr" to any search, for example, "rename a column r dplyr" as this will be more likely to return results that use the tidyverse style of code we have used in this course.
 
 ## Glossary {#glossary-wrangle}
 

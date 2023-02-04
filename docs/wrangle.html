@@ -125,7 +125,6 @@
 </ul>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>   
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"opt"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></code></pre></div>
@@ -1050,7 +1049,7 @@ placebo
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> can also be used in conjunction with other functions and Boolean operators. For example, we can add another column to <code>polyps2</code> that states whether any improvement in the number of polyps was seen or overwrite our <code>treatment</code> variable as a factor. Just like when we used <a class="glossary" target="_blank" title="An expression that evaluates to TRUE or FALSE." href="https://psyteachr.github.io/glossary/b#boolean-expression">Boolean expressions</a> with filter, it will evaluate the equation and return TRUE or FALSE depending on whether the observation meets the criteria.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">polyps2</span> <span class="op">&lt;-</span> <span class="va">polyps2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>improvement <span class="op">=</span> <span class="va">total</span> <span class="op">&gt;</span> <span class="fl">0</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>improvement <span class="op">=</span> <span class="va">total</span> <span class="op">&lt;</span> <span class="fl">0</span>,
          treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="warning">
 <p>You can overwrite a column by giving a new column the same name as the old column (see <code>treatment</code>) above. Make sure that you mean to do this and that you aren't trying to use the old column value after you redefine it.</p>
@@ -1285,7 +1284,7 @@ sulindac condition
 <code class="sourceCode R"><span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
     mean_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
-    median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
+    median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     min_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     max_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
@@ -1410,7 +1409,7 @@ missing_total
 <span class="va">polyps6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
     mean_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
-    median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
+    median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     min_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     max_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>
   <span class="op">)</span></code></pre></div>
@@ -1435,7 +1434,7 @@ max_polyps
 -19.85
 </td>
 <td style="text-align:right;">
--19.85
+-5
 </td>
 <td style="text-align:right;">
 -274
@@ -1451,7 +1450,7 @@ max_polyps
 <code class="sourceCode R"><span class="va">polyps6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
     mean_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
-    median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
     min_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
     max_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
     n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>
@@ -1480,7 +1479,7 @@ n
 -19.85
 </td>
 <td style="text-align:right;">
--19.85
+-5
 </td>
 <td style="text-align:right;">
 -274
@@ -2060,9 +2059,15 @@ Not high risk
 <span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">round</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="glossary-wrangle" class="section level2" number="2.7">
+<div id="exercise" class="section level2" number="2.7">
 <h2>
-<span class="header-section-number">2.7</span> Glossary<a class="anchor" aria-label="anchor" href="#glossary-wrangle"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.7</span> Exercise<a class="anchor" aria-label="anchor" href="#exercise"><i class="fas fa-link"></i></a>
+</h2>
+<p>To help consolidate what you've learned in this chapter, use a dataset of your own that you're familiar with and replicate the functions we've gone through in this chapter. Additionally, try and identifying other steps in your data cleaning and wrangling process that you typically need to perform and see if you can find the necessary functions or arguments needed to do so. If you're looking for help online, you may find it useful to append "r dplyr" to any search, for example, "rename a column r dplyr" as this will be more likely to return results that use the tidyverse style of code we have used in this course.</p>
+</div>
+<div id="glossary-wrangle" class="section level2" number="2.8">
+<h2>
+<span class="header-section-number">2.8</span> Glossary<a class="anchor" aria-label="anchor" href="#glossary-wrangle"><i class="fas fa-link"></i></a>
 </h2>
 <div class="inline-table"><table class="table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
@@ -2101,9 +2106,9 @@ A symbol that performs some mathematical or comparative process.
 </tbody>
 </table></div>
 </div>
-<div id="resources-wrangle" class="section level2" number="2.8">
+<div id="resources-wrangle" class="section level2" number="2.9">
 <h2>
-<span class="header-section-number">2.8</span> Further resources<a class="anchor" aria-label="anchor" href="#resources-wrangle"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.9</span> Further resources<a class="anchor" aria-label="anchor" href="#resources-wrangle"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation cheat sheet</a></li>
@@ -2347,8 +2352,9 @@ $( document ).ready(function() {
 <li>
 <a class="nav-link" href="#complications"><span class="header-section-number">2.6</span> Complications</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#rounding"><span class="header-section-number">2.6.1</span> Rounding</a></li></ul>
 </li>
-<li><a class="nav-link" href="#glossary-wrangle"><span class="header-section-number">2.7</span> Glossary</a></li>
-<li><a class="nav-link" href="#resources-wrangle"><span class="header-section-number">2.8</span> Further resources</a></li>
+<li><a class="nav-link" href="#exercise"><span class="header-section-number">2.7</span> Exercise</a></li>
+<li><a class="nav-link" href="#glossary-wrangle"><span class="header-section-number">2.8</span> Glossary</a></li>
+<li><a class="nav-link" href="#resources-wrangle"><span class="header-section-number">2.9</span> Further resources</a></li>
 </ul>
 
       <div class="book-extra">
@@ -2366,7 +2372,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-01-28.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

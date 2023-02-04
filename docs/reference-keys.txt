@@ -45,6 +45,7 @@ missing-values
 dplyr-groupby
 complications
 rounding
+exercise
 glossary-wrangle
 resources-wrangle
 tidy

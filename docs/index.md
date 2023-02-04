@@ -2,7 +2,7 @@
 title: "Intro to Data Wrangling and Analysis Using R" # edit
 #subtitle: "optional" 
 author: "Emily Nordmann & Javan Carter" # edit
-date: "2023-01-28"
+date: "2023-02-04"
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs
@@ -57,6 +57,6 @@ This video gives an overview of the course syllabus and requirements. It is impo
 
 * Download the Course Overview [PowerPoint slides](course_materials/course_overview.pptx)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PpByWITwfqI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UOPh8mWgqMc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
      

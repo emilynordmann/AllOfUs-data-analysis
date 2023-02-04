@@ -30,14 +30,12 @@ We encourage you to read the workbook and attempt each step on your own before w
 library(tidyverse)   
 library(broom)
 library(psych)
-library(lme4)
 library(easystats)
 library(gapminder)
 library(medicaldata)
 data("polyps")
+data("opt")
 data("gapminder")
-data("laryngoscope")
-data("theoph")
 ```
 
 
@@ -141,14 +139,6 @@ spearman_results
 You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions `mutate()` and `log()`
 
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
-```
-
-<img src="06-analysis2_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" />
-
-
 ```r
 gapminder <- gapminder %>%
   mutate(gdp_log = log10(gdpPercap))
@@ -167,6 +157,13 @@ gapminder %>%
   geom_smooth() 
 ```
 
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
+
+<img src="06-analysis2_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 It's not perfect but it's much better than it was and is much closer to a linear relationship (we'll assess whether this is really the case later) so we can use a Pearson correlation:
 
 
@@ -219,7 +216,7 @@ pearson_results
 
 ### Linear regression
 
-Constructing a regression model is a great example of the fact that when it comes to R, data cleaning and wrangling is by far the most difficult task you face. To construct a simple linear regression model using the function `lm()` (linear model):
+Constructing a regression model is a great example of the fact that when it comes to R, data cleaning and wrangling is by far the most difficult task you face. To construct a simple linear regression model use the function `lm()` (linear model):
 
 * The formula is expressed as `outcome by predictor` so in this case, we're predicting life expectancy from GDP
 * We use the notation `data = .` because we're piping in a filtered dataset to the function. If you wanted to run the regression on the full dataset, you'd remove the first two lines of pipes and just have `data = gapminder`
