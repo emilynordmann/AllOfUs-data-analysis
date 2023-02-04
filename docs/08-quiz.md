@@ -10,4 +10,4 @@ To order to receive recognition from the *All of Us* Researcher Academy that you
 * You can take the quiz as many times as you like.
 * The deadline for completing the quiz for recognition is Friday 17th March at midnight.
 
-Access the quiz via [Google Forms](https://forms.gle/Psf3qmgApcxNoWMD8).
+Access the quiz via [Google Forms](https://forms.gle/qyXop2fsA87RLJ9p8).
