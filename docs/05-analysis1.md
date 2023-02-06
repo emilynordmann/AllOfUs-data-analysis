@@ -36,7 +36,6 @@ library(medicaldata)
 data("polyps")
 data("gapminder")
 data("laryngoscope")
-data("theoph")
 ```
 
 ## Comparing two means
@@ -247,13 +246,13 @@ Now we'll run the t-test, again using `t.test()`:
 ```r
 # specify data set 
 t.test(reduction ~ treatment, 
-       data = polyps,
+       data = polyps_outliers,
        alternative = "less",
        var.equal = TRUE) %>% 
   tidy()
 
 # call variables
-t.test(polyps$reduction ~ polyps$treatment, 
+t.test(polyps_outliers$reduction ~ polyps_outliers$treatment, 
        alternative = "less",
        var.equal = TRUE) %>% 
   tidy()
@@ -278,14 +277,14 @@ t.test(polyps$reduction ~ polyps$treatment,
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> -3.50505 </td>
-   <td style="text-align:right;"> 18.27273 </td>
-   <td style="text-align:right;"> 21.77778 </td>
-   <td style="text-align:right;"> -0.1113431 </td>
-   <td style="text-align:right;"> 0.4562882 </td>
-   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> -14.925 </td>
+   <td style="text-align:right;"> -7.3 </td>
+   <td style="text-align:right;"> 7.625 </td>
+   <td style="text-align:right;"> -2.858966 </td>
+   <td style="text-align:right;"> 0.005684 </td>
+   <td style="text-align:right;"> 16 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> 51.08281 </td>
+   <td style="text-align:right;"> -5.810756 </td>
    <td style="text-align:left;"> Two Sample t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
@@ -311,14 +310,14 @@ t.test(polyps$reduction ~ polyps$treatment,
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> -3.50505 </td>
-   <td style="text-align:right;"> 18.27273 </td>
-   <td style="text-align:right;"> 21.77778 </td>
-   <td style="text-align:right;"> -0.1113431 </td>
-   <td style="text-align:right;"> 0.4562882 </td>
-   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> -14.925 </td>
+   <td style="text-align:right;"> -7.3 </td>
+   <td style="text-align:right;"> 7.625 </td>
+   <td style="text-align:right;"> -2.858966 </td>
+   <td style="text-align:right;"> 0.005684 </td>
+   <td style="text-align:right;"> 16 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> 51.08281 </td>
+   <td style="text-align:right;"> -5.810756 </td>
    <td style="text-align:left;"> Two Sample t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
@@ -423,7 +422,8 @@ gapminder %>%
   do(                               
     t.test(lifeExp ~ year, 
            data = .,
-           alternative = "less") %>%  
+           alternative = "less",
+           paired = TRUE) %>%  
       tidy()                        
   )
 ```
@@ -435,8 +435,6 @@ gapminder %>%
   <tr>
    <th style="text-align:left;"> continent </th>
    <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> estimate1 </th>
-   <th style="text-align:right;"> estimate2 </th>
    <th style="text-align:right;"> statistic </th>
    <th style="text-align:right;"> p.value </th>
    <th style="text-align:right;"> parameter </th>
@@ -450,66 +448,56 @@ gapminder %>%
   <tr>
    <td style="text-align:left;"> Africa </td>
    <td style="text-align:right;"> -1.207769 </td>
-   <td style="text-align:right;"> 53.59827 </td>
-   <td style="text-align:right;"> 54.80604 </td>
-   <td style="text-align:right;"> -0.6571949 </td>
-   <td style="text-align:right;"> 0.2562702 </td>
-   <td style="text-align:right;"> 101.678189 </td>
+   <td style="text-align:right;"> -1.922156 </td>
+   <td style="text-align:right;"> 0.0300905 </td>
+   <td style="text-align:right;"> 51 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> 1.8428789 </td>
-   <td style="text-align:left;"> Welch Two Sample t-test </td>
+   <td style="text-align:right;"> -0.1551191 </td>
+   <td style="text-align:left;"> Paired t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Americas </td>
    <td style="text-align:right;"> -2.457640 </td>
-   <td style="text-align:right;"> 71.15048 </td>
-   <td style="text-align:right;"> 73.60812 </td>
-   <td style="text-align:right;"> -1.8607703 </td>
-   <td style="text-align:right;"> 0.0344821 </td>
-   <td style="text-align:right;"> 47.565842 </td>
+   <td style="text-align:right;"> -11.815866 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> 24 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -0.2420233 </td>
-   <td style="text-align:left;"> Welch Two Sample t-test </td>
+   <td style="text-align:right;"> -2.1017852 </td>
+   <td style="text-align:left;"> Paired t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Asia </td>
    <td style="text-align:right;"> -2.707970 </td>
-   <td style="text-align:right;"> 68.02052 </td>
-   <td style="text-align:right;"> 70.72848 </td>
-   <td style="text-align:right;"> -1.3702336 </td>
-   <td style="text-align:right;"> 0.0877014 </td>
-   <td style="text-align:right;"> 63.983874 </td>
+   <td style="text-align:right;"> -14.035916 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> 32 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> 0.5904850 </td>
-   <td style="text-align:left;"> Welch Two Sample t-test </td>
+   <td style="text-align:right;"> -2.3811653 </td>
+   <td style="text-align:left;"> Paired t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe </td>
    <td style="text-align:right;"> -2.143433 </td>
-   <td style="text-align:right;"> 75.50517 </td>
-   <td style="text-align:right;"> 77.64860 </td>
-   <td style="text-align:right;"> -2.7281613 </td>
-   <td style="text-align:right;"> 0.0042090 </td>
-   <td style="text-align:right;"> 57.902542 </td>
+   <td style="text-align:right;"> -15.844473 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> 29 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -0.8301093 </td>
-   <td style="text-align:left;"> Welch Two Sample t-test </td>
+   <td style="text-align:right;"> -1.9135762 </td>
+   <td style="text-align:left;"> Paired t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Oceania </td>
    <td style="text-align:right;"> -2.529500 </td>
-   <td style="text-align:right;"> 78.19000 </td>
-   <td style="text-align:right;"> 80.71950 </td>
-   <td style="text-align:right;"> -3.0780337 </td>
-   <td style="text-align:right;"> 0.0482364 </td>
-   <td style="text-align:right;"> 1.913186 </td>
+   <td style="text-align:right;"> -20.317269 </td>
+   <td style="text-align:right;"> 0.0156543 </td>
+   <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -0.0539513 </td>
-   <td style="text-align:left;"> Welch Two Sample t-test </td>
+   <td style="text-align:right;"> -1.7434379 </td>
+   <td style="text-align:left;"> Paired t-test </td>
    <td style="text-align:left;"> less </td>
   </tr>
 </tbody>
@@ -529,14 +517,12 @@ gapminder %>%
   group_by(continent) %>%
   do(                               
     t.test(lifeExp ~ year, 
-           data = .) %>%  
+           data = .,
+           paired = TRUE) %>%  
       tidy()                        
   ) %>%
   select(continent, 
-         "lifeExp_diff" = estimate, 
-         "lifeExp_1997" = estimate1,
-         "lifeExp_2007" = estimate2,
-         "t.statistic" = statistic,
+         "lifeExp_diff" = estimate,
          p.value,
          "df" = parameter,
          conf.low, 
@@ -552,9 +538,6 @@ gapminder %>%
   <tr>
    <th style="text-align:left;"> continent </th>
    <th style="text-align:right;"> lifeExp_diff </th>
-   <th style="text-align:right;"> lifeExp_1997 </th>
-   <th style="text-align:right;"> lifeExp_2007 </th>
-   <th style="text-align:right;"> t.statistic </th>
    <th style="text-align:right;"> p.value </th>
    <th style="text-align:right;"> df </th>
    <th style="text-align:right;"> conf.low </th>
@@ -566,62 +549,47 @@ gapminder %>%
   <tr>
    <td style="text-align:left;"> Africa </td>
    <td style="text-align:right;"> -1.207769 </td>
-   <td style="text-align:right;"> 53.59827 </td>
-   <td style="text-align:right;"> 54.80604 </td>
-   <td style="text-align:right;"> -0.6571949 </td>
-   <td style="text-align:right;"> 0.5125405 </td>
-   <td style="text-align:right;"> 101.678189 </td>
-   <td style="text-align:right;"> -4.853104 </td>
-   <td style="text-align:right;"> 2.4375655 </td>
-   <td style="text-align:right;"> 1.0000000 </td>
+   <td style="text-align:right;"> 0.0601809 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> -2.469216 </td>
+   <td style="text-align:right;"> 0.0536778 </td>
+   <td style="text-align:right;"> 0.3009047 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Americas </td>
    <td style="text-align:right;"> -2.457640 </td>
-   <td style="text-align:right;"> 71.15048 </td>
-   <td style="text-align:right;"> 73.60812 </td>
-   <td style="text-align:right;"> -1.8607703 </td>
-   <td style="text-align:right;"> 0.0689642 </td>
-   <td style="text-align:right;"> 47.565842 </td>
-   <td style="text-align:right;"> -5.113842 </td>
-   <td style="text-align:right;"> 0.1985620 </td>
-   <td style="text-align:right;"> 0.3448208 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> -2.886920 </td>
+   <td style="text-align:right;"> -2.0283596 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Asia </td>
    <td style="text-align:right;"> -2.707970 </td>
-   <td style="text-align:right;"> 68.02052 </td>
-   <td style="text-align:right;"> 70.72848 </td>
-   <td style="text-align:right;"> -1.3702336 </td>
-   <td style="text-align:right;"> 0.1754027 </td>
-   <td style="text-align:right;"> 63.983874 </td>
-   <td style="text-align:right;"> -6.656068 </td>
-   <td style="text-align:right;"> 1.2401291 </td>
-   <td style="text-align:right;"> 0.8770136 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> -3.100958 </td>
+   <td style="text-align:right;"> -2.3149812 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Europe </td>
    <td style="text-align:right;"> -2.143433 </td>
-   <td style="text-align:right;"> 75.50517 </td>
-   <td style="text-align:right;"> 77.64860 </td>
-   <td style="text-align:right;"> -2.7281613 </td>
-   <td style="text-align:right;"> 0.0084180 </td>
-   <td style="text-align:right;"> 57.902542 </td>
-   <td style="text-align:right;"> -3.716178 </td>
-   <td style="text-align:right;"> -0.5706885 </td>
-   <td style="text-align:right;"> 0.0420898 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> -2.420111 </td>
+   <td style="text-align:right;"> -1.8667556 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Oceania </td>
    <td style="text-align:right;"> -2.529500 </td>
-   <td style="text-align:right;"> 78.19000 </td>
-   <td style="text-align:right;"> 80.71950 </td>
-   <td style="text-align:right;"> -3.0780337 </td>
-   <td style="text-align:right;"> 0.0964727 </td>
-   <td style="text-align:right;"> 1.913186 </td>
-   <td style="text-align:right;"> -6.223675 </td>
-   <td style="text-align:right;"> 1.1646750 </td>
-   <td style="text-align:right;"> 0.4823636 </td>
+   <td style="text-align:right;"> 0.0313087 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> -4.111422 </td>
+   <td style="text-align:right;"> -0.9475775 </td>
+   <td style="text-align:right;"> 0.1565433 </td>
   </tr>
 </tbody>
 </table>
@@ -632,7 +600,7 @@ Now we've seen how the paired-samples test works,let's return to the `polyps` da
 
 
 ```r
-polyps_tidy <- polyps %>%
+polyps_tidy <- polyps_outliers %>%
   pivot_longer(cols = c("baseline", "number3m", "number12m"), # columns to make long 
                names_to = "time", # new column name for headers
                values_to = "polyps_n") # new column name for values
@@ -665,12 +633,12 @@ polyps_tidy %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 19.85 </td>
-   <td style="text-align:right;"> 1.301766 </td>
-   <td style="text-align:right;"> 0.208559 </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> -12.06551 </td>
-   <td style="text-align:right;"> 51.76551 </td>
+   <td style="text-align:right;"> -0.6666667 </td>
+   <td style="text-align:right;"> -0.2155182 </td>
+   <td style="text-align:right;"> 0.8319279 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> -7.193001 </td>
+   <td style="text-align:right;"> 5.859668 </td>
    <td style="text-align:left;"> Paired t-test </td>
    <td style="text-align:left;"> two.sided </td>
   </tr>
@@ -1117,8 +1085,8 @@ polyps_tidy %>%
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:right;"> 301 </td>
-   <td style="text-align:right;"> 0.0053028 </td>
+   <td style="text-align:right;"> 255 </td>
+   <td style="text-align:right;"> 0.0026073 </td>
    <td style="text-align:left;"> Wilcoxon rank sum test with continuity correction </td>
    <td style="text-align:left;"> two.sided </td>
   </tr>

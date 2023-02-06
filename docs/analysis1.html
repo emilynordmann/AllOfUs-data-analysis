@@ -131,8 +131,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"theoph"</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="comparing-two-means" class="section level2" number="5.4">
 <h2>
@@ -422,13 +421,13 @@ greater
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># specify data set </span>
 <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">treatment</span>, 
-       data <span class="op">=</span> <span class="va">polyps</span>,
+       data <span class="op">=</span> <span class="va">polyps_outliers</span>,
        alternative <span class="op">=</span> <span class="st">"less"</span>,
        var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># call variables</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">polyps</span><span class="op">$</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">polyps</span><span class="op">$</span><span class="va">treatment</span>, 
+<span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">polyps_outliers</span><span class="op">$</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">polyps_outliers</span><span class="op">$</span><span class="va">treatment</span>, 
        alternative <span class="op">=</span> <span class="st">"less"</span>,
        var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -468,28 +467,28 @@ alternative
 </tr></thead>
 <tbody><tr>
 <td style="text-align:right;">
--3.50505
+-14.925
 </td>
 <td style="text-align:right;">
-18.27273
+-7.3
 </td>
 <td style="text-align:right;">
-21.77778
+7.625
 </td>
 <td style="text-align:right;">
--0.1113431
+-2.858966
 </td>
 <td style="text-align:right;">
-0.4562882
+0.005684
 </td>
 <td style="text-align:right;">
-18
+16
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
-51.08281
+-5.810756
 </td>
 <td style="text-align:left;">
 Two Sample t-test
@@ -536,28 +535,28 @@ alternative
 </tr></thead>
 <tbody><tr>
 <td style="text-align:right;">
--3.50505
+-14.925
 </td>
 <td style="text-align:right;">
-18.27273
+-7.3
 </td>
 <td style="text-align:right;">
-21.77778
+7.625
 </td>
 <td style="text-align:right;">
--0.1113431
+-2.858966
 </td>
 <td style="text-align:right;">
-0.4562882
+0.005684
 </td>
 <td style="text-align:right;">
-18
+16
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
-51.08281
+-5.810756
 </td>
 <td style="text-align:left;">
 Two Sample t-test
@@ -668,7 +667,8 @@ two.sided
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span><span class="op">(</span>                               
     <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">~</span> <span class="va">year</span>, 
            data <span class="op">=</span> <span class="va">.</span>,
-           alternative <span class="op">=</span> <span class="st">"less"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  
+           alternative <span class="op">=</span> <span class="st">"less"</span>,
+           paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  
       <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>                        
   <span class="op">)</span></code></pre></div>
 <div class="kable-table">
@@ -679,12 +679,6 @@ continent
 </th>
 <th style="text-align:right;">
 estimate
-</th>
-<th style="text-align:right;">
-estimate1
-</th>
-<th style="text-align:right;">
-estimate2
 </th>
 <th style="text-align:right;">
 statistic
@@ -717,28 +711,22 @@ Africa
 -1.207769
 </td>
 <td style="text-align:right;">
-53.59827
+-1.922156
 </td>
 <td style="text-align:right;">
-54.80604
+0.0300905
 </td>
 <td style="text-align:right;">
--0.6571949
-</td>
-<td style="text-align:right;">
-0.2562702
-</td>
-<td style="text-align:right;">
-101.678189
+51
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
-1.8428789
+-0.1551191
 </td>
 <td style="text-align:left;">
-Welch Two Sample t-test
+Paired t-test
 </td>
 <td style="text-align:left;">
 less
@@ -752,28 +740,22 @@ Americas
 -2.457640
 </td>
 <td style="text-align:right;">
-71.15048
+-11.815866
 </td>
 <td style="text-align:right;">
-73.60812
+0.0000000
 </td>
 <td style="text-align:right;">
--1.8607703
-</td>
-<td style="text-align:right;">
-0.0344821
-</td>
-<td style="text-align:right;">
-47.565842
+24
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
--0.2420233
+-2.1017852
 </td>
 <td style="text-align:left;">
-Welch Two Sample t-test
+Paired t-test
 </td>
 <td style="text-align:left;">
 less
@@ -787,28 +769,22 @@ Asia
 -2.707970
 </td>
 <td style="text-align:right;">
-68.02052
+-14.035916
 </td>
 <td style="text-align:right;">
-70.72848
+0.0000000
 </td>
 <td style="text-align:right;">
--1.3702336
-</td>
-<td style="text-align:right;">
-0.0877014
-</td>
-<td style="text-align:right;">
-63.983874
+32
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
-0.5904850
+-2.3811653
 </td>
 <td style="text-align:left;">
-Welch Two Sample t-test
+Paired t-test
 </td>
 <td style="text-align:left;">
 less
@@ -822,28 +798,22 @@ Europe
 -2.143433
 </td>
 <td style="text-align:right;">
-75.50517
+-15.844473
 </td>
 <td style="text-align:right;">
-77.64860
+0.0000000
 </td>
 <td style="text-align:right;">
--2.7281613
-</td>
-<td style="text-align:right;">
-0.0042090
-</td>
-<td style="text-align:right;">
-57.902542
+29
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
--0.8301093
+-1.9135762
 </td>
 <td style="text-align:left;">
-Welch Two Sample t-test
+Paired t-test
 </td>
 <td style="text-align:left;">
 less
@@ -857,28 +827,22 @@ Oceania
 -2.529500
 </td>
 <td style="text-align:right;">
-78.19000
+-20.317269
 </td>
 <td style="text-align:right;">
-80.71950
+0.0156543
 </td>
 <td style="text-align:right;">
--3.0780337
-</td>
-<td style="text-align:right;">
-0.0482364
-</td>
-<td style="text-align:right;">
-1.913186
+1
 </td>
 <td style="text-align:right;">
 -Inf
 </td>
 <td style="text-align:right;">
--0.0539513
+-1.7434379
 </td>
 <td style="text-align:left;">
-Welch Two Sample t-test
+Paired t-test
 </td>
 <td style="text-align:left;">
 less
@@ -899,14 +863,12 @@ less
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span><span class="op">(</span>                               
     <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">~</span> <span class="va">year</span>, 
-           data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  
+           data <span class="op">=</span> <span class="va">.</span>,
+           paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  
       <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>                        
   <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">continent</span>, 
-         <span class="st">"lifeExp_diff"</span> <span class="op">=</span> <span class="va">estimate</span>, 
-         <span class="st">"lifeExp_1997"</span> <span class="op">=</span> <span class="va">estimate1</span>,
-         <span class="st">"lifeExp_2007"</span> <span class="op">=</span> <span class="va">estimate2</span>,
-         <span class="st">"t.statistic"</span> <span class="op">=</span> <span class="va">statistic</span>,
+         <span class="st">"lifeExp_diff"</span> <span class="op">=</span> <span class="va">estimate</span>,
          <span class="va">p.value</span>,
          <span class="st">"df"</span> <span class="op">=</span> <span class="va">parameter</span>,
          <span class="va">conf.low</span>, 
@@ -921,15 +883,6 @@ continent
 </th>
 <th style="text-align:right;">
 lifeExp_diff
-</th>
-<th style="text-align:right;">
-lifeExp_1997
-</th>
-<th style="text-align:right;">
-lifeExp_2007
-</th>
-<th style="text-align:right;">
-t.statistic
 </th>
 <th style="text-align:right;">
 p.value
@@ -956,28 +909,19 @@ Africa
 -1.207769
 </td>
 <td style="text-align:right;">
-53.59827
+0.0601809
 </td>
 <td style="text-align:right;">
-54.80604
+51
 </td>
 <td style="text-align:right;">
--0.6571949
+-2.469216
 </td>
 <td style="text-align:right;">
-0.5125405
+0.0536778
 </td>
 <td style="text-align:right;">
-101.678189
-</td>
-<td style="text-align:right;">
--4.853104
-</td>
-<td style="text-align:right;">
-2.4375655
-</td>
-<td style="text-align:right;">
-1.0000000
+0.3009047
 </td>
 </tr>
 <tr>
@@ -988,28 +932,19 @@ Americas
 -2.457640
 </td>
 <td style="text-align:right;">
-71.15048
+0.0000000
 </td>
 <td style="text-align:right;">
-73.60812
+24
 </td>
 <td style="text-align:right;">
--1.8607703
+-2.886920
 </td>
 <td style="text-align:right;">
-0.0689642
+-2.0283596
 </td>
 <td style="text-align:right;">
-47.565842
-</td>
-<td style="text-align:right;">
--5.113842
-</td>
-<td style="text-align:right;">
-0.1985620
-</td>
-<td style="text-align:right;">
-0.3448208
+0.0000000
 </td>
 </tr>
 <tr>
@@ -1020,28 +955,19 @@ Asia
 -2.707970
 </td>
 <td style="text-align:right;">
-68.02052
+0.0000000
 </td>
 <td style="text-align:right;">
-70.72848
+32
 </td>
 <td style="text-align:right;">
--1.3702336
+-3.100958
 </td>
 <td style="text-align:right;">
-0.1754027
+-2.3149812
 </td>
 <td style="text-align:right;">
-63.983874
-</td>
-<td style="text-align:right;">
--6.656068
-</td>
-<td style="text-align:right;">
-1.2401291
-</td>
-<td style="text-align:right;">
-0.8770136
+0.0000000
 </td>
 </tr>
 <tr>
@@ -1052,28 +978,19 @@ Europe
 -2.143433
 </td>
 <td style="text-align:right;">
-75.50517
+0.0000000
 </td>
 <td style="text-align:right;">
-77.64860
+29
 </td>
 <td style="text-align:right;">
--2.7281613
+-2.420111
 </td>
 <td style="text-align:right;">
-0.0084180
+-1.8667556
 </td>
 <td style="text-align:right;">
-57.902542
-</td>
-<td style="text-align:right;">
--3.716178
-</td>
-<td style="text-align:right;">
--0.5706885
-</td>
-<td style="text-align:right;">
-0.0420898
+0.0000000
 </td>
 </tr>
 <tr>
@@ -1084,28 +1001,19 @@ Oceania
 -2.529500
 </td>
 <td style="text-align:right;">
-78.19000
+0.0313087
 </td>
 <td style="text-align:right;">
-80.71950
+1
 </td>
 <td style="text-align:right;">
--3.0780337
+-4.111422
 </td>
 <td style="text-align:right;">
-0.0964727
+-0.9475775
 </td>
 <td style="text-align:right;">
-1.913186
-</td>
-<td style="text-align:right;">
--6.223675
-</td>
-<td style="text-align:right;">
-1.1646750
-</td>
-<td style="text-align:right;">
-0.4823636
+0.1565433
 </td>
 </tr>
 </tbody>
@@ -1113,7 +1021,7 @@ Oceania
 </div>
 <p>Now we've seen how the paired-samples test works,let's return to the <code>polyps</code> dataset. The problem is that this dataset is wide-form and in order to run the test we need the grouping variable (time point) in one column and the measurement (number of polyps in a separate column). Therefore, in order to run the t-test, we will first need to tidy the dataset as we did in chapter 3.</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">polyps_tidy</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">polyps_tidy</span> <span class="op">&lt;-</span> <span class="va">polyps_outliers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number3m"</span>, <span class="st">"number12m"</span><span class="op">)</span>, <span class="co"># columns to make long </span>
                names_to <span class="op">=</span> <span class="st">"time"</span>, <span class="co"># new column name for headers</span>
                values_to <span class="op">=</span> <span class="st">"polyps_n"</span><span class="op">)</span> <span class="co"># new column name for values</span></code></pre></div>
@@ -1153,22 +1061,22 @@ alternative
 </tr></thead>
 <tbody><tr>
 <td style="text-align:right;">
-19.85
+-0.6666667
 </td>
 <td style="text-align:right;">
-1.301766
+-0.2155182
 </td>
 <td style="text-align:right;">
-0.208559
+0.8319279
 </td>
 <td style="text-align:right;">
-19
+17
 </td>
 <td style="text-align:right;">
--12.06551
+-7.193001
 </td>
 <td style="text-align:right;">
-51.76551
+5.859668
 </td>
 <td style="text-align:left;">
 Paired t-test
@@ -1813,10 +1721,10 @@ alternative
 </tr></thead>
 <tbody><tr>
 <td style="text-align:right;">
-301
+255
 </td>
 <td style="text-align:right;">
-0.0053028
+0.0026073
 </td>
 <td style="text-align:left;">
 Wilcoxon rank sum test with continuity correction
@@ -2085,7 +1993,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-04.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

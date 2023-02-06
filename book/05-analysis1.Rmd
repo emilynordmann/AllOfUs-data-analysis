@@ -37,7 +37,6 @@ library(medicaldata)
 data("polyps")
 data("gapminder")
 data("laryngoscope")
-data("theoph")
 ```  
 
 ## Comparing two means
@@ -134,13 +133,13 @@ Now we'll run the t-test, again using `t.test()`:
 ```{r}
 # specify data set 
 t.test(reduction ~ treatment, 
-       data = polyps,
+       data = polyps_outliers,
        alternative = "less",
        var.equal = TRUE) %>% 
   tidy()
 
 # call variables
-t.test(polyps$reduction ~ polyps$treatment, 
+t.test(polyps_outliers$reduction ~ polyps_outliers$treatment, 
        alternative = "less",
        var.equal = TRUE) %>% 
   tidy()
@@ -197,7 +196,8 @@ gapminder %>%
   do(                               
     t.test(lifeExp ~ year, 
            data = .,
-           alternative = "less") %>%  
+           alternative = "less",
+           paired = TRUE) %>%  
       tidy()                        
   )
 ```
@@ -213,14 +213,12 @@ gapminder %>%
   group_by(continent) %>%
   do(                               
     t.test(lifeExp ~ year, 
-           data = .) %>%  
+           data = .,
+           paired = TRUE) %>%  
       tidy()                        
   ) %>%
   select(continent, 
-         "lifeExp_diff" = estimate, 
-         "lifeExp_1997" = estimate1,
-         "lifeExp_2007" = estimate2,
-         "t.statistic" = statistic,
+         "lifeExp_diff" = estimate,
          p.value,
          "df" = parameter,
          conf.low, 
@@ -232,7 +230,7 @@ gapminder %>%
 Now we've seen how the paired-samples test works,let's return to the `polyps` dataset. The problem is that this dataset is wide-form and in order to run the test we need the grouping variable (time point) in one column and the measurement (number of polyps in a separate column). Therefore, in order to run the t-test, we will first need to tidy the dataset as we did in chapter 3.
 
 ```{r}
-polyps_tidy <- polyps %>%
+polyps_tidy <- polyps_outliers %>%
   pivot_longer(cols = c("baseline", "number3m", "number12m"), # columns to make long 
                names_to = "time", # new column name for headers
                values_to = "polyps_n") # new column name for values
