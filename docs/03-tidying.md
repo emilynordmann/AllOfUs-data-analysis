@@ -11,6 +11,8 @@ By the end of this chapter you should be able to:
 
 We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EdyzbHWMl-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Set-up {#setup-tidy}
 
 -   Create and save a new R Markdown document named `chapter_3.Rmd`, get rid of the default template text from line 11 onwards.

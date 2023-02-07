@@ -21,6 +21,8 @@ These chapters will likely cause you less trouble than those on data wrangling a
 
 We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tw_vf7s9yJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Set-up {#setup-analysis1}
 
 * Create and save a new R Markdown document named `chapter_5.Rmd`, get rid of the default template text from line 11 onwards.
