@@ -335,17 +335,17 @@ polyps5 %>%
   count(sex, treatment)
 ```
 
-### Summarise {#dplyr-summarise}
+### summarize {#dplyr-summarize}
 
-`summarise()` applies summary functions to an entire table (or groups, as you'll see in the next section). However, before we go much further we will need to deal with those pesky missing values.
+`summarize()` applies summary functions to an entire table (or groups, as you'll see in the next section). However, before we go much further we will need to deal with those pesky missing values.
 
-Let's say we want to determine the mean, median, min and max number of polyps after treatment. The function `summarise()` allows us to create a table where the column names will be the left-hand value (.e.g, `mean_polyps`) and the values will be the result of the operation on the right-hand side (e.g., take the `mean()` of the variable `total`).
+Let's say we want to determine the mean, median, min and max number of polyps after treatment. The function `summarize()` allows us to create a table where the column names will be the left-hand value (.e.g, `mean_polyps`) and the values will be the result of the operation on the right-hand side (e.g., take the `mean()` of the variable `total`).
 
 The problem is that our dataset has a few missing values which produces a table full of `NA`s:
 
 ```{r}
 polyps5 %>%
-  summarise(
+  summarize(
     mean_polyps = mean(total),
     median_polyps = median(total),
     min_polyps = min(total),
@@ -363,7 +363,7 @@ First, let's get some stats on exactly how much missing data we have - we're goi
 
 ```{r}
 polyps %>%
-  summarise(
+  summarize(
     missing_baseline = sum(is.na(baseline)),
     missing_3m = sum(is.na(number3m)),
     missing_12m = sum(is.na(number12m))
@@ -374,7 +374,7 @@ There's actually only two missing values in the 12 month column but that's enoug
 
 ```{r}
 polyps5 %>%
-    summarise(
+    summarize(
     missing_treatment1 = sum(is.na(treatment1)),
     missing_treatment2 = sum(is.na(treatment2)),
     missing_total = sum(is.na(total))
@@ -391,7 +391,7 @@ polyps6 <- polyps %>%
     total = treatment1 + treatment2)
 
 polyps6 %>%
-  summarise(
+  summarize(
     mean_polyps = mean(total),
     median_polyps = median(total),
     min_polyps = min(total),
@@ -399,11 +399,11 @@ polyps6 %>%
   )
 ```
 
-A second option is to tell R to ignore the missing values in its calculations. We'll use the `polyps5` dataset that we first created that has the missing values but this time when we run `summarise()`, we add in `na.rm = TRUE` which means "remove the NAs from the calculation". A useful addition to `summarise()` if you're going to use `na.rm = TRUE` is to call `n = n()` which essentially does the same thing as `count()` and tells you how many observations were used in the calculation and helps ensure we don't accidentally calculate summary data with lots of missing observations without realising it:
+A second option is to tell R to ignore the missing values in its calculations. We'll use the `polyps5` dataset that we first created that has the missing values but this time when we run `summarize()`, we add in `na.rm = TRUE` which means "remove the NAs from the calculation". A useful addition to `summarize()` if you're going to use `na.rm = TRUE` is to call `n = n()` which essentially does the same thing as `count()` and tells you how many observations were used in the calculation and helps ensure we don't accidentally calculate summary data with lots of missing observations without realising it:
 
 ```{r}
 polyps6 %>%
-  summarise(
+  summarize(
     mean_polyps = mean(total, na.rm = TRUE),
     median_polyps = median(total, na.rm = TRUE),
     min_polyps = min(total, na.rm = TRUE),
@@ -443,19 +443,19 @@ We've already used `group_by()` a few times but it's worth introducing it formal
 
 polyps5 %>%
   group_by(sex) %>%
-  summarise(mean = mean(total, na.rm = TRUE))
+  summarize(mean = mean(total, na.rm = TRUE))
 
 # by two grouping variables
 
 polyps5 %>%
   group_by(sex, treatment) %>%
-  summarise(mean = mean(total, na.rm = TRUE))
+  summarize(mean = mean(total, na.rm = TRUE))
 
 # order of the variables affects the layout of the table produced
 
 polyps5 %>%
   group_by(treatment, sex) %>%
-  summarise(mean = mean(total, na.rm = TRUE))
+  summarize(mean = mean(total, na.rm = TRUE))
 
 ```
 

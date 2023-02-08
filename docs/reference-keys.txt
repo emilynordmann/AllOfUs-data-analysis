@@ -40,7 +40,7 @@ arrange
 mutate
 descriptive-statistics
 count
-dplyr-summarise
+dplyr-summarize
 missing-values
 dplyr-groupby
 complications

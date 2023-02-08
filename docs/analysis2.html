@@ -111,6 +111,8 @@
 <span class="header-section-number">6.2</span> Walkthrough video<a class="anchor" aria-label="anchor" href="#walkthrough-analysis2"><i class="fas fa-link"></i></a>
 </h2>
 <p>We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QlxKKX31AMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
 </div>
 <div id="setup-analysis2" class="section level2" number="6.3">
 <h2>
@@ -137,7 +139,7 @@
 </h2>
 <p>As with ANOVA, there are a huge number of packages and functions you can use to perform correlations. In this course, we're going to use the <code class="package">correlation</code> package which is part of the <a href="https://easystats.github.io/easystats/">easystats</a> framework which tries to provide a unifying framework for analysis similar to how the tidyverse is a collection of packages for data wrangling and visualization.</p>
 <p>Once again we'll be jumping between different datasets that best fit the analysis technique we are demonstrating so do take the time to familiarize yourself with the variables before you get started.</p>
-<p>First, we'll use the <code>gapminder</code> dataset and look at the relationship between life expectancy and GDP per capita in the Americas. For good measure let's first calculate some descriptive statistics about our two variables before we progress to looking at the relationship between them. Rather than use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>, we'll use the <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code class="package">psych</code> package which very easily produces a range of descriptive stats:</p>
+<p>First, we'll use the <code>gapminder</code> dataset and look at the relationship between life expectancy and GDP per capita in the Americas. For good measure let's first calculate some descriptive statistics about our two variables before we progress to looking at the relationship between them. Rather than use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, we'll use the <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code class="package">psych</code> package which very easily produces a range of descriptive stats:</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -247,7 +249,7 @@ Spearman correlation
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdp_log</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span>
 
-<span class="co"># scatteplot of log GDP and life expectancy</span>
+<span class="co"># scatterplot of log GDP and life expectancy</span>
 <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">lifeExp</span>, y <span class="op">=</span> <span class="va">gdp_log</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -446,7 +448,7 @@ gdp_log
 <h3>
 <span class="header-section-number">6.5.2</span> Model performance<a class="anchor" aria-label="anchor" href="#model-performance"><i class="fas fa-link"></i></a>
 </h3>
-<p>The <code class="package">performancee</code> package is also part of the <code class="package">easystats</code> framework and provides a number of elegant and simple functions for assessing model performance. If you use any type of modelling in your research, we strongly recommended checking out the performance help documentation and <a href="https://easystats.github.io/performance/index.html">website</a> for more information on what it can do.</p>
+<p>The <code class="package">performance</code> package is also part of the <code class="package">easystats</code> framework and provides a number of elegant and simple functions for assessing model performance. If you use any type of modelling in your research, we strongly recommended checking out the performance help documentation and <a href="https://easystats.github.io/performance/index.html">website</a> for more information on what it can do.</p>
 <p>You can test the assumptions of your model separately using functions like <code>check_heteroscedasticity()</code>, however, there's a single comprehensive function <code>check_model()</code> that provides an overview:</p>
 <p>**If you get the error <code>Error: The RStudio 'Plots' window is too small to show this set of plots. Please make the window larger.</code> literally resize the bottom right window pane by dragging it with your cursor and then re-run the code.</p>
 <div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
@@ -1041,7 +1043,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-07.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

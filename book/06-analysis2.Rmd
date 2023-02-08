@@ -18,6 +18,8 @@ As with Comparing Means, this chapter is unlikely to cover everything you want t
 
 We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QlxKKX31AMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Set-up {#setup-analysis2}
 
 * Create and save a new R Markdown document named `chapter_6.Rmd`, get rid of the default template text from line 11 onwards.
@@ -48,7 +50,7 @@ As with ANOVA, there are a huge number of packages and functions you can use to 
 
 Once again we'll be jumping between different datasets that best fit the analysis technique we are demonstrating so do take the time to familiarize yourself with the variables before you get started.
 
-First, we'll use the `gapminder` dataset and look at the relationship between life expectancy and GDP per capita in the Americas. For good measure let's first calculate some descriptive statistics about our two variables before we progress to looking at the relationship between them. Rather than use `summarise()`, we'll use the `describe()` function from the `r pkg("psych")` package which very easily produces a range of descriptive stats:
+First, we'll use the `gapminder` dataset and look at the relationship between life expectancy and GDP per capita in the Americas. For good measure let's first calculate some descriptive statistics about our two variables before we progress to looking at the relationship between them. Rather than use `summarize()`, we'll use the `describe()` function from the `r pkg("psych")` package which very easily produces a range of descriptive stats:
 
 ```{r}
 descriptives <- gapminder %>%
@@ -100,7 +102,7 @@ gapminder %>%
   ggplot(aes(x = gdp_log)) +
   geom_histogram()
 
-# scatteplot of log GDP and life expectancy
+# scatterplot of log GDP and life expectancy
 gapminder %>%
   filter(continent == "Americas") %>%
   ggplot(aes(x = lifeExp, y = gdp_log)) +
@@ -164,7 +166,7 @@ It looks like we have significant model where GDP predicts life expectancy. This
 
 ### Model performance
 
-The `r pkg("performancee")` package is also part of the `r pkg("easystats")` framework and provides a number of elegant and simple functions for assessing model performance. If you use any type of modelling in your research, we strongly recommended checking out the performance help documentation and [website](https://easystats.github.io/performance/index.html) for more information on what it can do.
+The `r pkg("performance")` package is also part of the `r pkg("easystats")` framework and provides a number of elegant and simple functions for assessing model performance. If you use any type of modelling in your research, we strongly recommended checking out the performance help documentation and [website](https://easystats.github.io/performance/index.html) for more information on what it can do.
 
 You can test the assumptions of your model separately using functions like `check_heteroscedasticity()`, however, there's a single comprehensive function `check_model()` that provides an overview:
 

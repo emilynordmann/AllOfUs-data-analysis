@@ -1275,16 +1275,16 @@ sulindac condition
 </table></div>
 </div>
 </div>
-<div id="dplyr-summarise" class="section level3" number="2.5.2">
+<div id="dplyr-summarize" class="section level3" number="2.5.2">
 <h3>
-<span class="header-section-number">2.5.2</span> Summarise<a class="anchor" aria-label="anchor" href="#dplyr-summarise"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5.2</span> summarize<a class="anchor" aria-label="anchor" href="#dplyr-summarize"><i class="fas fa-link"></i></a>
 </h3>
-<p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> applies summary functions to an entire table (or groups, as you'll see in the next section). However, before we go much further we will need to deal with those pesky missing values.</p>
-<p>Let's say we want to determine the mean, median, min and max number of polyps after treatment. The function <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> allows us to create a table where the column names will be the left-hand value (.e.g, <code>mean_polyps</code>) and the values will be the result of the operation on the right-hand side (e.g., take the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> of the variable <code>total</code>).</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> applies summary functions to an entire table (or groups, as you'll see in the next section). However, before we go much further we will need to deal with those pesky missing values.</p>
+<p>Let's say we want to determine the mean, median, min and max number of polyps after treatment. The function <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> allows us to create a table where the column names will be the left-hand value (.e.g, <code>mean_polyps</code>) and the values will be the result of the operation on the right-hand side (e.g., take the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> of the variable <code>total</code>).</p>
 <p>The problem is that our dataset has a few missing values which produces a table full of <code>NA</code>s:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
     mean_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     min_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
@@ -1335,7 +1335,7 @@ NA
 </ul>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
     missing_baseline <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">baseline</span><span class="op">)</span><span class="op">)</span>,
     missing_3m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">number3m</span><span class="op">)</span><span class="op">)</span>,
     missing_12m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">number12m</span><span class="op">)</span><span class="op">)</span>
@@ -1369,7 +1369,7 @@ missing_12m
 <p>There's actually only two missing values in the 12 month column but that's enough to have caused us big problems down the line. When we calculated <code>treatment</code>, <code>treatment2</code>, and <code>total</code> we simply added or subtracted these variables from each other, ignoring the missing values which have been replicated in any new variable that used them:</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
     missing_treatment1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">treatment1</span><span class="op">)</span><span class="op">)</span>,
     missing_treatment2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">treatment2</span><span class="op">)</span><span class="op">)</span>,
     missing_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span><span class="op">)</span>
@@ -1409,7 +1409,7 @@ missing_total
     total <span class="op">=</span> <span class="va">treatment1</span> <span class="op">+</span> <span class="va">treatment2</span><span class="op">)</span>
 
 <span class="va">polyps6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
     mean_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
     min_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">total</span><span class="op">)</span>,
@@ -1447,10 +1447,10 @@ max_polyps
 </tr></tbody>
 </table></div>
 </div>
-<p>A second option is to tell R to ignore the missing values in its calculations. We'll use the <code>polyps5</code> dataset that we first created that has the missing values but this time when we run <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>, we add in <code>na.rm = TRUE</code> which means "remove the NAs from the calculation". A useful addition to <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> if you're going to use <code>na.rm = TRUE</code> is to call <code>n = n()</code> which essentially does the same thing as <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> and tells you how many observations were used in the calculation and helps ensure we don't accidentally calculate summary data with lots of missing observations without realising it:</p>
+<p>A second option is to tell R to ignore the missing values in its calculations. We'll use the <code>polyps5</code> dataset that we first created that has the missing values but this time when we run <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, we add in <code>na.rm = TRUE</code> which means "remove the NAs from the calculation". A useful addition to <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> if you're going to use <code>na.rm = TRUE</code> is to call <code>n = n()</code> which essentially does the same thing as <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> and tells you how many observations were used in the calculation and helps ensure we don't accidentally calculate summary data with lots of missing observations without realising it:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">polyps6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>
     mean_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
     median_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
     min_polyps <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
@@ -1522,19 +1522,19 @@ n
 
 <span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># by two grouping variables</span>
 
 <span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sex</span>, <span class="va">treatment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># order of the variables affects the layout of the table produced</span>
 
 <span class="va">polyps5</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span>, <span class="va">sex</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">total</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>You can also use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> in combination with other functions. For example, <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> returns the top N rows, ordered by a specific variable. In this example, we return the three patients with the largest reduction in polyps.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># return top 3 sales</span>
@@ -2346,7 +2346,7 @@ $( document ).ready(function() {
 <li>
 <a class="nav-link" href="#descriptive-statistics"><span class="header-section-number">2.5</span> Descriptive statistics</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#count"><span class="header-section-number">2.5.1</span> Count</a></li>
-<li><a class="nav-link" href="#dplyr-summarise"><span class="header-section-number">2.5.2</span> Summarise</a></li>
+<li><a class="nav-link" href="#dplyr-summarize"><span class="header-section-number">2.5.2</span> summarize</a></li>
 <li><a class="nav-link" href="#missing-values"><span class="header-section-number">2.5.3</span> Missing values</a></li>
 <li><a class="nav-link" href="#dplyr-groupby"><span class="header-section-number">2.5.4</span> Group By</a></li>
 </ul>
@@ -2374,7 +2374,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-07.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

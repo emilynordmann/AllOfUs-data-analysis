@@ -334,12 +334,12 @@ polyps_tidy <- polyps %>%
                values_to = "polyps_n") # new column name for values
 ```
 
-The long-form dataset makes it possible to use tidyverse functions to flexibly summarise and visualise our dataset. For example, with the wide-form dataset, in order to calculate the mean number of polyps at each time-point, we would need to specify the calculation for each time-point individually:
+The long-form dataset makes it possible to use tidyverse functions to flexibly summarize and visualise our dataset. For example, with the wide-form dataset, in order to calculate the mean number of polyps at each time-point, we would need to specify the calculation for each time-point individually:
 
 
 ```r
 polyps %>%
-  summarise(mean_baseline = mean(baseline),
+  summarize(mean_baseline = mean(baseline),
             mean_3m = mean(number3m),
             mean_12m = mean(number12m, na.rm = TRUE))
 ```
@@ -372,7 +372,7 @@ However, with the tidy version, not only does the code become more concise (and 
 ```r
 polyps_tidy %>%
   group_by(time) %>%
-  summarise(mean = mean(polyps_n, na.rm = TRUE))
+  summarize(mean = mean(polyps_n, na.rm = TRUE))
 ```
 
 <div class="kable-table">
@@ -890,7 +890,7 @@ Now the data are finally in tidy format we can use our tidyverse functions to ea
 ```r
 laryn_tidy6 %>%
   group_by(attempt) %>%
-  summarise(mean_time =mean(time, na.rm = TRUE))
+  summarize(mean_time =mean(time, na.rm = TRUE))
 ```
 
 <div class="kable-table">
@@ -1230,7 +1230,7 @@ tidy2b <- wide2 %>%
 
 ### Analysis and visualisation
 
-Using `group_by()` and `summarise()`, calculate the mean score for each participant for both satisfaction and recommendation. Do this for both versions of the dataset so that you can see how the structure of the dataset changes the approach you need to take.
+Using `group_by()` and `summarize()`, calculate the mean score for each participant for both satisfaction and recommendation. Do this for both versions of the dataset so that you can see how the structure of the dataset changes the approach you need to take.
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -1238,11 +1238,11 @@ Using `group_by()` and `summarise()`, calculate the mean score for each particip
 ```r
 tidy2a %>%
   group_by(id, category) %>%
-  summarise(mean = mean(response))
+  summarize(mean = mean(response))
 
 tidy2b %>%
   group_by(id) %>%
-  summarise(mean_satisfaction = mean(sat),
+  summarize(mean_satisfaction = mean(sat),
             mean_rec = mean(rec))
 ```
 
