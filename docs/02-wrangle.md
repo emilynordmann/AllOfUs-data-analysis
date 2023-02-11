@@ -2,7 +2,7 @@
 
 
 
-# Data wrangling {#wrangle}
+# Data Wrangling {#wrangle}
 
 ## Intended Learning Outcomes {#ilo-wrangle}
 

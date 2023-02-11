@@ -90,7 +90,7 @@ spearman_results <- gapminder %>%
 spearman_results
 ```
 
-You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions `mutate()` and `log()`
+You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions `mutate()` and `log()` / `log10()` or `log2()` depending on which transformation we wish to use.
 
 ```{r eval = FALSE}
 gapminder <- gapminder %>%

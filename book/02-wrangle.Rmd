@@ -4,7 +4,7 @@ set.seed(12042016)
 ```
 
 
-# Data wrangling {#wrangle}
+# Data Wrangling {#wrangle}
 
 ## Intended Learning Outcomes {#ilo-wrangle}
 

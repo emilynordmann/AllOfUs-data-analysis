@@ -73,7 +73,7 @@
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Introduction</a></li>
 <li><a class="" href="prerequisites.html"><span class="header-section-number">1</span> Pre-requisites</a></li>
-<li><a class="" href="wrangle.html"><span class="header-section-number">2</span> Data wrangling</a></li>
+<li><a class="" href="wrangle.html"><span class="header-section-number">2</span> Data Wrangling</a></li>
 <li><a class="" href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></li>
 <li><a class="" href="live-office-hour-1.html"><span class="header-section-number">4</span> Live Office Hour 1</a></li>
 <li><a class="" href="analysis1.html"><span class="header-section-number">5</span> Comparing Means</a></li>
@@ -238,7 +238,7 @@ Spearman correlation
 </tr></tbody>
 </table></div>
 </div>
-<p>You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code></p>
+<p>You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> / <code><a href="https://rdrr.io/r/base/Log.html">log10()</a></code> or <code><a href="https://rdrr.io/r/base/Log.html">log2()</a></code> depending on which transformation we wish to use.</p>
 <div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gdp_log <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span>
@@ -1043,7 +1043,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-08.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-02-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
