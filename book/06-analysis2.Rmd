@@ -243,7 +243,7 @@ chlamydia_dat <- opt %>%
 summary(chlamydia_dat)
 ```
 
-The summary output reveals an interesting quick of this dataset.There's missing data in the chlamydia and Hisp variables but it's not represent as a missing value instead, it's been coded as blank but inexplicably not actually blank, R thinks there is a type of data in the cell otherwise it would show up as `NA`. 
+The summary output reveals an interesting quirk of this dataset. There's missing data in the `chlamydia` and `Hisp` variables but it's not represented as a missing value. Instead, it's been coded as blank but inexplicably not actually blank -  R thinks there is a type of data in the cell otherwise it would show up as `NA`. 
 
 To deal with this we could either convert the blanks to NAs. This dataset is so badly coded that it took several attempts of trial-and-error to figure out what the blank was - it turns out it is three spaces and also "No" is stored as "No " with a space after it. Because we need our outcome to be a binary variable, we can use `droplevels` to get rid of the blank grouping (try removing the call to `droplevels` then run `summary()` to see how the data are represented).
 

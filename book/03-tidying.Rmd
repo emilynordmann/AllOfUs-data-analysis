@@ -190,9 +190,12 @@ polyps_wide <- polyps_tidy %>%
   names_from = time, # the new column names
   values_from = polyps_n # the new column values
 )
+
 ```
 
-`r kable(head(polyps_wide), caption = "Data made wider with pivot_wider()")`
+```{r echo = FALSE}
+head(polyps_wide)
+```
 
 An example of when wide-format data is required is if you needed to create a scatterplot or conduct a correlation between two levels of a grouping variable so and so you need the data in separate columns:
 

@@ -85,39 +85,10 @@ head(opt_rename, 2)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> PID </th>
-   <th style="text-align:left;"> Location </th>
-   <th style="text-align:left;"> Black </th>
-   <th style="text-align:left;"> White </th>
-   <th style="text-align:left;"> Nat.Am </th>
-   <th style="text-align:left;"> Asian </th>
-   <th style="text-align:left;"> Hisp </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 100034 </td>
-   <td style="text-align:left;"> NY </td>
-   <td style="text-align:left;"> Yes </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 100042 </td>
-   <td style="text-align:left;"> NY </td>
-   <td style="text-align:left;"> Yes </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;"> No </td>
-   <td style="text-align:left;">  </td>
-  </tr>
-</tbody>
-</table>
+|    PID|Location |Black |White |Nat.Am |Asian |Hisp |
+|------:|:--------|:-----|:-----|:------|:-----|:----|
+| 100034|NY       |Yes   |No    |No     |No    |     |
+| 100042|NY       |Yes   |No    |No     |No    |     |
 
 </div>
 
@@ -179,37 +150,12 @@ Which IDs are kept from the table below?
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> id </th>
-   <th style="text-align:left;"> grade </th>
-   <th style="text-align:right;"> score </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:right;"> 95 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> A </td>
-   <td style="text-align:right;"> 91 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:left;"> C </td>
-   <td style="text-align:right;"> 76 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:left;"> B </td>
-   <td style="text-align:right;"> 84 </td>
-  </tr>
-</tbody>
-</table>
+| id|grade | score|
+|--:|:-----|-----:|
+|  1|A     |    95|
+|  2|A     |    91|
+|  3|C     |    76|
+|  4|B     |    84|
 
 </div>
 
@@ -251,7 +197,7 @@ diabetes_either <- opt %>%
   )
 ```
 
-If you want the filter to retain multiple specific values in the same variable, the <a class='glossary' target='_blank' title='A binary operator (%in%) that returns a logical vector indicating if there is a match or not for its left operand.' href='https://psyteachr.github.io/glossary/m#match-operator'>match operator</a> (`%in%`) should be used rather than `|` (or). The `!` can also be used in combination here, but it is placed before the variable name.
+If you want the filter to retain multiple specific values in the same variable, the <a class='glossary'>match operator<span class='def'></span></a> (`%in%`) should be used rather than `|` (or). The `!` can also be used in combination here, but it is placed before the variable name.
 
 
 ```r
@@ -266,7 +212,7 @@ opt %>%
          Black != "Yes")
 ```
 
-<a class='glossary' target='_blank' title='A symbol that performs some mathematical or comparative process. ' href='https://psyteachr.github.io/glossary/o#operator'>Operator</a>	|Name   |is TRUE if and only if
+<a class='glossary'>Operator<span class='def'></span></a>	|Name   |is TRUE if and only if
 -----------|----------------------|---------------------------------
 `A < B`    |less than 	          |A is less than B
 `A <= B`   |less than or equal    |A is less than or equal to B
@@ -295,219 +241,30 @@ polyps %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> participant_id </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> baseline </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> number3m </th>
-   <th style="text-align:right;"> number12m </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 77 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 67 </td>
-   <td style="text-align:right;"> 63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 017 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 54 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 45 </td>
-   <td style="text-align:right;"> 46 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 006 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> 35 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 31 </td>
-   <td style="text-align:right;"> 61 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 021 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 007 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 020 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 012 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 001 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 004 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 18 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 010 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> 318 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 347 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 011 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 160 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 142 </td>
-   <td style="text-align:right;"> 25 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 016 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 34 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 33 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 019 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 34 </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:right;"> 50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 015 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 40 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 005 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 17 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 013 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 018 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 008 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 34 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 022 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 42 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 014 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 003 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 009 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 15 </td>
-  </tr>
-</tbody>
-</table>
+|participant_id |sex    | age| baseline|treatment | number3m| number12m|
+|:--------------|:------|---:|--------:|:---------|--------:|---------:|
+|002            |female |  20|       77|placebo   |       67|        63|
+|017            |female |  22|       54|placebo   |       45|        46|
+|006            |female |  13|       35|placebo   |       31|        61|
+|021            |female |  22|       20|sulindac  |        5|         1|
+|007            |female |  23|       11|sulindac  |        6|         1|
+|020            |female |  23|       10|sulindac  |        6|         3|
+|012            |female |  23|        8|sulindac  |        1|         3|
+|001            |female |  17|        7|sulindac  |        6|        NA|
+|004            |female |  18|        5|placebo   |        5|        28|
+|010            |male   |  19|      318|placebo   |      347|        44|
+|011            |male   |  17|      160|sulindac  |      142|        25|
+|016            |male   |  23|       34|sulindac  |       27|        33|
+|019            |male   |  34|       30|placebo   |       30|        50|
+|015            |male   |  27|       24|placebo   |       26|        40|
+|005            |male   |  22|       23|sulindac  |       16|        17|
+|013            |male   |  22|       20|placebo   |       16|        28|
+|018            |male   |  13|       16|sulindac  |       10|        NA|
+|008            |male   |  34|       12|placebo   |       20|         7|
+|022            |male   |  42|       12|sulindac  |        8|         4|
+|014            |male   |  30|       11|placebo   |       20|        10|
+|003            |male   |  16|        7|sulindac  |        4|         2|
+|009            |male   |  50|        7|placebo   |        7|        15|
 
 </div>
 
@@ -531,7 +288,7 @@ polyps2 <- polyps %>%
   )
 ```
 
-`mutate()` can also be used in conjunction with other functions and Boolean operators. For example, we can add another column to `polyps2` that states whether any improvement in the number of polyps was seen or overwrite our `treatment` variable as a factor. Just like when we used <a class='glossary' target='_blank' title='An expression that evaluates to TRUE or FALSE.' href='https://psyteachr.github.io/glossary/b#boolean-expression'>Boolean expressions</a> with filter, it will evaluate the equation and return TRUE or FALSE depending on whether the observation meets the criteria.
+`mutate()` can also be used in conjunction with other functions and Boolean operators. For example, we can add another column to `polyps2` that states whether any improvement in the number of polyps was seen or overwrite our `treatment` variable as a factor. Just like when we used <a class='glossary'>Boolean expressions<span class='def'></span></a> with filter, it will evaluate the equation and return TRUE or FALSE depending on whether the observation meets the criteria.
 
 
 ```r
@@ -595,18 +352,9 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 22 </td>
-  </tr>
-</tbody>
-</table>
+|  n|
+|--:|
+| 22|
 
 </div>
 
@@ -621,24 +369,10 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 11 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 11 </td>
-  </tr>
-</tbody>
-</table>
+|treatment          |  n|
+|:------------------|--:|
+|placebo condition  | 11|
+|sulindac condition | 11|
 
 </div>
 
@@ -654,37 +388,12 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 6 </td>
-  </tr>
-</tbody>
-</table>
+|treatment          |sex    |  n|
+|:------------------|:------|--:|
+|placebo condition  |female |  4|
+|placebo condition  |male   |  7|
+|sulindac condition |female |  5|
+|sulindac condition |male   |  6|
 
 </div>
 
@@ -698,37 +407,12 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 6 </td>
-  </tr>
-</tbody>
-</table>
+|sex    |treatment          |  n|
+|:------|:------------------|--:|
+|female |placebo condition  |  4|
+|female |sulindac condition |  5|
+|male   |placebo condition  |  7|
+|male   |sulindac condition |  6|
 
 </div>
 
@@ -753,24 +437,9 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> mean_polyps </th>
-   <th style="text-align:right;"> median_polyps </th>
-   <th style="text-align:right;"> min_polyps </th>
-   <th style="text-align:right;"> max_polyps </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-</tbody>
-</table>
+| mean_polyps| median_polyps| min_polyps| max_polyps|
+|-----------:|-------------:|----------:|----------:|
+|          NA|            NA|         NA|         NA|
 
 </div>
 
@@ -794,22 +463,9 @@ polyps %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> missing_baseline </th>
-   <th style="text-align:right;"> missing_3m </th>
-   <th style="text-align:right;"> missing_12m </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-</tbody>
-</table>
+| missing_baseline| missing_3m| missing_12m|
+|----------------:|----------:|-----------:|
+|                0|          0|           2|
 
 </div>
 
@@ -827,22 +483,9 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> missing_treatment1 </th>
-   <th style="text-align:right;"> missing_treatment2 </th>
-   <th style="text-align:right;"> missing_total </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-</tbody>
-</table>
+| missing_treatment1| missing_treatment2| missing_total|
+|------------------:|------------------:|-------------:|
+|                  0|                  2|             2|
 
 </div>
 
@@ -867,24 +510,9 @@ polyps6 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> mean_polyps </th>
-   <th style="text-align:right;"> median_polyps </th>
-   <th style="text-align:right;"> min_polyps </th>
-   <th style="text-align:right;"> max_polyps </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -19.85 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -274 </td>
-   <td style="text-align:right;"> 26 </td>
-  </tr>
-</tbody>
-</table>
+| mean_polyps| median_polyps| min_polyps| max_polyps|
+|-----------:|-------------:|----------:|----------:|
+|      -19.85|            -5|       -274|         26|
 
 </div>
 
@@ -904,26 +532,9 @@ polyps6 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> mean_polyps </th>
-   <th style="text-align:right;"> median_polyps </th>
-   <th style="text-align:right;"> min_polyps </th>
-   <th style="text-align:right;"> max_polyps </th>
-   <th style="text-align:right;"> n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -19.85 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -274 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 20 </td>
-  </tr>
-</tbody>
-</table>
+| mean_polyps| median_polyps| min_polyps| max_polyps|  n|
+|-----------:|-------------:|----------:|----------:|--:|
+|      -19.85|            -5|       -274|         26| 20|
 
 </div>
 
@@ -985,72 +596,11 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> participant_id </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> baseline </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> number3m </th>
-   <th style="text-align:right;"> number12m </th>
-   <th style="text-align:right;"> treatment1 </th>
-   <th style="text-align:right;"> treatment2 </th>
-   <th style="text-align:right;"> total </th>
-   <th style="text-align:left;"> improvement </th>
-   <th style="text-align:left;"> category </th>
-   <th style="text-align:left;"> risk </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 010 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> 318 </td>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 347 </td>
-   <td style="text-align:right;"> 44 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> -303 </td>
-   <td style="text-align:right;"> -274 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> High </td>
-   <td style="text-align:left;"> High risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 011 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 160 </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 142 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> -18 </td>
-   <td style="text-align:right;"> -117 </td>
-   <td style="text-align:right;"> -135 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> High </td>
-   <td style="text-align:left;"> High risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 021 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -15 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -19 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> Medium </td>
-   <td style="text-align:left;"> Not high risk </td>
-  </tr>
-</tbody>
-</table>
+|participant_id |sex    | age| baseline|treatment          | number3m| number12m| treatment1| treatment2| total|improvement |category |risk          |
+|:--------------|:------|---:|--------:|:------------------|--------:|---------:|----------:|----------:|-----:|:-----------|:--------|:-------------|
+|010            |male   |  19|      318|placebo condition  |      347|        44|         29|       -303|  -274|Improvement |High     |High risk     |
+|011            |male   |  17|      160|sulindac condition |      142|        25|        -18|       -117|  -135|Improvement |High     |High risk     |
+|021            |female |  22|       20|sulindac condition |        5|         1|        -15|         -4|   -19|Improvement |Medium   |Not high risk |
 
 </div>
 
@@ -1066,117 +616,14 @@ polyps5 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> participant_id </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> baseline </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> number3m </th>
-   <th style="text-align:right;"> number12m </th>
-   <th style="text-align:right;"> treatment1 </th>
-   <th style="text-align:right;"> treatment2 </th>
-   <th style="text-align:right;"> total </th>
-   <th style="text-align:left;"> improvement </th>
-   <th style="text-align:left;"> category </th>
-   <th style="text-align:left;"> risk </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 010 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> 318 </td>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 347 </td>
-   <td style="text-align:right;"> 44 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> -303 </td>
-   <td style="text-align:right;"> -274 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> High </td>
-   <td style="text-align:left;"> High risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 77 </td>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 67 </td>
-   <td style="text-align:right;"> 63 </td>
-   <td style="text-align:right;"> -10 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -14 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> High </td>
-   <td style="text-align:left;"> High risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 017 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 54 </td>
-   <td style="text-align:left;"> placebo condition </td>
-   <td style="text-align:right;"> 45 </td>
-   <td style="text-align:right;"> 46 </td>
-   <td style="text-align:right;"> -9 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -8 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> High </td>
-   <td style="text-align:left;"> High risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 011 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 160 </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 142 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> -18 </td>
-   <td style="text-align:right;"> -117 </td>
-   <td style="text-align:right;"> -135 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> High </td>
-   <td style="text-align:left;"> High risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 021 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -15 </td>
-   <td style="text-align:right;"> -4 </td>
-   <td style="text-align:right;"> -19 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> Medium </td>
-   <td style="text-align:left;"> Not high risk </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 007 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 11 </td>
-   <td style="text-align:left;"> sulindac condition </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -5 </td>
-   <td style="text-align:right;"> -10 </td>
-   <td style="text-align:left;"> Improvement </td>
-   <td style="text-align:left;"> Medium </td>
-   <td style="text-align:left;"> Not high risk </td>
-  </tr>
-</tbody>
-</table>
+|participant_id |sex    | age| baseline|treatment          | number3m| number12m| treatment1| treatment2| total|improvement |category |risk          |
+|:--------------|:------|---:|--------:|:------------------|--------:|---------:|----------:|----------:|-----:|:-----------|:--------|:-------------|
+|010            |male   |  19|      318|placebo condition  |      347|        44|         29|       -303|  -274|Improvement |High     |High risk     |
+|002            |female |  20|       77|placebo condition  |       67|        63|        -10|         -4|   -14|Improvement |High     |High risk     |
+|017            |female |  22|       54|placebo condition  |       45|        46|         -9|          1|    -8|Improvement |High     |High risk     |
+|011            |male   |  17|      160|sulindac condition |      142|        25|        -18|       -117|  -135|Improvement |High     |High risk     |
+|021            |female |  22|       20|sulindac condition |        5|         1|        -15|         -4|   -19|Improvement |Medium   |Not high risk |
+|007            |female |  23|       11|sulindac condition |        6|         1|         -5|         -5|   -10|Improvement |Medium   |Not high risk |
 
 </div>
 
@@ -1271,16 +718,16 @@ To help consolidate what you've learned in this chapter, use a dataset of your o
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> [boolean expression](https://psyteachr.github.io/glossary/b.html#boolean-expression){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> An expression that evaluates to TRUE or FALSE. </td>
+   <td style="text-align:left;"> boolean expression </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [match operator](https://psyteachr.github.io/glossary/m.html#match-operator){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> A binary operator (%in%) that returns a logical vector indicating if there is a match or not for its left operand. </td>
+   <td style="text-align:left;"> match operator </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [operator](https://psyteachr.github.io/glossary/o.html#operator){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> A symbol that performs some mathematical or comparative process. </td>
+   <td style="text-align:left;"> Operator </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

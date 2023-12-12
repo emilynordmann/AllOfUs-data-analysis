@@ -105,36 +105,9 @@ spearman_results
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Parameter1 </th>
-   <th style="text-align:left;"> Parameter2 </th>
-   <th style="text-align:right;"> rho </th>
-   <th style="text-align:right;"> CI </th>
-   <th style="text-align:right;"> CI_low </th>
-   <th style="text-align:right;"> CI_high </th>
-   <th style="text-align:right;"> S </th>
-   <th style="text-align:right;"> p </th>
-   <th style="text-align:left;"> Method </th>
-   <th style="text-align:right;"> n_Obs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> lifeExp </td>
-   <td style="text-align:left;"> gdpPercap </td>
-   <td style="text-align:right;"> 0.7529151 </td>
-   <td style="text-align:right;"> 0.95 </td>
-   <td style="text-align:right;"> 0.6975748 </td>
-   <td style="text-align:right;"> 0.7993259 </td>
-   <td style="text-align:right;"> 1111870 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> Spearman correlation </td>
-   <td style="text-align:right;"> 300 </td>
-  </tr>
-</tbody>
-</table>
+|Parameter1 |Parameter2 |       rho|   CI|    CI_low|   CI_high|       S|  p|Method               | n_Obs|
+|:----------|:----------|---------:|----:|---------:|---------:|-------:|--:|:--------------------|-----:|
+|lifeExp    |gdpPercap  | 0.7529151| 0.95| 0.6975748| 0.7993259| 1111870|  0|Spearman correlation |   300|
 
 </div>
 
@@ -179,38 +152,9 @@ pearson_results
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Parameter1 </th>
-   <th style="text-align:left;"> Parameter2 </th>
-   <th style="text-align:right;"> r </th>
-   <th style="text-align:right;"> CI </th>
-   <th style="text-align:right;"> CI_low </th>
-   <th style="text-align:right;"> CI_high </th>
-   <th style="text-align:right;"> t </th>
-   <th style="text-align:right;"> df_error </th>
-   <th style="text-align:right;"> p </th>
-   <th style="text-align:left;"> Method </th>
-   <th style="text-align:right;"> n_Obs </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> lifeExp </td>
-   <td style="text-align:left;"> gdpPercap </td>
-   <td style="text-align:right;"> 0.5583655 </td>
-   <td style="text-align:right;"> 0.95 </td>
-   <td style="text-align:right;"> 0.4751696 </td>
-   <td style="text-align:right;"> 0.6316663 </td>
-   <td style="text-align:right;"> 11.61878 </td>
-   <td style="text-align:right;"> 298 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> Pearson correlation </td>
-   <td style="text-align:right;"> 300 </td>
-  </tr>
-</tbody>
-</table>
+|Parameter1 |Parameter2 |         r|   CI|    CI_low|   CI_high|        t| df_error|  p|Method              | n_Obs|
+|:----------|:----------|---------:|----:|---------:|---------:|--------:|--------:|--:|:-------------------|-----:|
+|lifeExp    |gdpPercap  | 0.5583655| 0.95| 0.4751696| 0.6316663| 11.61878|      298|  0|Pearson correlation |   300|
 
 </div>
 
@@ -264,33 +208,10 @@ summary(mod1) %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> (Intercept) </td>
-   <td style="text-align:right;"> -19.06798 </td>
-   <td style="text-align:right;"> 4.823726 </td>
-   <td style="text-align:right;"> -3.952957 </td>
-   <td style="text-align:right;"> 9.65e-05 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> gdp_log </td>
-   <td style="text-align:right;"> 22.37744 </td>
-   <td style="text-align:right;"> 1.285209 </td>
-   <td style="text-align:right;"> 17.411526 </td>
-   <td style="text-align:right;"> 0.00e+00 </td>
-  </tr>
-</tbody>
-</table>
+|term        |  estimate| std.error| statistic|  p.value|
+|:-----------|---------:|---------:|---------:|--------:|
+|(Intercept) | -19.06798|  4.823726| -3.952957| 9.65e-05|
+|gdp_log     |  22.37744|  1.285209| 17.411526| 0.00e+00|
 
 </div>
 
@@ -307,6 +228,11 @@ You can test the assumptions of your model separately using functions like `chec
 
 ```r
 check_model(mod1)
+```
+
+```
+## Not enough model terms in the conditional part of the model to check for
+##   multicollinearity.
 ```
 
 <img src="06-analysis2_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" />
@@ -433,78 +359,18 @@ new_patients
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> participant_id </th>
-   <th style="text-align:right;"> baseline </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> predicted_12m </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 11.29743 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 32.91576 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 18.83441 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 35 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 40.45273 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 40 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 26.37139 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 45 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 47.98971 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 33.90837 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 55 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 55.52669 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 60 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 41.44535 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 65 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 63.06367 </td>
-  </tr>
-</tbody>
-</table>
+| participant_id| baseline|treatment | predicted_12m|
+|--------------:|--------:|:---------|-------------:|
+|              1|       20|sulindac  |      11.29743|
+|              2|       25|placebo   |      32.91576|
+|              3|       30|sulindac  |      18.83441|
+|              4|       35|placebo   |      40.45273|
+|              5|       40|sulindac  |      26.37139|
+|              6|       45|placebo   |      47.98971|
+|              7|       50|sulindac  |      33.90837|
+|              8|       55|placebo   |      55.52669|
+|              9|       60|sulindac  |      41.44535|
+|             10|       65|placebo   |      63.06367|
 
 </div>
 
@@ -537,7 +403,7 @@ summary(chlamydia_dat)
 ## 
 ```
 
-The summary output reveals an interesting quick of this dataset.There's missing data in the chlamydia and Hisp variables but it's not represent as a missing value instead, it's been coded as blank but inexplicably not actually blank, R thinks there is a type of data in the cell otherwise it would show up as `NA`. 
+The summary output reveals an interesting quirk of this dataset. There's missing data in the `chlamydia` and `Hisp` variables but it's not represented as a missing value. Instead, it's been coded as blank but inexplicably not actually blank -  R thinks there is a type of data in the cell otherwise it would show up as `NA`. 
 
 To deal with this we could either convert the blanks to NAs. This dataset is so badly coded that it took several attempts of trial-and-error to figure out what the blank was - it turns out it is three spaces and also "No" is stored as "No " with a space after it. Because we need our outcome to be a binary variable, we can use `droplevels` to get rid of the blank grouping (try removing the call to `droplevels` then run `summary()` to see how the data are represented).
 
@@ -582,10 +448,6 @@ summary(log_mod1)
 ## Call:
 ## glm(formula = Chlamydia ~ Age + Black + White + Nat.Am + Asian + 
 ##     Hisp + Education, family = binomial, data = chlamydia_dat2)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -0.9148  -0.5964  -0.4600  -0.2546   2.6650  
 ## 
 ## Coefficients:
 ##                     Estimate Std. Error z value Pr(>|z|)   

@@ -3,8 +3,8 @@
 
 ## Schedule and Zoom link
 
-* The second live office hour session will take place on Thursday 2nd March at 4-5pm EST via [Zoom](https://rtiorg.zoom.us/j/97824542249?pwd=KzVrVUxzaWhxbzJycmh0VnBKSkZVdz09). 
-* The password is 428447 and the waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the *All of Us* Researcher Academy otherwise you may not be allowed entry to the session.
+* The second live office hour session will take place on Thursday 18th January at 4-5pm EST via [Zoom](https://uofglasgow.zoom.us/j/85258521368) (Meeting ID: 852 5852 1368). 
+* The waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the *All of Us* Researcher Academy otherwise you may not be allowed entry to the session.
 
 ## Content
 
