@@ -32,23 +32,16 @@ We encourage you to read the workbook and attempt each step on your own before w
 library(tidyverse)   
 library(broom)
 library(afex)
+```
+
+```
+## Warning: package 'afex' was built under R version 4.3.2
+```
+
+```r
 library(emmeans)
 library(gapminder)
-```
-
-```
-## Warning: package 'gapminder' was built under R version 4.3.2
-```
-
-```r
 library(medicaldata)
-```
-
-```
-## Warning: package 'medicaldata' was built under R version 4.3.2
-```
-
-```r
 data("polyps")
 data("gapminder")
 data("laryngoscope")
@@ -99,32 +92,9 @@ t.test(x = polyps$reduction,
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 19.85 </td>
-   <td style="text-align:right;"> 1.301766 </td>
-   <td style="text-align:right;"> 0.1042795 </td>
-   <td style="text-align:right;"> 19 </td>
-   <td style="text-align:right;"> -6.516709 </td>
-   <td style="text-align:right;"> Inf </td>
-   <td style="text-align:left;"> One Sample t-test </td>
-   <td style="text-align:left;"> greater </td>
-  </tr>
-</tbody>
-</table>
+| estimate| statistic|   p.value| parameter|  conf.low| conf.high|method            |alternative |
+|--------:|---------:|---------:|---------:|---------:|---------:|:-----------------|:-----------|
+|    19.85|  1.301766| 0.1042795|        19| -6.516709|       Inf|One Sample t-test |greater     |
 
 </div>
 
@@ -143,32 +113,9 @@ t.test(x = polyps_outliers$reduction,
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -0.6666667 </td>
-   <td style="text-align:right;"> -0.2155182 </td>
-   <td style="text-align:right;"> 0.5840361 </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> -6.047827 </td>
-   <td style="text-align:right;"> Inf </td>
-   <td style="text-align:left;"> One Sample t-test </td>
-   <td style="text-align:left;"> greater </td>
-  </tr>
-</tbody>
-</table>
+|   estimate|  statistic|   p.value| parameter|  conf.low| conf.high|method            |alternative |
+|----------:|----------:|---------:|---------:|---------:|---------:|:-----------------|:-----------|
+| -0.6666667| -0.2155182| 0.5840361|        17| -6.047827|       Inf|One Sample t-test |greater     |
 
 </div>
 
@@ -191,45 +138,10 @@ polyps_outliers %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> -7.300 </td>
-   <td style="text-align:right;"> -1.659234 </td>
-   <td style="text-align:right;"> 0.9342791 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> -15.365002 </td>
-   <td style="text-align:right;"> Inf </td>
-   <td style="text-align:left;"> One Sample t-test </td>
-   <td style="text-align:left;"> greater </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 7.625 </td>
-   <td style="text-align:right;"> 4.077034 </td>
-   <td style="text-align:right;"> 0.0023536 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 4.081698 </td>
-   <td style="text-align:right;"> Inf </td>
-   <td style="text-align:left;"> One Sample t-test </td>
-   <td style="text-align:left;"> greater </td>
-  </tr>
-</tbody>
-</table>
+|treatment | estimate| statistic|   p.value| parameter|   conf.low| conf.high|method            |alternative |
+|:---------|--------:|---------:|---------:|---------:|----------:|---------:|:-----------------|:-----------|
+|placebo   |   -7.300| -1.659234| 0.9342791|         9| -15.365002|       Inf|One Sample t-test |greater     |
+|sulindac  |    7.625|  4.077034| 0.0023536|         7|   4.081698|       Inf|One Sample t-test |greater     |
 
 </div>
 
@@ -276,69 +188,15 @@ t.test(polyps_outliers$reduction ~ polyps_outliers$treatment,
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> estimate1 </th>
-   <th style="text-align:right;"> estimate2 </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -14.925 </td>
-   <td style="text-align:right;"> -7.3 </td>
-   <td style="text-align:right;"> 7.625 </td>
-   <td style="text-align:right;"> -2.858966 </td>
-   <td style="text-align:right;"> 0.005684 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -5.810756 </td>
-   <td style="text-align:left;"> Two Sample t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-</tbody>
-</table>
+| estimate| estimate1| estimate2| statistic|  p.value| parameter| conf.low| conf.high|method            |alternative |
+|--------:|---------:|---------:|---------:|--------:|---------:|--------:|---------:|:-----------------|:-----------|
+|  -14.925|      -7.3|     7.625| -2.858966| 0.005684|        16|     -Inf| -5.810756|Two Sample t-test |less        |
 
 </div><div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> estimate1 </th>
-   <th style="text-align:right;"> estimate2 </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -14.925 </td>
-   <td style="text-align:right;"> -7.3 </td>
-   <td style="text-align:right;"> 7.625 </td>
-   <td style="text-align:right;"> -2.858966 </td>
-   <td style="text-align:right;"> 0.005684 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -5.810756 </td>
-   <td style="text-align:left;"> Two Sample t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-</tbody>
-</table>
+| estimate| estimate1| estimate2| statistic|  p.value| parameter| conf.low| conf.high|method            |alternative |
+|--------:|---------:|---------:|---------:|--------:|---------:|--------:|---------:|:-----------------|:-----------|
+|  -14.925|      -7.3|     7.625| -2.858966| 0.005684|        16|     -Inf| -5.810756|Two Sample t-test |less        |
 
 </div>
 
@@ -399,32 +257,9 @@ gapminder %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -1.992746 </td>
-   <td style="text-align:right;"> -8.195187 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 141 </td>
-   <td style="text-align:right;"> -2.473458 </td>
-   <td style="text-align:right;"> -1.512035 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> two.sided </td>
-  </tr>
-</tbody>
-</table>
+|  estimate| statistic| p.value| parameter|  conf.low| conf.high|method        |alternative |
+|---------:|---------:|-------:|---------:|---------:|---------:|:-------------|:-----------|
+| -1.992746| -8.195187|       0|       141| -2.473458| -1.512035|Paired t-test |two.sided   |
 
 </div>
 
@@ -446,78 +281,13 @@ gapminder %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> continent </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Africa </td>
-   <td style="text-align:right;"> -1.207769 </td>
-   <td style="text-align:right;"> -1.922156 </td>
-   <td style="text-align:right;"> 0.0300905 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -0.1551191 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Americas </td>
-   <td style="text-align:right;"> -2.457640 </td>
-   <td style="text-align:right;"> -11.815866 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -2.1017852 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Asia </td>
-   <td style="text-align:right;"> -2.707970 </td>
-   <td style="text-align:right;"> -14.035916 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -2.3811653 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:right;"> -2.143433 </td>
-   <td style="text-align:right;"> -15.844473 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -1.9135762 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:right;"> -2.529500 </td>
-   <td style="text-align:right;"> -20.317269 </td>
-   <td style="text-align:right;"> 0.0156543 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -1.7434379 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> less </td>
-  </tr>
-</tbody>
-</table>
+|continent |  estimate|  statistic|   p.value| parameter| conf.low|  conf.high|method        |alternative |
+|:---------|---------:|----------:|---------:|---------:|--------:|----------:|:-------------|:-----------|
+|Africa    | -1.207769|  -1.922156| 0.0300905|        51|     -Inf| -0.1551191|Paired t-test |less        |
+|Americas  | -2.457640| -11.815866| 0.0000000|        24|     -Inf| -2.1017852|Paired t-test |less        |
+|Asia      | -2.707970| -14.035916| 0.0000000|        32|     -Inf| -2.3811653|Paired t-test |less        |
+|Europe    | -2.143433| -15.844473| 0.0000000|        29|     -Inf| -1.9135762|Paired t-test |less        |
+|Oceania   | -2.529500| -20.317269| 0.0156543|         1|     -Inf| -1.7434379|Paired t-test |less        |
 
 </div>
 
@@ -549,66 +319,13 @@ gapminder %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> continent </th>
-   <th style="text-align:right;"> lifeExp_diff </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:right;"> p.adjusted </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Africa </td>
-   <td style="text-align:right;"> -1.207769 </td>
-   <td style="text-align:right;"> 0.0601809 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> -2.469216 </td>
-   <td style="text-align:right;"> 0.0536778 </td>
-   <td style="text-align:right;"> 0.3009047 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Americas </td>
-   <td style="text-align:right;"> -2.457640 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> -2.886920 </td>
-   <td style="text-align:right;"> -2.0283596 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Asia </td>
-   <td style="text-align:right;"> -2.707970 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> -3.100958 </td>
-   <td style="text-align:right;"> -2.3149812 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Europe </td>
-   <td style="text-align:right;"> -2.143433 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> -2.420111 </td>
-   <td style="text-align:right;"> -1.8667556 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Oceania </td>
-   <td style="text-align:right;"> -2.529500 </td>
-   <td style="text-align:right;"> 0.0313087 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> -4.111422 </td>
-   <td style="text-align:right;"> -0.9475775 </td>
-   <td style="text-align:right;"> 0.1565433 </td>
-  </tr>
-</tbody>
-</table>
+|continent | lifeExp_diff|   p.value| df|  conf.low|  conf.high| p.adjusted|
+|:---------|------------:|---------:|--:|---------:|----------:|----------:|
+|Africa    |    -1.207769| 0.0601809| 51| -2.469216|  0.0536778|  0.3009047|
+|Americas  |    -2.457640| 0.0000000| 24| -2.886920| -2.0283596|  0.0000000|
+|Asia      |    -2.707970| 0.0000000| 32| -3.100958| -2.3149812|  0.0000000|
+|Europe    |    -2.143433| 0.0000000| 29| -2.420111| -1.8667556|  0.0000000|
+|Oceania   |    -2.529500| 0.0313087|  1| -4.111422| -0.9475775|  0.1565433|
 
 </div>
 
@@ -634,32 +351,9 @@ polyps_tidy %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:right;"> parameter </th>
-   <th style="text-align:right;"> conf.low </th>
-   <th style="text-align:right;"> conf.high </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> -0.6666667 </td>
-   <td style="text-align:right;"> -0.2155182 </td>
-   <td style="text-align:right;"> 0.8319279 </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> -7.193001 </td>
-   <td style="text-align:right;"> 5.859668 </td>
-   <td style="text-align:left;"> Paired t-test </td>
-   <td style="text-align:left;"> two.sided </td>
-  </tr>
-</tbody>
-</table>
+|   estimate|  statistic|   p.value| parameter|  conf.low| conf.high|method        |alternative |
+|----------:|----------:|---------:|---------:|---------:|---------:|:-------------|:-----------|
+| -0.6666667| -0.2155182| 0.8319279|        17| -7.193001|  5.859668|Paired t-test |two.sided   |
 
 </div>
 
@@ -722,30 +416,9 @@ lifeExp_anova$anova_table %>% tidy()
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> num.Df </th>
-   <th style="text-align:right;"> den.Df </th>
-   <th style="text-align:right;"> MSE </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> ges </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> 54.68012 </td>
-   <td style="text-align:right;"> 59.714 </td>
-   <td style="text-align:right;"> 0.6354987 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-</tbody>
-</table>
+|term      | num.Df| den.Df|      MSE| statistic|       ges| p.value|
+|:---------|------:|------:|--------:|---------:|---------:|-------:|
+|continent |      4|    137| 54.68012|    59.714| 0.6354987|       0|
 
 </div>
 
@@ -762,122 +435,18 @@ posthoc_contrasts <- posthoc$contrasts %>% tidy()
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:left;"> contrast </th>
-   <th style="text-align:right;"> null.value </th>
-   <th style="text-align:right;"> estimate </th>
-   <th style="text-align:right;"> std.error </th>
-   <th style="text-align:right;"> df </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> adj.p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Americas </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -18.802081 </td>
-   <td style="text-align:right;"> 1.799652 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -10.4476233 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Asia </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -15.922446 </td>
-   <td style="text-align:right;"> 1.645756 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -9.6748498 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Europe </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -22.842561 </td>
-   <td style="text-align:right;"> 1.695350 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -13.4736554 </td>
-   <td style="text-align:right;"> 0.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Africa - Oceania </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -25.913462 </td>
-   <td style="text-align:right;"> 5.328377 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -4.8632935 </td>
-   <td style="text-align:right;"> 0.0000312 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Americas - Asia </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2.879635 </td>
-   <td style="text-align:right;"> 1.960658 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> 1.4687088 </td>
-   <td style="text-align:right;"> 1.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Americas - Europe </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -4.040480 </td>
-   <td style="text-align:right;"> 2.002467 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -2.0177507 </td>
-   <td style="text-align:right;"> 0.4557009 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Americas - Oceania </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -7.111380 </td>
-   <td style="text-align:right;"> 5.433900 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -1.3087065 </td>
-   <td style="text-align:right;"> 1.0000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Asia - Europe </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -6.920115 </td>
-   <td style="text-align:right;"> 1.865380 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -3.7097607 </td>
-   <td style="text-align:right;"> 0.0030058 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Asia - Oceania </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -9.991015 </td>
-   <td style="text-align:right;"> 5.384889 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -1.8553798 </td>
-   <td style="text-align:right;"> 0.6569106 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:left;"> Europe - Oceania </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> -3.070900 </td>
-   <td style="text-align:right;"> 5.400253 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> -0.5686585 </td>
-   <td style="text-align:right;"> 1.0000000 </td>
-  </tr>
-</tbody>
-</table>
+|term      |contrast           | null.value|   estimate| std.error|  df|   statistic| adj.p.value|
+|:---------|:------------------|----------:|----------:|---------:|---:|-----------:|-----------:|
+|continent |Africa - Americas  |          0| -18.802081|  1.799652| 137| -10.4476233|   0.0000000|
+|continent |Africa - Asia      |          0| -15.922446|  1.645756| 137|  -9.6748498|   0.0000000|
+|continent |Africa - Europe    |          0| -22.842561|  1.695350| 137| -13.4736554|   0.0000000|
+|continent |Africa - Oceania   |          0| -25.913462|  5.328377| 137|  -4.8632935|   0.0000312|
+|continent |Americas - Asia    |          0|   2.879635|  1.960658| 137|   1.4687088|   1.0000000|
+|continent |Americas - Europe  |          0|  -4.040480|  2.002467| 137|  -2.0177507|   0.4557009|
+|continent |Americas - Oceania |          0|  -7.111380|  5.433900| 137|  -1.3087065|   1.0000000|
+|continent |Asia - Europe      |          0|  -6.920115|  1.865380| 137|  -3.7097607|   0.0030058|
+|continent |Asia - Oceania     |          0|  -9.991015|  5.384889| 137|  -1.8553798|   0.6569106|
+|continent |Europe - Oceania   |          0|  -3.070900|  5.400253| 137|  -0.5686585|   1.0000000|
 
 </div>
 
@@ -933,48 +502,11 @@ lifeExp_year$anova_table %>% tidy()
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> term </th>
-   <th style="text-align:right;"> num.Df </th>
-   <th style="text-align:right;"> den.Df </th>
-   <th style="text-align:right;"> MSE </th>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> ges </th>
-   <th style="text-align:right;"> p.value </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> continent </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> 110.5629222 </td>
-   <td style="text-align:right;"> 60.11622 </td>
-   <td style="text-align:right;"> 0.6358851 </td>
-   <td style="text-align:right;"> 0.000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> year </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> 0.5591717 </td>
-   <td style="text-align:right;"> 53.22558 </td>
-   <td style="text-align:right;"> 0.0019512 </td>
-   <td style="text-align:right;"> 0.000000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> continent:year </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 137 </td>
-   <td style="text-align:right;"> 0.5591717 </td>
-   <td style="text-align:right;"> 1.60383 </td>
-   <td style="text-align:right;"> 0.0002356 </td>
-   <td style="text-align:right;"> 0.176822 </td>
-  </tr>
-</tbody>
-</table>
+|term           | num.Df| den.Df|         MSE| statistic|       ges|  p.value|
+|:--------------|------:|------:|-----------:|---------:|---------:|--------:|
+|continent      |      4|    137| 110.5629222|  60.11622| 0.6358851| 0.000000|
+|year           |      1|    137|   0.5591717|  53.22558| 0.0019512| 0.000000|
+|continent:year |      4|    137|   0.5591717|   1.60383| 0.0002356| 0.176822|
 
 </div>
 
@@ -1049,24 +581,9 @@ wilcox.test(reduction ~ treatment,
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> 0.0568632 </td>
-   <td style="text-align:left;"> Wilcoxon rank sum test with continuity correction </td>
-   <td style="text-align:left;"> two.sided </td>
-  </tr>
-</tbody>
-</table>
+| statistic|   p.value|method                                            |alternative |
+|---------:|---------:|:-------------------------------------------------|:-----------|
+|        24| 0.0568632|Wilcoxon rank sum test with continuity correction |two.sided   |
 
 </div>
 
@@ -1090,24 +607,9 @@ polyps_tidy %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> statistic </th>
-   <th style="text-align:right;"> p.value </th>
-   <th style="text-align:left;"> method </th>
-   <th style="text-align:left;"> alternative </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 255 </td>
-   <td style="text-align:right;"> 0.0026073 </td>
-   <td style="text-align:left;"> Wilcoxon rank sum test with continuity correction </td>
-   <td style="text-align:left;"> two.sided </td>
-  </tr>
-</tbody>
-</table>
+| statistic|   p.value|method                                            |alternative |
+|---------:|---------:|:-------------------------------------------------|:-----------|
+|       255| 0.0026073|Wilcoxon rank sum test with continuity correction |two.sided   |
 
 </div>
 

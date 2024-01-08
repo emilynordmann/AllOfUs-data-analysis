@@ -1,50 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 6 Correlation and Regression | Intro to Data Wrangling and Analysis Using R</title>
-
-    <meta name="author" content="Emily Nordmann &amp; Javan Carter" />
-  
-   <meta name="description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 6 Correlation and Regression | Intro to Data Wrangling and Analysis Using R" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis" />
-  <meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png" />
-  <meta property="og:description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Correlation and Regression | Intro to Data Wrangling and Analysis Using R" />
-  
-  <meta name="twitter:description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-  <meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png" />
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Correlation and Regression | Intro to Data Wrangling and Analysis Using R</title>
+<meta name="author" content="Emily Nordmann &amp; Javan Carter">
+<meta name="description" content="6.1 Intended Learning Outcomes By the end of this chapter you should be able to: Perform and visualize Pearson and Spearman correlations Construct simple and multiple linear and logistic...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Correlation and Regression | Intro to Data Wrangling and Analysis Using R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis/analysis2.html">
+<meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<meta property="og:description" content="6.1 Intended Learning Outcomes By the end of this chapter you should be able to: Perform and visualize Pearson and Spearman correlations Construct simple and multiple linear and logistic...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Correlation and Regression | Intro to Data Wrangling and Analysis Using R">
+<meta name="twitter:description" content="6.1 Intended Learning Outcomes By the end of this chapter you should be able to: Perform and visualize Pearson and Spearman correlations Construct simple and multiple linear and logistic...">
+<meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -66,18 +47,15 @@
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="include/psyteachr.css" />
-    <link rel="stylesheet" href="include/webex.css" />
-    <link rel="stylesheet" href="include/style.css" />
-  
+<link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -89,24 +67,38 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="prerequisites.html"><span class="header-section-number">1</span> Pre-requisites</a></li>
+<li><a class="" href="wrangle.html"><span class="header-section-number">2</span> Data Wrangling</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></li>
+<li><a class="" href="live-office-hour-1.html"><span class="header-section-number">4</span> Live Office Hour 1</a></li>
+<li><a class="" href="analysis1.html"><span class="header-section-number">5</span> Comparing Means</a></li>
+<li><a class="active" href="analysis2.html"><span class="header-section-number">6</span> Correlation and Regression</a></li>
+<li><a class="" href="live-office-hour-2.html"><span class="header-section-number">7</span> Live Office Hour 2</a></li>
+<li><a class="" href="completion-quiz.html"><span class="header-section-number">8</span> Completion Quiz</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="ai-and-coding.html"><span class="header-section-number">A</span> AI and coding</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="analysis2" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> Correlation and Regression</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="analysis2" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Correlation and Regression<a class="anchor" aria-label="anchor" href="#analysis2"><i class="fas fa-link"></i></a>
+</h1>
 <div id="ilo-analysis2" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Intended Learning Outcomes</h2>
+<h2>
+<span class="header-section-number">6.1</span> Intended Learning Outcomes<a class="anchor" aria-label="anchor" href="#ilo-analysis2"><i class="fas fa-link"></i></a>
+</h2>
 <p>By the end of this chapter you should be able to:</p>
 <ul>
 <li>Perform and visualize Pearson and Spearman correlations</li>
@@ -115,251 +107,203 @@
 <p>As with Comparing Means, this chapter is unlikely to cover everything you want to know about regression, particularly if you use advanced techniques for your own research. Instead, it will give you the basic coding skills you need to understand how such models are constructed from a programming perspective, and point you towards additional resources that have a heavier focus on statistical theory.</p>
 </div>
 <div id="walkthrough-analysis2" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> Walkthrough video</h2>
+<h2>
+<span class="header-section-number">6.2</span> Walkthrough video<a class="anchor" aria-label="anchor" href="#walkthrough-analysis2"><i class="fas fa-link"></i></a>
+</h2>
 <p>We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QlxKKX31AMI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
 </div>
 <div id="setup-analysis2" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Set-up</h2>
+<h2>
+<span class="header-section-number">6.3</span> Set-up<a class="anchor" aria-label="anchor" href="#setup-analysis2"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Create and save a new R Markdown document named <code>chapter_6.Rmd</code>, get rid of the default template text from line 11 onwards.</li>
 <li>Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.</li>
 </ul>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="analysis2.html#cb119-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   </span>
-<span id="cb119-2"><a href="analysis2.html#cb119-2" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb119-3"><a href="analysis2.html#cb119-3" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb119-4"><a href="analysis2.html#cb119-4" tabindex="-1"></a><span class="fu">library</span>(easystats)</span>
-<span id="cb119-5"><a href="analysis2.html#cb119-5" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span></code></pre></div>
-<pre><code>## Warning: package &#39;gapminder&#39; was built under R version 4.3.2</code></pre>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="analysis2.html#cb121-1" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span></code></pre></div>
-<pre><code>## Warning: package &#39;medicaldata&#39; was built under R version 4.3.2</code></pre>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="analysis2.html#cb123-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;polyps&quot;</span>)</span>
-<span id="cb123-2"><a href="analysis2.html#cb123-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;opt&quot;</span>)</span>
-<span id="cb123-3"><a href="analysis2.html#cb123-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;gapminder&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>   </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://personality-project.org/r/psych/">psych</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://easystats.github.io/easystats/">easystats</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"opt"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="correlation" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Correlation</h2>
-<p>As with ANOVA, there are a huge number of packages and functions you can use to perform correlations. In this course, we're going to use the <code class='package'>correlation</code> package which is part of the <a href="https://easystats.github.io/easystats/">easystats</a> framework which tries to provide a unifying framework for analysis similar to how the tidyverse is a collection of packages for data wrangling and visualization.</p>
+<h2>
+<span class="header-section-number">6.4</span> Correlation<a class="anchor" aria-label="anchor" href="#correlation"><i class="fas fa-link"></i></a>
+</h2>
+<p>As with ANOVA, there are a huge number of packages and functions you can use to perform correlations. In this course, we're going to use the <code class="package">correlation</code> package which is part of the <a href="https://easystats.github.io/easystats/">easystats</a> framework which tries to provide a unifying framework for analysis similar to how the tidyverse is a collection of packages for data wrangling and visualization.</p>
 <p>Once again we'll be jumping between different datasets that best fit the analysis technique we are demonstrating so do take the time to familiarize yourself with the variables before you get started.</p>
-<p>First, we'll use the <code>gapminder</code> dataset and look at the relationship between life expectancy and GDP per capita in the Americas. For good measure let's first calculate some descriptive statistics about our two variables before we progress to looking at the relationship between them. Rather than use <code>summarize()</code>, we'll use the <code>describe()</code> function from the <code class='package'>psych</code> package which very easily produces a range of descriptive stats:</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="analysis2.html#cb124-1" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb124-2"><a href="analysis2.html#cb124-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb124-3"><a href="analysis2.html#cb124-3" tabindex="-1"></a>  <span class="fu">select</span>(lifeExp, gdpPercap) <span class="sc">%&gt;%</span></span>
-<span id="cb124-4"><a href="analysis2.html#cb124-4" tabindex="-1"></a>  <span class="fu">describe</span>()</span></code></pre></div>
+<p>First, we'll use the <code>gapminder</code> dataset and look at the relationship between life expectancy and GDP per capita in the Americas. For good measure let's first calculate some descriptive statistics about our two variables before we progress to looking at the relationship between them. Rather than use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code>, we'll use the <code><a href="https://rdrr.io/pkg/psych/man/describe.html">describe()</a></code> function from the <code class="package">psych</code> package which very easily produces a range of descriptive stats:</p>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">descriptives</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>We can then visualize the relationship:</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="analysis2.html#cb125-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb125-2"><a href="analysis2.html#cb125-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb125-3"><a href="analysis2.html#cb125-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span></span>
-<span id="cb125-4"><a href="analysis2.html#cb125-4" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb125-5"><a href="analysis2.html#cb125-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="06-analysis2_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">lifeExp</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+<div class="inline-figure"><img src="06-analysis2_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>We can see quite a clear relationship between life expectancy and GDP, however, we can also see from the scatterplot and the skew stats that it's not a linear relationship, GDP is positively skewed, a fact that becomes even clearer if we visualize GDP with a histogram:</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="analysis2.html#cb127-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb127-2"><a href="analysis2.html#cb127-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb127-3"><a href="analysis2.html#cb127-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdpPercap)) <span class="sc">+</span></span>
-<span id="cb127-4"><a href="analysis2.html#cb127-4" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="06-analysis2_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="inline-figure"><img src="06-analysis2_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>There are different approaches to dealing with this skew, we'll show you two but other options are available and in addition to researching different theoretical approaches, it's worth looking at the help documentation for each analysis function to see all the options for more advanced analysis techniques. First, we could conduct a Spearman's correlation which is suitable for non-linear relationships as it transforms the data into ranks.</p>
-<p>The <code>correlation()</code> function from the <code class='package'>easystats</code> <code class='package'>correlation</code> package is a very nice function for performing correlations. Not only does it contain a huge number of options and types of correlation analysis (look at the help documentation), but it has been built to work well with the <code class='package'>tidyverse</code> which means that you can pipe into it and the output it produces is already tidy:</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="analysis2.html#cb129-1" tabindex="-1"></a>spearman_results <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb129-2"><a href="analysis2.html#cb129-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb129-3"><a href="analysis2.html#cb129-3" tabindex="-1"></a>  <span class="fu">correlation</span>(<span class="at">select =</span> <span class="st">&quot;lifeExp&quot;</span>, <span class="at">select2 =</span> <span class="st">&quot;gdpPercap&quot;</span>, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span>
-<span id="cb129-4"><a href="analysis2.html#cb129-4" tabindex="-1"></a></span>
-<span id="cb129-5"><a href="analysis2.html#cb129-5" tabindex="-1"></a>spearman_results</span></code></pre></div>
+<p>The <code>correlation()</code> function from the <code class="package">easystats</code> <code class="package">correlation</code> package is a very nice function for performing correlations. Not only does it contain a huge number of options and types of correlation analysis (look at the help documentation), but it has been built to work well with the <code class="package">tidyverse</code> which means that you can pipe into it and the output it produces is already tidy:</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">spearman_results</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">correlation</span><span class="op">(</span>select <span class="op">=</span> <span class="st">"lifeExp"</span>, select2 <span class="op">=</span> <span class="st">"gdpPercap"</span>, method <span class="op">=</span> <span class="st">"spearman"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">spearman_results</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Parameter1
-</th>
-<th style="text-align:left;">
-Parameter2
-</th>
-<th style="text-align:right;">
-rho
-</th>
-<th style="text-align:right;">
-CI
-</th>
-<th style="text-align:right;">
-CI_low
-</th>
-<th style="text-align:right;">
-CI_high
-</th>
-<th style="text-align:right;">
-S
-</th>
-<th style="text-align:right;">
-p
-</th>
-<th style="text-align:left;">
-Method
-</th>
-<th style="text-align:right;">
-n_Obs
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-lifeExp
-</td>
-<td style="text-align:left;">
-gdpPercap
-</td>
-<td style="text-align:right;">
-0.7529151
-</td>
-<td style="text-align:right;">
-0.95
-</td>
-<td style="text-align:right;">
-0.6975748
-</td>
-<td style="text-align:right;">
-0.7993259
-</td>
-<td style="text-align:right;">
-1111870
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-Spearman correlation
-</td>
-<td style="text-align:right;">
-300
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="11%">
+<col width="11%">
+<col width="10%">
+<col width="5%">
+<col width="10%">
+<col width="10%">
+<col width="8%">
+<col width="3%">
+<col width="22%">
+<col width="6%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Parameter1</th>
+<th align="left">Parameter2</th>
+<th align="right">rho</th>
+<th align="right">CI</th>
+<th align="right">CI_low</th>
+<th align="right">CI_high</th>
+<th align="right">S</th>
+<th align="right">p</th>
+<th align="left">Method</th>
+<th align="right">n_Obs</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">lifeExp</td>
+<td align="left">gdpPercap</td>
+<td align="right">0.7529151</td>
+<td align="right">0.95</td>
+<td align="right">0.6975748</td>
+<td align="right">0.7993259</td>
+<td align="right">1111870</td>
+<td align="right">0</td>
+<td align="left">Spearman correlation</td>
+<td align="right">300</td>
+</tr></tbody>
+</table></div>
 </div>
-<p>You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions <code>mutate()</code> and <code>log()</code> / <code>log10()</code> or <code>log2()</code> depending on which transformation we wish to use.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="analysis2.html#cb130-1" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb130-2"><a href="analysis2.html#cb130-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gdp_log =</span> <span class="fu">log10</span>(gdpPercap))</span>
-<span id="cb130-3"><a href="analysis2.html#cb130-3" tabindex="-1"></a></span>
-<span id="cb130-4"><a href="analysis2.html#cb130-4" tabindex="-1"></a><span class="co"># histogram of log transformed GDP</span></span>
-<span id="cb130-5"><a href="analysis2.html#cb130-5" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb130-6"><a href="analysis2.html#cb130-6" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb130-7"><a href="analysis2.html#cb130-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> gdp_log)) <span class="sc">+</span></span>
-<span id="cb130-8"><a href="analysis2.html#cb130-8" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb130-9"><a href="analysis2.html#cb130-9" tabindex="-1"></a></span>
-<span id="cb130-10"><a href="analysis2.html#cb130-10" tabindex="-1"></a><span class="co"># scatterplot of log GDP and life expectancy</span></span>
-<span id="cb130-11"><a href="analysis2.html#cb130-11" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb130-12"><a href="analysis2.html#cb130-12" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb130-13"><a href="analysis2.html#cb130-13" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">y =</span> gdp_log)) <span class="sc">+</span></span>
-<span id="cb130-14"><a href="analysis2.html#cb130-14" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb130-15"><a href="analysis2.html#cb130-15" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() </span></code></pre></div>
+<p>You may also wish to apply a log transformation to the GDP data. Not only will this fix the skew but it's potentially more appropriate to look at the relationship between relative differences in GDP rather than absolute. We can produce the log transformation by using the functions <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> / <code><a href="https://rdrr.io/r/base/Log.html">log10()</a></code> or <code><a href="https://rdrr.io/r/base/Log.html">log2()</a></code> depending on which transformation we wish to use.</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gdp_log <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># histogram of log transformed GDP</span></span>
+<span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdp_log</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># scatterplot of log GDP and life expectancy</span></span>
+<span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">lifeExp</span>, y <span class="op">=</span> <span class="va">gdp_log</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `geom_smooth()` using method = &#39;loess&#39; and formula = &#39;y ~ x&#39;</code></pre>
-<p><img src="06-analysis2_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
-It's not perfect but it's much better than it was and is much closer to a linear relationship (we'll assess whether this is really the case later) so we can use a Pearson correlation:</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="analysis2.html#cb132-1" tabindex="-1"></a>pearson_results <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb132-2"><a href="analysis2.html#cb132-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb132-3"><a href="analysis2.html#cb132-3" tabindex="-1"></a>  <span class="fu">correlation</span>(<span class="at">select =</span> <span class="st">&quot;lifeExp&quot;</span>, <span class="at">select2 =</span> <span class="st">&quot;gdpPercap&quot;</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb132-4"><a href="analysis2.html#cb132-4" tabindex="-1"></a></span>
-<span id="cb132-5"><a href="analysis2.html#cb132-5" tabindex="-1"></a>pearson_results</span></code></pre></div>
+## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+<div class="inline-figure">
+<img src="06-analysis2_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;">
+It's not perfect but it's much better than it was and is much closer to a linear relationship (we'll assess whether this is really the case later) so we can use a Pearson correlation:</div>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pearson_results</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu">correlation</span><span class="op">(</span>select <span class="op">=</span> <span class="st">"lifeExp"</span>, select2 <span class="op">=</span> <span class="st">"gdpPercap"</span>, method <span class="op">=</span> <span class="st">"pearson"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">pearson_results</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-Parameter1
-</th>
-<th style="text-align:left;">
-Parameter2
-</th>
-<th style="text-align:right;">
-r
-</th>
-<th style="text-align:right;">
-CI
-</th>
-<th style="text-align:right;">
-CI_low
-</th>
-<th style="text-align:right;">
-CI_high
-</th>
-<th style="text-align:right;">
-t
-</th>
-<th style="text-align:right;">
-df_error
-</th>
-<th style="text-align:right;">
-p
-</th>
-<th style="text-align:left;">
-Method
-</th>
-<th style="text-align:right;">
-n_Obs
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-lifeExp
-</td>
-<td style="text-align:left;">
-gdpPercap
-</td>
-<td style="text-align:right;">
-0.5583655
-</td>
-<td style="text-align:right;">
-0.95
-</td>
-<td style="text-align:right;">
-0.4751696
-</td>
-<td style="text-align:right;">
-0.6316663
-</td>
-<td style="text-align:right;">
-11.61878
-</td>
-<td style="text-align:right;">
-298
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:left;">
-Pearson correlation
-</td>
-<td style="text-align:right;">
-300
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="10%">
+<col width="10%">
+<col width="9%">
+<col width="4%">
+<col width="9%">
+<col width="9%">
+<col width="8%">
+<col width="8%">
+<col width="2%">
+<col width="19%">
+<col width="5%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Parameter1</th>
+<th align="left">Parameter2</th>
+<th align="right">r</th>
+<th align="right">CI</th>
+<th align="right">CI_low</th>
+<th align="right">CI_high</th>
+<th align="right">t</th>
+<th align="right">df_error</th>
+<th align="right">p</th>
+<th align="left">Method</th>
+<th align="right">n_Obs</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">lifeExp</td>
+<td align="left">gdpPercap</td>
+<td align="right">0.5583655</td>
+<td align="right">0.95</td>
+<td align="right">0.4751696</td>
+<td align="right">0.6316663</td>
+<td align="right">11.61878</td>
+<td align="right">298</td>
+<td align="right">0</td>
+<td align="left">Pearson correlation</td>
+<td align="right">300</td>
+</tr></tbody>
+</table></div>
 </div>
 </div>
 <div id="regression" class="section level2" number="6.5">
-<h2><span class="header-section-number">6.5</span> Regression</h2>
+<h2>
+<span class="header-section-number">6.5</span> Regression<a class="anchor" aria-label="anchor" href="#regression"><i class="fas fa-link"></i></a>
+</h2>
 <div id="linear-regression" class="section level3" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Linear regression</h3>
-<p>Constructing a regression model is a great example of the fact that when it comes to R, data cleaning and wrangling is by far the most difficult task you face. To construct a simple linear regression model use the function <code>lm()</code> (linear model):</p>
+<h3>
+<span class="header-section-number">6.5.1</span> Linear regression<a class="anchor" aria-label="anchor" href="#linear-regression"><i class="fas fa-link"></i></a>
+</h3>
+<p>Constructing a regression model is a great example of the fact that when it comes to R, data cleaning and wrangling is by far the most difficult task you face. To construct a simple linear regression model use the function <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> (linear model):</p>
 <ul>
 <li>The formula is expressed as <code>outcome by predictor</code> so in this case, we're predicting life expectancy from GDP</li>
-<li>We use the notation <code>data = .</code> because we're piping in a filtered dataset to the function. If you wanted to run the regression on the full dataset, you'd remove the first two lines of pipes and just have <code>data = gapminder</code></li>
-<li><code>lm()</code> constructs the model whilst <code>summary()</code> summarizes the results.</li>
+<li>We use the notation <code>data = .</code> because we're piping in a filtered dataset to the function. If you wanted to run the regression on the full dataset, you'd remove the first two lines of pipes and just have <code>data = gapminder</code>
+</li>
+<li>
+<code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> constructs the model whilst <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> summarizes the results.</li>
 </ul>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="analysis2.html#cb133-1" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb133-2"><a href="analysis2.html#cb133-2" tabindex="-1"></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">&quot;Americas&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb133-3"><a href="analysis2.html#cb133-3" tabindex="-1"></a>  <span class="fu">lm</span>(<span class="at">formula =</span> lifeExp <span class="sc">~</span> gdp_log, <span class="at">data =</span> .)</span>
-<span id="cb133-4"><a href="analysis2.html#cb133-4" tabindex="-1"></a></span>
-<span id="cb133-5"><a href="analysis2.html#cb133-5" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod1</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Americas"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">~</span> <span class="va">gdp_log</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = lifeExp ~ gdp_log, data = .)
@@ -373,104 +317,80 @@ Pearson correlation
 ## (Intercept)  -19.068      4.824  -3.953 9.65e-05 ***
 ## gdp_log       22.377      1.285  17.412  &lt; 2e-16 ***
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 6.591 on 298 degrees of freedom
 ## Multiple R-squared:  0.5043, Adjusted R-squared:  0.5026 
 ## F-statistic: 303.2 on 1 and 298 DF,  p-value: &lt; 2.2e-16</code></pre>
-<p>You can also pass the model summary to <code>tidy()</code> to pass the model stats to a tidy table:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="analysis2.html#cb135-1" tabindex="-1"></a><span class="fu">summary</span>(mod1) <span class="sc">%&gt;%</span></span>
-<span id="cb135-2"><a href="analysis2.html#cb135-2" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<p>You can also pass the model summary to <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> to pass the model stats to a tidy table:</p>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-std.error
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:right;">
--19.06798
-</td>
-<td style="text-align:right;">
-4.823726
-</td>
-<td style="text-align:right;">
--3.952957
-</td>
-<td style="text-align:right;">
-9.65e-05
-</td>
+<tr class="odd">
+<td align="left">(Intercept)</td>
+<td align="right">-19.06798</td>
+<td align="right">4.823726</td>
+<td align="right">-3.952957</td>
+<td align="right">9.65e-05</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-gdp_log
-</td>
-<td style="text-align:right;">
-22.37744
-</td>
-<td style="text-align:right;">
-1.285209
-</td>
-<td style="text-align:right;">
-17.411526
-</td>
-<td style="text-align:right;">
-0.00e+00
-</td>
+<tr class="even">
+<td align="left">gdp_log</td>
+<td align="right">22.37744</td>
+<td align="right">1.285209</td>
+<td align="right">17.411526</td>
+<td align="right">0.00e+00</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <p>It looks like we have significant model where GDP predicts life expectancy. This probably isn't a shock to anyone but let's check that our use of the linear model was really appropriate by assessing the model performance.</p>
 </div>
 <div id="model-performance" class="section level3" number="6.5.2">
-<h3><span class="header-section-number">6.5.2</span> Model performance</h3>
-<p>The <code class='package'>performance</code> package is also part of the <code class='package'>easystats</code> framework and provides a number of elegant and simple functions for assessing model performance. If you use any type of modelling in your research, we strongly recommended checking out the performance help documentation and <a href="https://easystats.github.io/performance/index.html">website</a> for more information on what it can do.</p>
+<h3>
+<span class="header-section-number">6.5.2</span> Model performance<a class="anchor" aria-label="anchor" href="#model-performance"><i class="fas fa-link"></i></a>
+</h3>
+<p>The <code class="package">performance</code> package is also part of the <code class="package">easystats</code> framework and provides a number of elegant and simple functions for assessing model performance. If you use any type of modelling in your research, we strongly recommended checking out the performance help documentation and <a href="https://easystats.github.io/performance/index.html">website</a> for more information on what it can do.</p>
 <p>You can test the assumptions of your model separately using functions like <code>check_heteroscedasticity()</code>, however, there's a single comprehensive function <code>check_model()</code> that provides an overview:</p>
 <p>**If you get the error <code>Error: The RStudio 'Plots' window is too small to show this set of plots. Please make the window larger.</code> literally resize the bottom right window pane by dragging it with your cursor and then re-run the code.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="analysis2.html#cb136-1" tabindex="-1"></a><span class="fu">check_model</span>(mod1)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">check_model</span><span class="op">(</span><span class="va">mod1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Not enough model terms in the conditional part of the model to check for
 ##   multicollinearity.</code></pre>
-<p><img src="06-analysis2_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="inline-figure"><img src="06-analysis2_files/figure-html/unnamed-chunk-12-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>It's not perfect, you can still see the influence of the skew, but it's good enough and we'll leave the in-depth theoretical debates about model performance to the statisticians!</p>
 </div>
 <div id="multiple-regression" class="section level3" number="6.5.3">
-<h3><span class="header-section-number">6.5.3</span> Multiple regression</h3>
+<h3>
+<span class="header-section-number">6.5.3</span> Multiple regression<a class="anchor" aria-label="anchor" href="#multiple-regression"><i class="fas fa-link"></i></a>
+</h3>
 <p>Adding additional variables to your regression model is extremely simple. For this analysis, let's use the <code>polyps</code> dataset and as before, we'll remove the extreme outliers. This time, we're going to construct a model to see if we can predict the number of polyps after 12 months as a function of the baseline number of polyps (it's reasonable to assume that people with a baseline high number of polyps are going to have more polyps after treatment than those who started with a low number, even if the treatment is successful) and which treatment group they were in.</p>
 <p>First, let's visualize this relationship.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="analysis2.html#cb138-1" tabindex="-1"></a>polyps_outliers <span class="ot">&lt;-</span> polyps <span class="sc">%&gt;%</span></span>
-<span id="cb138-2"><a href="analysis2.html#cb138-2" tabindex="-1"></a>  <span class="fu">filter</span>(baseline <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="co"># keep only those values less than 100</span></span>
-<span id="cb138-3"><a href="analysis2.html#cb138-3" tabindex="-1"></a></span>
-<span id="cb138-4"><a href="analysis2.html#cb138-4" tabindex="-1"></a>polyps_outliers <span class="sc">%&gt;%</span></span>
-<span id="cb138-5"><a href="analysis2.html#cb138-5" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> baseline, <span class="at">y =</span> number12m, <span class="at">colour =</span> treatment)) <span class="sc">+</span></span>
-<span id="cb138-6"><a href="analysis2.html#cb138-6" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb138-7"><a href="analysis2.html#cb138-7" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span><span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polyps_outliers</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">baseline</span> <span class="op">&lt;</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># keep only those values less than 100</span></span>
+<span></span>
+<span><span class="va">polyps_outliers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">baseline</span>, y <span class="op">=</span> <span class="va">number12m</span>, colour <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span><span class="st">"lm"</span><span class="op">)</span></span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = 'y ~ x'</code></pre>
 <pre><code>## Warning: Removed 2 rows containing non-finite values (`stat_smooth()`).</code></pre>
 <pre><code>## Warning: Removed 2 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="06-analysis2_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="inline-figure"><img src="06-analysis2_files/figure-html/unnamed-chunk-13-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Now, construct and summarize the model adding in two predictors:</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="analysis2.html#cb142-1" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span><span class="fu">lm</span>(number12m <span class="sc">~</span> baseline <span class="sc">+</span> treatment, <span class="at">data =</span> polyps_outliers)</span>
-<span id="cb142-2"><a href="analysis2.html#cb142-2" tabindex="-1"></a><span class="fu">summary</span>(mod2)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod2</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">number12m</span> <span class="op">~</span> <span class="va">baseline</span> <span class="op">+</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">polyps_outliers</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mod2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = number12m ~ baseline + treatment, data = polyps_outliers)
@@ -485,15 +405,16 @@ gdp_log
 ## baseline            0.7537     0.1421   5.305 8.82e-05 ***
 ## treatmentsulindac -17.8498     5.2023  -3.431  0.00371 ** 
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 10.37 on 15 degrees of freedom
 ##   (2 observations deleted due to missingness)
 ## Multiple R-squared:  0.794,  Adjusted R-squared:  0.7665 
 ## F-statistic:  28.9 on 2 and 15 DF,  p-value: 7.156e-06</code></pre>
 <p>If you want to specify as interaction term, you can do so using the notation <code>predictor1:predictor2</code>:</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="analysis2.html#cb144-1" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span><span class="fu">lm</span>(number12m <span class="sc">~</span> baseline <span class="sc">+</span> treatment <span class="sc">+</span> baseline<span class="sc">:</span>treatment, <span class="at">data =</span> polyps_outliers)</span>
-<span id="cb144-2"><a href="analysis2.html#cb144-2" tabindex="-1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod3</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">number12m</span> <span class="op">~</span> <span class="va">baseline</span> <span class="op">+</span> <span class="va">treatment</span> <span class="op">+</span> <span class="va">baseline</span><span class="op">:</span><span class="va">treatment</span>, data <span class="op">=</span> <span class="va">polyps_outliers</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mod3</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = number12m ~ baseline + treatment + baseline:treatment, 
@@ -510,7 +431,7 @@ gdp_log
 ## treatmentsulindac          -24.1491     9.2957  -2.598 0.021064 *  
 ## baseline:treatmentsulindac   0.3709     0.4513   0.822 0.424934    
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## Residual standard error: 10.49 on 14 degrees of freedom
 ##   (2 observations deleted due to missingness)
@@ -518,188 +439,105 @@ gdp_log
 ## F-statistic: 19.08 on 3 and 14 DF,  p-value: 3.241e-05</code></pre>
 </div>
 <div id="prediction" class="section level3" number="6.5.4">
-<h3><span class="header-section-number">6.5.4</span> Prediction</h3>
+<h3>
+<span class="header-section-number">6.5.4</span> Prediction<a class="anchor" aria-label="anchor" href="#prediction"><i class="fas fa-link"></i></a>
+</h3>
 <p>Once we have constructed our models, we can the model to predict new values. For example, let's create a table of data from new patients where we have their baseline number of polyps and which treatment condition they're due to receive.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="analysis2.html#cb146-1" tabindex="-1"></a>new_patients <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb146-2"><a href="analysis2.html#cb146-2" tabindex="-1"></a>  <span class="at">participant_id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb146-3"><a href="analysis2.html#cb146-3" tabindex="-1"></a>  <span class="at">baseline =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">50</span>, <span class="dv">55</span>, <span class="dv">60</span>, <span class="dv">65</span>),</span>
-<span id="cb146-4"><a href="analysis2.html#cb146-4" tabindex="-1"></a>  <span class="at">treatment =</span> <span class="fu">c</span>(<span class="st">&quot;sulindac&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;sulindac&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;sulindac&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;sulindac&quot;</span>, <span class="st">&quot;placebo&quot;</span>, <span class="st">&quot;sulindac&quot;</span>, <span class="st">&quot;placebo&quot;</span>)</span>
-<span id="cb146-5"><a href="analysis2.html#cb146-5" tabindex="-1"></a>)</span></code></pre></div>
-<p>We can then use <code>mutate()</code> and <code>predict()</code> to create a new variable <code>predicted_12m</code> that uses the model constructed in <code>mod2</code> to predict how many polyps these number patients would have at 12 months, taking into account their baseline and treatment group. Note that in order for the <code>predict()</code> function to work, you need to have data on all predictors entered in the original model (in this case baseline and treatment).</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="analysis2.html#cb147-1" tabindex="-1"></a>new_patients <span class="ot">&lt;-</span> new_patients <span class="sc">%&gt;%</span></span>
-<span id="cb147-2"><a href="analysis2.html#cb147-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">predicted_12m =</span> <span class="fu">predict</span>(mod2, new_patients))</span>
-<span id="cb147-3"><a href="analysis2.html#cb147-3" tabindex="-1"></a></span>
-<span id="cb147-4"><a href="analysis2.html#cb147-4" tabindex="-1"></a>new_patients</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">new_patients</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span></span>
+<span>  participant_id <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,</span>
+<span>  baseline <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">25</span>, <span class="fl">30</span>, <span class="fl">35</span>, <span class="fl">40</span>, <span class="fl">45</span>, <span class="fl">50</span>, <span class="fl">55</span>, <span class="fl">60</span>, <span class="fl">65</span><span class="op">)</span>,</span>
+<span>  treatment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"sulindac"</span>, <span class="st">"placebo"</span>, <span class="st">"sulindac"</span>, <span class="st">"placebo"</span>, <span class="st">"sulindac"</span>, <span class="st">"placebo"</span>, <span class="st">"sulindac"</span>, <span class="st">"placebo"</span>, <span class="st">"sulindac"</span>, <span class="st">"placebo"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>We can then use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> and <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> to create a new variable <code>predicted_12m</code> that uses the model constructed in <code>mod2</code> to predict how many polyps these number patients would have at 12 months, taking into account their baseline and treatment group. Note that in order for the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> function to work, you need to have data on all predictors entered in the original model (in this case baseline and treatment).</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">new_patients</span> <span class="op">&lt;-</span> <span class="va">new_patients</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>predicted_12m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">mod2</span>, <span class="va">new_patients</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">new_patients</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-participant_id
-</th>
-<th style="text-align:right;">
-baseline
-</th>
-<th style="text-align:left;">
-treatment
-</th>
-<th style="text-align:right;">
-predicted_12m
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="right">participant_id</th>
+<th align="right">baseline</th>
+<th align="left">treatment</th>
+<th align="right">predicted_12m</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-sulindac
-</td>
-<td style="text-align:right;">
-11.29743
-</td>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">20</td>
+<td align="left">sulindac</td>
+<td align="right">11.29743</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:left;">
-placebo
-</td>
-<td style="text-align:right;">
-32.91576
-</td>
+<tr class="even">
+<td align="right">2</td>
+<td align="right">25</td>
+<td align="left">placebo</td>
+<td align="right">32.91576</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-30
-</td>
-<td style="text-align:left;">
-sulindac
-</td>
-<td style="text-align:right;">
-18.83441
-</td>
+<tr class="odd">
+<td align="right">3</td>
+<td align="right">30</td>
+<td align="left">sulindac</td>
+<td align="right">18.83441</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-35
-</td>
-<td style="text-align:left;">
-placebo
-</td>
-<td style="text-align:right;">
-40.45273
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">35</td>
+<td align="left">placebo</td>
+<td align="right">40.45273</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:left;">
-sulindac
-</td>
-<td style="text-align:right;">
-26.37139
-</td>
+<tr class="odd">
+<td align="right">5</td>
+<td align="right">40</td>
+<td align="left">sulindac</td>
+<td align="right">26.37139</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-45
-</td>
-<td style="text-align:left;">
-placebo
-</td>
-<td style="text-align:right;">
-47.98971
-</td>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">45</td>
+<td align="left">placebo</td>
+<td align="right">47.98971</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-50
-</td>
-<td style="text-align:left;">
-sulindac
-</td>
-<td style="text-align:right;">
-33.90837
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">50</td>
+<td align="left">sulindac</td>
+<td align="right">33.90837</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-55
-</td>
-<td style="text-align:left;">
-placebo
-</td>
-<td style="text-align:right;">
-55.52669
-</td>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">55</td>
+<td align="left">placebo</td>
+<td align="right">55.52669</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-60
-</td>
-<td style="text-align:left;">
-sulindac
-</td>
-<td style="text-align:right;">
-41.44535
-</td>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">60</td>
+<td align="left">sulindac</td>
+<td align="right">41.44535</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-10
-</td>
-<td style="text-align:right;">
-65
-</td>
-<td style="text-align:left;">
-placebo
-</td>
-<td style="text-align:right;">
-63.06367
-</td>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">65</td>
+<td align="left">placebo</td>
+<td align="right">63.06367</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 </div>
 <div id="logistic-regression" class="section level3" number="6.5.5">
-<h3><span class="header-section-number">6.5.5</span> Logistic regression</h3>
-<p>Constructing a logistic regression model follows a very similar syntax but uses the function <code>glm()</code> (generalized linear model) rather than <code>lm()</code> as we've used previously. For this model, we'll use the <code>opt</code> dataset to see if we can predict whether a patient has chlamydia. First, let's create a reduced dataset of the variable we want to include in the model and check out our variables:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="analysis2.html#cb148-1" tabindex="-1"></a>chlamydia_dat <span class="ot">&lt;-</span> opt <span class="sc">%&gt;%</span></span>
-<span id="cb148-2"><a href="analysis2.html#cb148-2" tabindex="-1"></a>  <span class="fu">select</span>(PID, Age, Black, White,Nat.Am, Asian, Hisp, Education, Chlamydia) </span>
-<span id="cb148-3"><a href="analysis2.html#cb148-3" tabindex="-1"></a></span>
-<span id="cb148-4"><a href="analysis2.html#cb148-4" tabindex="-1"></a><span class="fu">summary</span>(chlamydia_dat)</span></code></pre></div>
+<h3>
+<span class="header-section-number">6.5.5</span> Logistic regression<a class="anchor" aria-label="anchor" href="#logistic-regression"><i class="fas fa-link"></i></a>
+</h3>
+<p>Constructing a logistic regression model follows a very similar syntax but uses the function <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> (generalized linear model) rather than <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> as we've used previously. For this model, we'll use the <code>opt</code> dataset to see if we can predict whether a patient has chlamydia. First, let's create a reduced dataset of the variable we want to include in the model and check out our variables:</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">chlamydia_dat</span> <span class="op">&lt;-</span> <span class="va">opt</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">PID</span>, <span class="va">Age</span>, <span class="va">Black</span>, <span class="va">White</span>,<span class="va">Nat.Am</span>, <span class="va">Asian</span>, <span class="va">Hisp</span>, <span class="va">Education</span>, <span class="va">Chlamydia</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">chlamydia_dat</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##       PID              Age        Black     White     Nat.Am    Asian    
 ##  Min.   :100034   Min.   :16.00   No :451   No :588   No :573   No :816  
 ##  1st Qu.:200501   1st Qu.:22.00   Yes:372   Yes:235   Yes:250   Yes:  7  
@@ -715,13 +553,14 @@ placebo
 ##                                     
 ## </code></pre>
 <p>The summary output reveals an interesting quirk of this dataset. There's missing data in the <code>chlamydia</code> and <code>Hisp</code> variables but it's not represented as a missing value. Instead, it's been coded as blank but inexplicably not actually blank - R thinks there is a type of data in the cell otherwise it would show up as <code>NA</code>.</p>
-<p>To deal with this we could either convert the blanks to NAs. This dataset is so badly coded that it took several attempts of trial-and-error to figure out what the blank was - it turns out it is three spaces and also "No" is stored as "No " with a space after it. Because we need our outcome to be a binary variable, we can use <code>droplevels</code> to get rid of the blank grouping (try removing the call to <code>droplevels</code> then run <code>summary()</code> to see how the data are represented).</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="analysis2.html#cb150-1" tabindex="-1"></a>chlamydia_dat2 <span class="ot">&lt;-</span> chlamydia_dat <span class="sc">%&gt;%</span></span>
-<span id="cb150-2"><a href="analysis2.html#cb150-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Chlamydia =</span> <span class="fu">na_if</span>(Chlamydia, <span class="st">&quot;   &quot;</span>),</span>
-<span id="cb150-3"><a href="analysis2.html#cb150-3" tabindex="-1"></a>         <span class="at">Hisp =</span> <span class="fu">na_if</span>(Hisp, <span class="st">&quot;   &quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb150-4"><a href="analysis2.html#cb150-4" tabindex="-1"></a>  <span class="fu">droplevels</span>()</span>
-<span id="cb150-5"><a href="analysis2.html#cb150-5" tabindex="-1"></a></span>
-<span id="cb150-6"><a href="analysis2.html#cb150-6" tabindex="-1"></a><span class="fu">summary</span>(chlamydia_dat2)</span></code></pre></div>
+<p>To deal with this we could either convert the blanks to NAs. This dataset is so badly coded that it took several attempts of trial-and-error to figure out what the blank was - it turns out it is three spaces and also "No" is stored as "No " with a space after it. Because we need our outcome to be a binary variable, we can use <code>droplevels</code> to get rid of the blank grouping (try removing the call to <code>droplevels</code> then run <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> to see how the data are represented).</p>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">chlamydia_dat2</span> <span class="op">&lt;-</span> <span class="va">chlamydia_dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Chlamydia <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span><span class="op">(</span><span class="va">Chlamydia</span>, <span class="st">"   "</span><span class="op">)</span>,</span>
+<span>         Hisp <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/na_if.html">na_if</a></span><span class="op">(</span><span class="va">Hisp</span>, <span class="st">"   "</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html">droplevels</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">chlamydia_dat2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##       PID              Age        Black     White     Nat.Am    Asian    
 ##  Min.   :100034   Min.   :16.00   No :451   No :588   No :573   No :816  
 ##  1st Qu.:200501   1st Qu.:22.00   Yes:372   Yes:235   Yes:250   Yes:  7  
@@ -732,14 +571,15 @@ placebo
 ##    Hisp         Education   Chlamydia 
 ##  No  :328   8-12 yrs :479   No  :324  
 ##  Yes :350   LT 8 yrs :154   Yes : 55  
-##  NA&#39;s:145   MT 12 yrs:190   NA&#39;s:444  
+##  NA's:145   MT 12 yrs:190   NA's:444  
 ##                                       
 ##                                       
 ## </code></pre>
-<p>We can then construct and summarize our model using <code>glm()</code> and <code>summary()</code> which tells us that the only significant predictor of having chlamydia from the measures we included is age:</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="analysis2.html#cb152-1" tabindex="-1"></a>log_mod1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(<span class="at">formula =</span> Chlamydia <span class="sc">~</span> Age <span class="sc">+</span> Black <span class="sc">+</span> White <span class="sc">+</span> Nat.Am <span class="sc">+</span> Asian <span class="sc">+</span> Hisp <span class="sc">+</span> Education, <span class="at">family =</span> binomial, <span class="at">data =</span> chlamydia_dat2)</span>
-<span id="cb152-2"><a href="analysis2.html#cb152-2" tabindex="-1"></a></span>
-<span id="cb152-3"><a href="analysis2.html#cb152-3" tabindex="-1"></a><span class="fu">summary</span>(log_mod1)</span></code></pre></div>
+<p>We can then construct and summarize our model using <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> and <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> which tells us that the only significant predictor of having chlamydia from the measures we included is age:</p>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">log_mod1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span>formula <span class="op">=</span> <span class="va">Chlamydia</span> <span class="op">~</span> <span class="va">Age</span> <span class="op">+</span> <span class="va">Black</span> <span class="op">+</span> <span class="va">White</span> <span class="op">+</span> <span class="va">Nat.Am</span> <span class="op">+</span> <span class="va">Asian</span> <span class="op">+</span> <span class="va">Hisp</span> <span class="op">+</span> <span class="va">Education</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">chlamydia_dat2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">log_mod1</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = Chlamydia ~ Age + Black + White + Nat.Am + Asian + 
@@ -757,7 +597,7 @@ placebo
 ## EducationLT 8 yrs   -1.08588    0.78482  -1.384  0.16648   
 ## EducationMT 12 yrs   0.16801    0.41405   0.406  0.68491   
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
 ## (Dispersion parameter for binomial family taken to be 1)
 ## 
@@ -770,7 +610,9 @@ placebo
 </div>
 </div>
 <div id="resources-analysis1" class="section level2" number="6.6">
-<h2><span class="header-section-number">6.6</span> Further resources</h2>
+<h2>
+<span class="header-section-number">6.6</span> Further resources<a class="anchor" aria-label="anchor" href="#resources-analysis1"><i class="fas fa-link"></i></a>
+</h2>
 <p>There's so much more you can do in R when it comes to analysis techniques that we can't claim to have even begun to scratch the surface here. What's important is that from a coding perspective, you now have all the <em>programming</em> skill and knowledge you need to extend and expand your analytic workflows in R: from here on out, it's down to statistical theory and knowledge to take you further (which is why this course stops here, because Emily knows her limits).</p>
 <p>If you have specific analytic techniques you'd like to use in R, please let us know ahead of the second office hour and we'll collate extra resources specific to your needs to help support your goals and Javan will also answer any questions you have about analytic techniques using the <em>All of Us</em> Researcher Workbench.</p>
 <ul>
@@ -781,7 +623,6 @@ placebo
 <li><a href="https://openintro-ims.netlify.app/index.html">Introduction to Modern Statistics</a></li>
 <li><a href="https://moderndive.com/">Statistical inference via data science</a></li>
 </ul>
-
 </div>
 </div>
 <script>
@@ -957,8 +798,7 @@ window.onload = function() {
   update_total_correct();
 }
 
-</script>
-<script>
+</script><script>
 $( document ).ready(function() {
   var cite = ' ';
   var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
@@ -986,28 +826,42 @@ $( document ).ready(function() {
   move_sidebar();
   window.onresize = move_sidebar;
 });
-</script>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+</script><div class="chapter-nav">
+<div class="prev"><a href="analysis1.html"><span class="header-section-number">5</span> Comparing Means</a></div>
+<div class="next"><a href="live-office-hour-2.html"><span class="header-section-number">7</span> Live Office Hour 2</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#analysis2"><span class="header-section-number">6</span> Correlation and Regression</a></li>
+<li><a class="nav-link" href="#ilo-analysis2"><span class="header-section-number">6.1</span> Intended Learning Outcomes</a></li>
+<li><a class="nav-link" href="#walkthrough-analysis2"><span class="header-section-number">6.2</span> Walkthrough video</a></li>
+<li><a class="nav-link" href="#setup-analysis2"><span class="header-section-number">6.3</span> Set-up</a></li>
+<li><a class="nav-link" href="#correlation"><span class="header-section-number">6.4</span> Correlation</a></li>
+<li>
+<a class="nav-link" href="#regression"><span class="header-section-number">6.5</span> Regression</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#linear-regression"><span class="header-section-number">6.5.1</span> Linear regression</a></li>
+<li><a class="nav-link" href="#model-performance"><span class="header-section-number">6.5.2</span> Model performance</a></li>
+<li><a class="nav-link" href="#multiple-regression"><span class="header-section-number">6.5.3</span> Multiple regression</a></li>
+<li><a class="nav-link" href="#prediction"><span class="header-section-number">6.5.4</span> Prediction</a></li>
+<li><a class="nav-link" href="#logistic-regression"><span class="header-section-number">6.5.5</span> Logistic regression</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#resources-analysis1"><span class="header-section-number">6.6</span> Further resources</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/06-analysis2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/06-analysis2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2024-01-08.</p>
@@ -1019,8 +873,5 @@ $( document ).ready(function() {
 
 </div></div>
 </footer>
-
-
 </body>
-
 </html>

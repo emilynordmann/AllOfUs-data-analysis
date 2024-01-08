@@ -22,13 +22,6 @@ We encourage you to read the workbook and attempt each step on your own before w
 ```r
 library(tidyverse) 
 library(medicaldata)
-```
-
-```
-## Warning: package 'medicaldata' was built under R version 4.3.2
-```
-
-```r
 data("polyps")
 data("theoph")
 data("laryngoscope")
@@ -46,11 +39,11 @@ This is all a verbose way of saying that what lies ahead in this chapter is unli
 
 First, some terminology.
 
-An <a class='glossary' target='_blank' title='All of the data about a single trial or question.' href='https://psyteachr.github.io/glossary/o#observation'>observation</a> is all the information about a single "thing" in a single condition, such as at one point in time. These things can be patients, sales, participants, feedback questionnaires, or really anything. Observations should have a way to identify them, such as a unique ID or a unique combination of values like ID and time-point
+An <a class='glossary'>observation<span class='def'></span></a> is all the information about a single "thing" in a single condition, such as at one point in time. These things can be patients, sales, participants, feedback questionnaires, or really anything. Observations should have a way to identify them, such as a unique ID or a unique combination of values like ID and time-point
 
-A <a class='glossary' target='_blank' title='(coding): A word that identifies and stores the value of some data for later use; (stats): An attribute or characteristic of an observation that you can measure, count, or describe' href='https://psyteachr.github.io/glossary/v#variable'>variable</a> is one type of information about the observation. For example, if observation is a participant, the variables you might have about the participant are the participant ID, the participant's sex and age, which condition of the experiment they were in, and their score.
+A <a class='glossary'>variable<span class='def'></span></a> is one type of information about the observation. For example, if observation is a participant, the variables you might have about the participant are the participant ID, the participant's sex and age, which condition of the experiment they were in, and their score.
 
-A <a class='glossary' target='_blank' title='A single number or piece of data.' href='https://psyteachr.github.io/glossary/v#value'>value</a> is the data for one variable for one observation. For example, the value of the age variable from the observation of a participant might be `23`.
+A <a class='glossary'>value<span class='def'></span></a> is the data for one variable for one observation. For example, the value of the age variable from the observation of a participant might be `23`.
 
 ::: {.try data-latex=""}
 The dataset `theoph` that you loaded in during set-up is from a study looking at anti-asthma medication. There are 12 participants who were given a dose of the medication and whose plasma was tested at 11 different time points (you can read the full details by running the help documentation `?theoph`). Have a look at this dataset and then answer the following questions:
@@ -74,7 +67,7 @@ The dataset `theoph` that you loaded in during set-up is from a study looking at
 
 ## Reshaping Data
 
-Data tables can be in <a class='glossary' target='_blank' title='A data format where all of the observations about one subject are in the same row' href='https://psyteachr.github.io/glossary/w#wide'>wide</a> format or <a class='glossary' target='_blank' title='A data format where each observation is on a separate row' href='https://psyteachr.github.io/glossary/l#long'>long</a> format (or a mix of the two). Wide data are where all the observations about one thing are in the same row, while long data are where each observation is on a separate row. You often need to convert between these formats to do different types of summaries or visualisation. You may have done something similar using pivot tables in Excel.
+Data tables can be in <a class='glossary'>wide<span class='def'></span></a> format or <a class='glossary'>long<span class='def'></span></a> format (or a mix of the two). Wide data are where all the observations about one thing are in the same row, while long data are where each observation is on a separate row. You often need to convert between these formats to do different types of summaries or visualisation. You may have done something similar using pivot tables in Excel.
 
 <div class="figure" style="text-align: center">
 <img src="images/tidy/excel_pivot_table.png" alt="Converting between wide and long formats using pivot tables in Excel." width="100%" />
@@ -87,75 +80,14 @@ The `polyps` dataset we've used in the previous chapter is an example of a wide-
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> participant_id </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> baseline </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> number3m </th>
-   <th style="text-align:right;"> number12m </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 001 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 77 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 67 </td>
-   <td style="text-align:right;"> 63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 003 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 004 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 18 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 005 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 17 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 006 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> 35 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 31 </td>
-   <td style="text-align:right;"> 61 </td>
-  </tr>
-</tbody>
-</table>
+|participant_id |sex    | age| baseline|treatment | number3m| number12m|
+|:--------------|:------|---:|--------:|:---------|--------:|---------:|
+|001            |female |  17|        7|sulindac  |        6|        NA|
+|002            |female |  20|       77|placebo   |       67|        63|
+|003            |male   |  16|        7|sulindac  |        4|         2|
+|004            |female |  18|        5|placebo   |        5|        28|
+|005            |male   |  22|       23|sulindac  |       16|        17|
+|006            |female |  13|       35|placebo   |       31|        61|
 
 </div>
 
@@ -179,7 +111,7 @@ There are six variables. Four of them are relatively straightforward: `participa
 
 [^03-intro-to-viz-1]: Just because a table is long doesn't mean it is tidy (see examples [here](https://kiwidamien.github.io/what-is-tidy-data.html)) but they're often used synonymously which we're going to adopt for the purposes of this chapter.
 
-Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class='glossary' target='_blank' title='A format for data that maps the meaning onto the structure.' href='https://psyteachr.github.io/glossary/t#tidy-data'>tidy data</a> in long-form [^03-intro-to-viz-1], which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.
+Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class='glossary'>tidy data<span class='def'></span></a> in long-form [^03-intro-to-viz-1], which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.
 
 -   Each observation must have its own row
 -   Each variable must have its own column
@@ -189,61 +121,14 @@ We've already seen an example of tidy data - the `theoph` dataset and the easy w
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Subject </th>
-   <th style="text-align:right;"> Wt </th>
-   <th style="text-align:right;"> Dose </th>
-   <th style="text-align:right;"> Time </th>
-   <th style="text-align:right;"> conc </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 79.6 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:right;"> 0.00 </td>
-   <td style="text-align:right;"> 0.74 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 79.6 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:right;"> 0.25 </td>
-   <td style="text-align:right;"> 2.84 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 79.6 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:right;"> 0.57 </td>
-   <td style="text-align:right;"> 6.57 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 79.6 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:right;"> 1.12 </td>
-   <td style="text-align:right;"> 10.50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 79.6 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:right;"> 2.02 </td>
-   <td style="text-align:right;"> 9.66 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 79.6 </td>
-   <td style="text-align:right;"> 4.02 </td>
-   <td style="text-align:right;"> 3.82 </td>
-   <td style="text-align:right;"> 8.58 </td>
-  </tr>
-</tbody>
-</table>
+|Subject |   Wt| Dose| Time|  conc|
+|:-------|----:|----:|----:|-----:|
+|1       | 79.6| 4.02| 0.00|  0.74|
+|1       | 79.6| 4.02| 0.25|  2.84|
+|1       | 79.6| 4.02| 0.57|  6.57|
+|1       | 79.6| 4.02| 1.12| 10.50|
+|1       | 79.6| 4.02| 2.02|  9.66|
+|1       | 79.6| 4.02| 3.82|  8.58|
 
 </div>
 
@@ -251,68 +136,14 @@ The tidy version of the `polyps` dataset would look like this:
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> participant_id </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:left;"> time </th>
-   <th style="text-align:right;"> polyps_n </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 001 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:left;"> baseline </td>
-   <td style="text-align:right;"> 7 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 001 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:left;"> number3m </td>
-   <td style="text-align:right;"> 6 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 001 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:left;"> number12m </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> baseline </td>
-   <td style="text-align:right;"> 77 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> number3m </td>
-   <td style="text-align:right;"> 67 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:left;"> number12m </td>
-   <td style="text-align:right;"> 63 </td>
-  </tr>
-</tbody>
-</table>
+|participant_id |sex    | age|treatment |time      | polyps_n|
+|:--------------|:------|---:|:---------|:---------|--------:|
+|001            |female |  17|sulindac  |baseline  |        7|
+|001            |female |  17|sulindac  |number3m  |        6|
+|001            |female |  17|sulindac  |number12m |       NA|
+|002            |female |  20|placebo   |baseline  |       77|
+|002            |female |  20|placebo   |number3m  |       67|
+|002            |female |  20|placebo   |number12m |       63|
 
 </div>
 
@@ -353,22 +184,9 @@ polyps %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> mean_baseline </th>
-   <th style="text-align:right;"> mean_3m </th>
-   <th style="text-align:right;"> mean_12m </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 40.95455 </td>
-   <td style="text-align:right;"> 38.40909 </td>
-   <td style="text-align:right;"> 24.05 </td>
-  </tr>
-</tbody>
-</table>
+| mean_baseline|  mean_3m| mean_12m|
+|-------------:|--------:|--------:|
+|      40.95455| 38.40909|    24.05|
 
 </div>
 
@@ -384,28 +202,11 @@ polyps_tidy %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> time </th>
-   <th style="text-align:right;"> mean </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> baseline </td>
-   <td style="text-align:right;"> 40.95455 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> number12m </td>
-   <td style="text-align:right;"> 24.05000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> number3m </td>
-   <td style="text-align:right;"> 38.40909 </td>
-  </tr>
-</tbody>
-</table>
+|time      |     mean|
+|:---------|--------:|
+|baseline  | 40.95455|
+|number12m | 24.05000|
+|number3m  | 38.40909|
 
 </div>
 
@@ -449,75 +250,14 @@ polyps_wide <- polyps_tidy %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> participant_id </th>
-   <th style="text-align:left;"> sex </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:left;"> treatment </th>
-   <th style="text-align:right;"> baseline </th>
-   <th style="text-align:right;"> number3m </th>
-   <th style="text-align:right;"> number12m </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 001 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 002 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 77 </td>
-   <td style="text-align:right;"> 67 </td>
-   <td style="text-align:right;"> 63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 003 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 004 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 18 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 28 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 005 </td>
-   <td style="text-align:left;"> male </td>
-   <td style="text-align:right;"> 22 </td>
-   <td style="text-align:left;"> sulindac </td>
-   <td style="text-align:right;"> 23 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 17 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 006 </td>
-   <td style="text-align:left;"> female </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:left;"> placebo </td>
-   <td style="text-align:right;"> 35 </td>
-   <td style="text-align:right;"> 31 </td>
-   <td style="text-align:right;"> 61 </td>
-  </tr>
-</tbody>
-</table>
+|participant_id |sex    | age|treatment | baseline| number3m| number12m|
+|:--------------|:------|---:|:---------|--------:|--------:|---------:|
+|001            |female |  17|sulindac  |        7|        6|        NA|
+|002            |female |  20|placebo   |       77|       67|        63|
+|003            |male   |  16|sulindac  |        7|        4|         2|
+|004            |female |  18|placebo   |        5|        5|        28|
+|005            |male   |  22|sulindac  |       23|       16|        17|
+|006            |female |  13|placebo   |       35|       31|        61|
 
 </div>
 
@@ -590,68 +330,14 @@ head(laryn_tidy1)
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> id </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> gender </th>
-   <th style="text-align:right;"> Randomization </th>
-   <th style="text-align:left;"> variable </th>
-   <th style="text-align:right;"> score </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt1_time </td>
-   <td style="text-align:right;"> 29 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt1_S_F </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2_time </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2_assigned_method </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2_S_F </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt3_time </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-</tbody>
-</table>
+| id| age| gender| Randomization|variable                 | score|
+|--:|---:|------:|-------------:|:------------------------|-----:|
+|  1|  51|      0|             0|attempt1_time            |    29|
+|  1|  51|      0|             0|attempt1_S_F             |     1|
+|  1|  51|      0|             0|attempt2_time            |    NA|
+|  1|  51|      0|             0|attempt2_assigned_method |    NA|
+|  1|  51|      0|             0|attempt2_S_F             |    NA|
+|  1|  51|      0|             0|attempt3_time            |    NA|
 
 </div>
 
@@ -679,75 +365,14 @@ Because we have asked R to separate the variables by an underscore and have only
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> id </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> gender </th>
-   <th style="text-align:right;"> Randomization </th>
-   <th style="text-align:left;"> attempt </th>
-   <th style="text-align:left;"> measurement </th>
-   <th style="text-align:right;"> score </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt1 </td>
-   <td style="text-align:left;"> time </td>
-   <td style="text-align:right;"> 29 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt1 </td>
-   <td style="text-align:left;"> S </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:left;"> time </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:left;"> assigned </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:left;"> S </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt3 </td>
-   <td style="text-align:left;"> time </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-</tbody>
-</table>
+| id| age| gender| Randomization|attempt  |measurement | score|
+|--:|---:|------:|-------------:|:--------|:-----------|-----:|
+|  1|  51|      0|             0|attempt1 |time        |    29|
+|  1|  51|      0|             0|attempt1 |S           |     1|
+|  1|  51|      0|             0|attempt2 |time        |    NA|
+|  1|  51|      0|             0|attempt2 |assigned    |    NA|
+|  1|  51|      0|             0|attempt2 |S           |    NA|
+|  1|  51|      0|             0|attempt3 |time        |    NA|
 
 </div>
 
@@ -764,75 +389,14 @@ laryn_tidy3 <- laryn_subset %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:right;"> id </th>
-   <th style="text-align:right;"> age </th>
-   <th style="text-align:right;"> gender </th>
-   <th style="text-align:right;"> Randomization </th>
-   <th style="text-align:left;"> attempt </th>
-   <th style="text-align:left;"> measurement </th>
-   <th style="text-align:right;"> score </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt1 </td>
-   <td style="text-align:left;"> time </td>
-   <td style="text-align:right;"> 29 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt1 </td>
-   <td style="text-align:left;"> S_F </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:left;"> time </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:left;"> assigned_method </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:left;"> S_F </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 51 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:left;"> attempt3 </td>
-   <td style="text-align:left;"> time </td>
-   <td style="text-align:right;"> NA </td>
-  </tr>
-</tbody>
-</table>
+| id| age| gender| Randomization|attempt  |measurement     | score|
+|--:|---:|------:|-------------:|:--------|:---------------|-----:|
+|  1|  51|      0|             0|attempt1 |time            |    29|
+|  1|  51|      0|             0|attempt1 |S_F             |     1|
+|  1|  51|      0|             0|attempt2 |time            |    NA|
+|  1|  51|      0|             0|attempt2 |assigned_method |    NA|
+|  1|  51|      0|             0|attempt2 |S_F             |    NA|
+|  1|  51|      0|             0|attempt3 |time            |    NA|
 
 </div>
 
@@ -903,28 +467,11 @@ laryn_tidy6 %>%
 
 <div class="kable-table">
 
-<table>
- <thead>
-  <tr>
-   <th style="text-align:left;"> attempt </th>
-   <th style="text-align:right;"> mean_time </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> attempt1 </td>
-   <td style="text-align:right;"> 33.40909 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> attempt2 </td>
-   <td style="text-align:right;"> 42.90000 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> attempt3 </td>
-   <td style="text-align:right;"> 21.33333 </td>
-  </tr>
-</tbody>
-</table>
+|attempt  | mean_time|
+|:--------|---------:|
+|attempt1 |  33.40909|
+|attempt2 |  42.90000|
+|attempt3 |  21.33333|
 
 </div>
 
@@ -1345,28 +892,28 @@ If your head hurts a bit at this point, rest assured it's absolutely normal. As 
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> [long](https://psyteachr.github.io/glossary/l.html#long){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> A data format where each observation is on a separate row </td>
+   <td style="text-align:left;"> long </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [observation](https://psyteachr.github.io/glossary/o.html#observation){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> All of the data about a single trial or question. </td>
+   <td style="text-align:left;"> observation </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [tidy data](https://psyteachr.github.io/glossary/t.html#tidy-data){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> A format for data that maps the meaning onto the structure. </td>
+   <td style="text-align:left;"> tidy data </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [value](https://psyteachr.github.io/glossary/v.html#value){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> A single number or piece of data. </td>
+   <td style="text-align:left;"> value </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [variable](https://psyteachr.github.io/glossary/v.html#variable){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> (coding): A word that identifies and stores the value of some data for later use; (stats): An attribute or characteristic of an observation that you can measure, count, or describe </td>
+   <td style="text-align:left;"> variable </td>
+   <td style="text-align:left;">  </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> [wide](https://psyteachr.github.io/glossary/w.html#wide){class="glossary" target="_blank"} </td>
-   <td style="text-align:left;"> A data format where all of the observations about one subject are in the same row </td>
+   <td style="text-align:left;"> wide </td>
+   <td style="text-align:left;">  </td>
   </tr>
 </tbody>
 </table>

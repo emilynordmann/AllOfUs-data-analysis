@@ -1,50 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 5 Comparing Means | Intro to Data Wrangling and Analysis Using R</title>
-
-    <meta name="author" content="Emily Nordmann &amp; Javan Carter" />
-  
-   <meta name="description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 5 Comparing Means | Intro to Data Wrangling and Analysis Using R" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis" />
-  <meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png" />
-  <meta property="og:description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Comparing Means | Intro to Data Wrangling and Analysis Using R" />
-  
-  <meta name="twitter:description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-  <meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png" />
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Comparing Means | Intro to Data Wrangling and Analysis Using R</title>
+<meta name="author" content="Emily Nordmann &amp; Javan Carter">
+<meta name="description" content="5.1 Intended Learning Outcomes By the end of this chapter you should be able to: Perform one-sample, independent, and paired-samples t-tests Perform one-way and factorial ANOVAs with post-hoc...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Comparing Means | Intro to Data Wrangling and Analysis Using R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis/analysis1.html">
+<meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<meta property="og:description" content="5.1 Intended Learning Outcomes By the end of this chapter you should be able to: Perform one-sample, independent, and paired-samples t-tests Perform one-way and factorial ANOVAs with post-hoc...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Comparing Means | Intro to Data Wrangling and Analysis Using R">
+<meta name="twitter:description" content="5.1 Intended Learning Outcomes By the end of this chapter you should be able to: Perform one-sample, independent, and paired-samples t-tests Perform one-way and factorial ANOVAs with post-hoc...">
+<meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -66,18 +47,15 @@
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="include/psyteachr.css" />
-    <link rel="stylesheet" href="include/webex.css" />
-    <link rel="stylesheet" href="include/style.css" />
-  
+<link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -89,24 +67,38 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="prerequisites.html"><span class="header-section-number">1</span> Pre-requisites</a></li>
+<li><a class="" href="wrangle.html"><span class="header-section-number">2</span> Data Wrangling</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></li>
+<li><a class="" href="live-office-hour-1.html"><span class="header-section-number">4</span> Live Office Hour 1</a></li>
+<li><a class="active" href="analysis1.html"><span class="header-section-number">5</span> Comparing Means</a></li>
+<li><a class="" href="analysis2.html"><span class="header-section-number">6</span> Correlation and Regression</a></li>
+<li><a class="" href="live-office-hour-2.html"><span class="header-section-number">7</span> Live Office Hour 2</a></li>
+<li><a class="" href="completion-quiz.html"><span class="header-section-number">8</span> Completion Quiz</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="ai-and-coding.html"><span class="header-section-number">A</span> AI and coding</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="analysis1" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Comparing Means</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="analysis1" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Comparing Means<a class="anchor" aria-label="anchor" href="#analysis1"><i class="fas fa-link"></i></a>
+</h1>
 <div id="ilo-analysis" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Intended Learning Outcomes</h2>
+<h2>
+<span class="header-section-number">5.1</span> Intended Learning Outcomes<a class="anchor" aria-label="anchor" href="#ilo-analysis"><i class="fas fa-link"></i></a>
+</h2>
 <p>By the end of this chapter you should be able to:</p>
 <ul>
 <li>Perform one-sample, independent, and paired-samples t-tests</li>
@@ -117,1631 +109,1021 @@
 <p>These chapters will likely cause you less trouble than those on data wrangling and tidying and that's because when it comes to R (or any programming language really), analyzing your data is generally much easier than getting the data in the right format for that analysis. For that reason, this chapter will also contain a little bit of wrangling and tidying to help consolidate the links between those tasks and the analyses that might need them.</p>
 </div>
 <div id="walkthrough-analysis" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Walkthrough video</h2>
+<h2>
+<span class="header-section-number">5.2</span> Walkthrough video<a class="anchor" aria-label="anchor" href="#walkthrough-analysis"><i class="fas fa-link"></i></a>
+</h2>
 <p>We encourage you to read the workbook and attempt each step on your own before watching the video as this will help consolidate your learning (it may feel harder but making mistakes is informative and will help you learn more in the long-run).</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tw_vf7s9yJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 </iframe>
 </div>
 <div id="setup-analysis1" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Set-up</h2>
+<h2>
+<span class="header-section-number">5.3</span> Set-up<a class="anchor" aria-label="anchor" href="#setup-analysis1"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Create and save a new R Markdown document named <code>chapter_5.Rmd</code>, get rid of the default template text from line 11 onwards.</li>
 <li>Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.</li>
 </ul>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="analysis1.html#cb80-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)   </span>
-<span id="cb80-2"><a href="analysis1.html#cb80-2" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb80-3"><a href="analysis1.html#cb80-3" tabindex="-1"></a><span class="fu">library</span>(afex)</span>
-<span id="cb80-4"><a href="analysis1.html#cb80-4" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
-<span id="cb80-5"><a href="analysis1.html#cb80-5" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span></code></pre></div>
-<pre><code>## Warning: package &#39;gapminder&#39; was built under R version 4.3.2</code></pre>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="analysis1.html#cb82-1" tabindex="-1"></a><span class="fu">library</span>(medicaldata)</span></code></pre></div>
-<pre><code>## Warning: package &#39;medicaldata&#39; was built under R version 4.3.2</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="analysis1.html#cb84-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;polyps&quot;</span>)</span>
-<span id="cb84-2"><a href="analysis1.html#cb84-2" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;gapminder&quot;</span>)</span>
-<span id="cb84-3"><a href="analysis1.html#cb84-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;laryngoscope&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>   </span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://afex.singmann.science/">afex</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: package 'afex' was built under R version 4.3.2</code></pre>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans">emmeans</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="comparing-two-means" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Comparing two means</h2>
+<h2>
+<span class="header-section-number">5.4</span> Comparing two means<a class="anchor" aria-label="anchor" href="#comparing-two-means"><i class="fas fa-link"></i></a>
+</h2>
 <p>We're going to use the <code>polyps</code> dataset to run a number of different t-tests. You may find it useful to familiarize yourself with the dataset before proceeding further. As a first step, we'll create a new variable <code>reduction</code> which is the difference in the number of polyps at baseline compared to 12 months after treatment began - a higher number reflects a greater reduction in polpys (i.e., a positive number is a good thing). Additionally, to avoid any issues, we're also just going to use a complete dataset, so we only include participants who have data for all time-points.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="analysis1.html#cb85-1" tabindex="-1"></a>polyps <span class="ot">&lt;-</span> polyps <span class="sc">%&gt;%</span></span>
-<span id="cb85-2"><a href="analysis1.html#cb85-2" tabindex="-1"></a>  <span class="fu">drop_na</span>(number12m) <span class="sc">%&gt;%</span> <span class="co"># drop missing values</span></span>
-<span id="cb85-3"><a href="analysis1.html#cb85-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">reduction =</span> baseline <span class="sc">-</span> number12m)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polyps</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">number12m</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># drop missing values</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>reduction <span class="op">=</span> <span class="va">baseline</span> <span class="op">-</span> <span class="va">number12m</span><span class="op">)</span></span></code></pre></div>
 <div id="one-sample-t-test" class="section level3" number="5.4.1">
-<h3><span class="header-section-number">5.4.1</span> One-sample t-test</h3>
+<h3>
+<span class="header-section-number">5.4.1</span> One-sample t-test<a class="anchor" aria-label="anchor" href="#one-sample-t-test"><i class="fas fa-link"></i></a>
+</h3>
 <p>We can perform a one-sample t-test on the new <code>reduction</code> variable to determine whether the reduction in polyps after treatment is significantly different to zero.</p>
 <p>First, let's visualize the data using a simple boxplot. Because we've only got one, we set the x variable to <code>x = ""</code>.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="analysis1.html#cb86-1" tabindex="-1"></a><span class="fu">ggplot</span>(polyps, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> reduction)) <span class="sc">+</span></span>
-<span id="cb86-2"><a href="analysis1.html#cb86-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb86-3"><a href="analysis1.html#cb86-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">&quot;Reduction in polyps&quot;</span>)</span></code></pre></div>
-<p><img src="05-analysis1_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">polyps</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">reduction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"Reduction in polyps"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-3-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>This visualization makes it clear there are a couple of outliers in the data. There's arguments for whether you should retain or remove these values; we won't get into the theoretical weeds, we'll just show you the code for each option.</p>
 <ul>
-<li><code>mu</code> is the true value of the mean, i.e., the value you want to compare your data to</li>
-<li><code>alternative</code> specifies the direction of the alternative hypothesis, you can choose between <code>two.sided</code>, <code>greater</code>, or <code>less</code>. We'll set this test to <code>greater</code> because it would be reasonable to hypothesize that the reduction in polyps after treatment should be more than zero.</li>
-<li>the function <code>tidy()</code> comes from the <code class='package'>broom</code> package and takes the somewhat messy output produced by the base R functions and tidies it into a table which is easier to work with.</li>
-<li><code>conf.high</code> will be displayed as <code>Inf</code> because we have specified a one-tailed test.</li>
+<li>
+<code>mu</code> is the true value of the mean, i.e., the value you want to compare your data to</li>
+<li>
+<code>alternative</code> specifies the direction of the alternative hypothesis, you can choose between <code>two.sided</code>, <code>greater</code>, or <code>less</code>. We'll set this test to <code>greater</code> because it would be reasonable to hypothesize that the reduction in polyps after treatment should be more than zero.</li>
+<li>the function <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> comes from the <code class="package">broom</code> package and takes the somewhat messy output produced by the base R functions and tidies it into a table which is easier to work with.</li>
+<li>
+<code>conf.high</code> will be displayed as <code>Inf</code> because we have specified a one-tailed test.</li>
 </ul>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="analysis1.html#cb87-1" tabindex="-1"></a><span class="co"># keep the outliers, i.e., use the full dataset as is</span></span>
-<span id="cb87-2"><a href="analysis1.html#cb87-2" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> polyps<span class="sc">$</span>reduction,</span>
-<span id="cb87-3"><a href="analysis1.html#cb87-3" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
-<span id="cb87-4"><a href="analysis1.html#cb87-4" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb87-5"><a href="analysis1.html#cb87-5" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># keep the outliers, i.e., use the full dataset as is</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">polyps</span><span class="op">$</span><span class="va">reduction</span>,</span>
+<span>       mu <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-19.85
-</td>
-<td style="text-align:right;">
-1.301766
-</td>
-<td style="text-align:right;">
-0.1042795
-</td>
-<td style="text-align:right;">
-19
-</td>
-<td style="text-align:right;">
--6.516709
-</td>
-<td style="text-align:right;">
-Inf
-</td>
-<td style="text-align:left;">
-One Sample t-test
-</td>
-<td style="text-align:left;">
-greater
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="10%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="20%">
+<col width="13%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">19.85</td>
+<td align="right">1.301766</td>
+<td align="right">0.1042795</td>
+<td align="right">19</td>
+<td align="right">-6.516709</td>
+<td align="right">Inf</td>
+<td align="left">One Sample t-test</td>
+<td align="left">greater</td>
+</tr></tbody>
+</table></div>
 </div>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="analysis1.html#cb88-1" tabindex="-1"></a><span class="co"># remove the outliers</span></span>
-<span id="cb88-2"><a href="analysis1.html#cb88-2" tabindex="-1"></a></span>
-<span id="cb88-3"><a href="analysis1.html#cb88-3" tabindex="-1"></a>polyps_outliers <span class="ot">&lt;-</span> polyps <span class="sc">%&gt;%</span></span>
-<span id="cb88-4"><a href="analysis1.html#cb88-4" tabindex="-1"></a>  <span class="fu">filter</span>(reduction <span class="sc">&lt;</span> <span class="dv">100</span>) <span class="co"># keep only those values less than 100</span></span>
-<span id="cb88-5"><a href="analysis1.html#cb88-5" tabindex="-1"></a></span>
-<span id="cb88-6"><a href="analysis1.html#cb88-6" tabindex="-1"></a><span class="fu">t.test</span>(<span class="at">x =</span> polyps_outliers<span class="sc">$</span>reduction, </span>
-<span id="cb88-7"><a href="analysis1.html#cb88-7" tabindex="-1"></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
-<span id="cb88-8"><a href="analysis1.html#cb88-8" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)<span class="sc">%&gt;%</span></span>
-<span id="cb88-9"><a href="analysis1.html#cb88-9" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># remove the outliers</span></span>
+<span></span>
+<span><span class="va">polyps_outliers</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">reduction</span> <span class="op">&lt;</span> <span class="fl">100</span><span class="op">)</span> <span class="co"># keep only those values less than 100</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">polyps_outliers</span><span class="op">$</span><span class="va">reduction</span>, </span>
+<span>       mu <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span><span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
--0.6666667
-</td>
-<td style="text-align:right;">
--0.2155182
-</td>
-<td style="text-align:right;">
-0.5840361
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
--6.047827
-</td>
-<td style="text-align:right;">
-Inf
-</td>
-<td style="text-align:left;">
-One Sample t-test
-</td>
-<td style="text-align:left;">
-greater
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="11%">
+<col width="11%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="19%">
+<col width="13%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-0.6666667</td>
+<td align="right">-0.2155182</td>
+<td align="right">0.5840361</td>
+<td align="right">17</td>
+<td align="right">-6.047827</td>
+<td align="right">Inf</td>
+<td align="left">One Sample t-test</td>
+<td align="left">greater</td>
+</tr></tbody>
+</table></div>
 </div>
 <p>There's no significant difference in the number of polyps after treatment according to this test, but of course, we've included the data from both the control and treatment group in this analysis.</p>
-<p>You can use the function <code>do()</code> combined with <code>group_by()</code> to perform this test on different groups. For example, we can run the one-sample t-test on both <code>treatment</code> groups separately and if we do this we see that the reduction in polyps is significantly different to zero but only for the sulindac condition.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="analysis1.html#cb89-1" tabindex="-1"></a>polyps_outliers <span class="sc">%&gt;%</span> </span>
-<span id="cb89-2"><a href="analysis1.html#cb89-2" tabindex="-1"></a>  <span class="fu">group_by</span>(treatment) <span class="sc">%&gt;%</span></span>
-<span id="cb89-3"><a href="analysis1.html#cb89-3" tabindex="-1"></a>  <span class="fu">do</span>(                               </span>
-<span id="cb89-4"><a href="analysis1.html#cb89-4" tabindex="-1"></a>    <span class="fu">t.test</span>(.<span class="sc">$</span>reduction, <span class="co"># the . replaces the name of the dataset because we&#39;ve used a pipe</span></span>
-<span id="cb89-5"><a href="analysis1.html#cb89-5" tabindex="-1"></a>           <span class="at">mu =</span> <span class="dv">0</span>,</span>
-<span id="cb89-6"><a href="analysis1.html#cb89-6" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb89-7"><a href="analysis1.html#cb89-7" tabindex="-1"></a>      <span class="fu">tidy</span>()                        </span>
-<span id="cb89-8"><a href="analysis1.html#cb89-8" tabindex="-1"></a>  )</span></code></pre></div>
+<p>You can use the function <code><a href="https://dplyr.tidyverse.org/reference/do.html">do()</a></code> combined with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to perform this test on different groups. For example, we can run the one-sample t-test on both <code>treatment</code> groups separately and if we do this we see that the reduction in polyps is significantly different to zero but only for the sulindac condition.</p>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polyps_outliers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span><span class="op">(</span>                               </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">reduction</span>, <span class="co"># the . replaces the name of the dataset because we've used a pipe</span></span>
+<span>           mu <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>           alternative <span class="op">=</span> <span class="st">"greater"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
+<span>      <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>                        </span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-treatment
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="10%">
+<col width="9%">
+<col width="10%">
+<col width="10%">
+<col width="10%">
+<col width="11%">
+<col width="10%">
+<col width="18%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">treatment</th>
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-placebo
-</td>
-<td style="text-align:right;">
--7.300
-</td>
-<td style="text-align:right;">
--1.659234
-</td>
-<td style="text-align:right;">
-0.9342791
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
--15.365002
-</td>
-<td style="text-align:right;">
-Inf
-</td>
-<td style="text-align:left;">
-One Sample t-test
-</td>
-<td style="text-align:left;">
-greater
-</td>
+<tr class="odd">
+<td align="left">placebo</td>
+<td align="right">-7.300</td>
+<td align="right">-1.659234</td>
+<td align="right">0.9342791</td>
+<td align="right">9</td>
+<td align="right">-15.365002</td>
+<td align="right">Inf</td>
+<td align="left">One Sample t-test</td>
+<td align="left">greater</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-sulindac
-</td>
-<td style="text-align:right;">
-7.625
-</td>
-<td style="text-align:right;">
-4.077034
-</td>
-<td style="text-align:right;">
-0.0023536
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-4.081698
-</td>
-<td style="text-align:right;">
-Inf
-</td>
-<td style="text-align:left;">
-One Sample t-test
-</td>
-<td style="text-align:left;">
-greater
-</td>
+<tr class="even">
+<td align="left">sulindac</td>
+<td align="right">7.625</td>
+<td align="right">4.077034</td>
+<td align="right">0.0023536</td>
+<td align="right">7</td>
+<td align="right">4.081698</td>
+<td align="right">Inf</td>
+<td align="left">One Sample t-test</td>
+<td align="left">greater</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 </div>
 <div id="independent-samples-t-test" class="section level3" number="5.4.2">
-<h3><span class="header-section-number">5.4.2</span> Independent samples t-test</h3>
-<p>The same <code>t.test()</code> function can be used to perform other types of t-tests, we just need to include different arguments. In this example, we conduct an independent t-test to determine whether the reduction in polyps is significantly different between the two groups.</p>
+<h3>
+<span class="header-section-number">5.4.2</span> Independent samples t-test<a class="anchor" aria-label="anchor" href="#independent-samples-t-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>The same <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function can be used to perform other types of t-tests, we just need to include different arguments. In this example, we conduct an independent t-test to determine whether the reduction in polyps is significantly different between the two groups.</p>
 <p>First, we'll visualize this difference using a violin-boxplot (try running this plot with the original dataset <code>polyps</code> to see what a difference removing the outliers makes):</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="analysis1.html#cb90-1" tabindex="-1"></a><span class="fu">ggplot</span>(polyps_outliers, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> reduction)) <span class="sc">+</span></span>
-<span id="cb90-2"><a href="analysis1.html#cb90-2" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb90-3"><a href="analysis1.html#cb90-3" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb90-4"><a href="analysis1.html#cb90-4" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">7</span>, <span class="at">width =</span> .<span class="dv">1</span>, <span class="fu">aes</span>(<span class="at">colour =</span> treatment)) <span class="sc">+</span></span>
-<span id="cb90-5"><a href="analysis1.html#cb90-5" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb90-6"><a href="analysis1.html#cb90-6" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
-<p><img src="05-analysis1_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Now we'll run the t-test, again using <code>t.test()</code>:</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">polyps_outliers</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">treatment</span>, y <span class="op">=</span> <span class="va">reduction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.7</span>, width <span class="op">=</span> <span class="fl">.1</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-7-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>Now we'll run the t-test, again using <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>:</p>
 <ul>
 <li>There are two different ways of specifying your variables, you can use the <code>object$variable</code> notation or specify the dataset. It is entirely personal preference which one you use.</li>
-<li><code>alternative</code> = "greater" is the alternative that x has a larger mean than y. x is the first level of your grouping variable and y is the second. In this case, placebo is the first group and sulindac is the second, so if we hypothesize that our treatment group will have a higher reduction than the placebo group, we actually need to specify <code>less</code>, because that's the hypothesis that our first group will have a lower mean than our second group. This regularly breaks my brain.</li>
-<li><code>var.equal</code> is whether the variances of the two groups are equal. If set to TRUE, the test performed will be the standard Student's independent t-test. If set to FALSE (the default in R which is not the case in all stats programs), it will run a Welch t-test (see <a href="https://www.rips-irsp.com/articles/10.5334/irsp.82/">this paper by Delacre et al.</a> that argues why the Welch test should be the default)</li>
+<li>
+<code>alternative</code> = "greater" is the alternative that x has a larger mean than y. x is the first level of your grouping variable and y is the second. In this case, placebo is the first group and sulindac is the second, so if we hypothesize that our treatment group will have a higher reduction than the placebo group, we actually need to specify <code>less</code>, because that's the hypothesis that our first group will have a lower mean than our second group. This regularly breaks my brain.</li>
+<li>
+<code>var.equal</code> is whether the variances of the two groups are equal. If set to TRUE, the test performed will be the standard Student's independent t-test. If set to FALSE (the default in R which is not the case in all stats programs), it will run a Welch t-test (see <a href="https://www.rips-irsp.com/articles/10.5334/irsp.82/">this paper by Delacre et al.</a> that argues why the Welch test should be the default)</li>
 </ul>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="analysis1.html#cb91-1" tabindex="-1"></a><span class="co"># specify data set </span></span>
-<span id="cb91-2"><a href="analysis1.html#cb91-2" tabindex="-1"></a><span class="fu">t.test</span>(reduction <span class="sc">~</span> treatment, </span>
-<span id="cb91-3"><a href="analysis1.html#cb91-3" tabindex="-1"></a>       <span class="at">data =</span> polyps_outliers,</span>
-<span id="cb91-4"><a href="analysis1.html#cb91-4" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>,</span>
-<span id="cb91-5"><a href="analysis1.html#cb91-5" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-6"><a href="analysis1.html#cb91-6" tabindex="-1"></a>  <span class="fu">tidy</span>()</span>
-<span id="cb91-7"><a href="analysis1.html#cb91-7" tabindex="-1"></a></span>
-<span id="cb91-8"><a href="analysis1.html#cb91-8" tabindex="-1"></a><span class="co"># call variables</span></span>
-<span id="cb91-9"><a href="analysis1.html#cb91-9" tabindex="-1"></a><span class="fu">t.test</span>(polyps_outliers<span class="sc">$</span>reduction <span class="sc">~</span> polyps_outliers<span class="sc">$</span>treatment, </span>
-<span id="cb91-10"><a href="analysis1.html#cb91-10" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>,</span>
-<span id="cb91-11"><a href="analysis1.html#cb91-11" tabindex="-1"></a>       <span class="at">var.equal =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb91-12"><a href="analysis1.html#cb91-12" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># specify data set </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">treatment</span>, </span>
+<span>       data <span class="op">=</span> <span class="va">polyps_outliers</span>,</span>
+<span>       alternative <span class="op">=</span> <span class="st">"less"</span>,</span>
+<span>       var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># call variables</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">polyps_outliers</span><span class="op">$</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">polyps_outliers</span><span class="op">$</span><span class="va">treatment</span>, </span>
+<span>       alternative <span class="op">=</span> <span class="st">"less"</span>,</span>
+<span>       var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-estimate1
-</th>
-<th style="text-align:right;">
-estimate2
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
--14.925
-</td>
-<td style="text-align:right;">
--7.3
-</td>
-<td style="text-align:right;">
-7.625
-</td>
-<td style="text-align:right;">
--2.858966
-</td>
-<td style="text-align:right;">
-0.005684
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--5.810756
-</td>
-<td style="text-align:left;">
-Two Sample t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="8%">
+<col width="9%">
+<col width="9%">
+<col width="9%">
+<col width="8%">
+<col width="9%">
+<col width="8%">
+<col width="9%">
+<col width="16%">
+<col width="11%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">estimate1</th>
+<th align="right">estimate2</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-14.925</td>
+<td align="right">-7.3</td>
+<td align="right">7.625</td>
+<td align="right">-2.858966</td>
+<td align="right">0.005684</td>
+<td align="right">16</td>
+<td align="right">-Inf</td>
+<td align="right">-5.810756</td>
+<td align="left">Two Sample t-test</td>
+<td align="left">less</td>
+</tr></tbody>
+</table></div>
 </div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-estimate1
-</th>
-<th style="text-align:right;">
-estimate2
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
--14.925
-</td>
-<td style="text-align:right;">
--7.3
-</td>
-<td style="text-align:right;">
-7.625
-</td>
-<td style="text-align:right;">
--2.858966
-</td>
-<td style="text-align:right;">
-0.005684
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--5.810756
-</td>
-<td style="text-align:left;">
-Two Sample t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="8%">
+<col width="9%">
+<col width="9%">
+<col width="9%">
+<col width="8%">
+<col width="9%">
+<col width="8%">
+<col width="9%">
+<col width="16%">
+<col width="11%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">estimate1</th>
+<th align="right">estimate2</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-14.925</td>
+<td align="right">-7.3</td>
+<td align="right">7.625</td>
+<td align="right">-2.858966</td>
+<td align="right">0.005684</td>
+<td align="right">16</td>
+<td align="right">-Inf</td>
+<td align="right">-5.810756</td>
+<td align="left">Two Sample t-test</td>
+<td align="left">less</td>
+</tr></tbody>
+</table></div>
 </div>
 </div>
 <div id="paired-samples-t-test" class="section level3" number="5.4.3">
-<h3><span class="header-section-number">5.4.3</span> Paired-samples t-test</h3>
+<h3>
+<span class="header-section-number">5.4.3</span> Paired-samples t-test<a class="anchor" aria-label="anchor" href="#paired-samples-t-test"><i class="fas fa-link"></i></a>
+</h3>
 <p>The paired-samples t-test throws up our first real need for data wrangling. Let's take a quick detour and use the <code>gampinder</code> dataset (again take a moment to familiarize yourself with the dataset using the help documentation). The <code>gapminder</code> dataset is in tidy format: each country has multiple rows of data, one for each year in the dataset. This means that it is easy to conduct a paired-samples t-test. For example, could compare life expectancy between 1997 and 2007.</p>
 <p>As always, let's visualize it first:</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="analysis1.html#cb92-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb92-2"><a href="analysis1.html#cb92-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1997</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span> <span class="co"># just pull out the two years we&#39;re interested in</span></span>
-<span id="cb92-3"><a href="analysis1.html#cb92-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
-<span id="cb92-4"><a href="analysis1.html#cb92-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb92-5"><a href="analysis1.html#cb92-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># just pull out the two years we're interested in</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning: Continuous x aesthetic
 ## ℹ did you forget `aes(group = ...)`?</code></pre>
-<p><img src="05-analysis1_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Well that doesn't look right does it. The issue here is that year is coded as a numeric variable and we've tried to create a plot that requires a categorical variable on the x-axis. In order to get out plot to work, we need to change year to a factor:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="analysis1.html#cb94-1" tabindex="-1"></a>gapminder <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="analysis1.html#cb94-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.factor</span>(year))</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>That's better.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="analysis1.html#cb95-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href="analysis1.html#cb95-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1997</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb95-3"><a href="analysis1.html#cb95-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
-<span id="cb95-4"><a href="analysis1.html#cb95-4" tabindex="-1"></a>  <span class="fu">geom_violin</span>() <span class="sc">+</span></span>
-<span id="cb95-5"><a href="analysis1.html#cb95-5" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> .<span class="dv">2</span>)</span></code></pre></div>
-<p><img src="05-analysis1_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Now we can run the t-test to look at life expectancy between 1997 and 2007 collapsing across all countries:</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="analysis1.html#cb96-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb96-2"><a href="analysis1.html#cb96-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1997</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb96-3"><a href="analysis1.html#cb96-3" tabindex="-1"></a>  <span class="fu">t.test</span>(lifeExp <span class="sc">~</span> year, </span>
-<span id="cb96-4"><a href="analysis1.html#cb96-4" tabindex="-1"></a>         <span class="at">data =</span> ., <span class="co"># the . replaces the dataset because we&#39;ve piped in the data</span></span>
-<span id="cb96-5"><a href="analysis1.html#cb96-5" tabindex="-1"></a>         <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb96-6"><a href="analysis1.html#cb96-6" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">~</span> <span class="va">year</span>, </span>
+<span>         data <span class="op">=</span> <span class="va">.</span>, <span class="co"># the . replaces the dataset because we've piped in the data</span></span>
+<span>         paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
--1.992746
-</td>
-<td style="text-align:right;">
--8.195187
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-141
-</td>
-<td style="text-align:right;">
--2.473458
-</td>
-<td style="text-align:right;">
--1.512035
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-two.sided
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="11%">
+<col width="11%">
+<col width="9%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="16%">
+<col width="14%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-1.992746</td>
+<td align="right">-8.195187</td>
+<td align="right">0</td>
+<td align="right">141</td>
+<td align="right">-2.473458</td>
+<td align="right">-1.512035</td>
+<td align="left">Paired t-test</td>
+<td align="left">two.sided</td>
+</tr></tbody>
+</table></div>
 </div>
-<p>Or use <code>group_by()</code> and <code>do()</code> to split it by continent:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="analysis1.html#cb97-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb97-2"><a href="analysis1.html#cb97-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1997</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb97-3"><a href="analysis1.html#cb97-3" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb97-4"><a href="analysis1.html#cb97-4" tabindex="-1"></a>  <span class="fu">do</span>(                               </span>
-<span id="cb97-5"><a href="analysis1.html#cb97-5" tabindex="-1"></a>    <span class="fu">t.test</span>(lifeExp <span class="sc">~</span> year, </span>
-<span id="cb97-6"><a href="analysis1.html#cb97-6" tabindex="-1"></a>           <span class="at">data =</span> .,</span>
-<span id="cb97-7"><a href="analysis1.html#cb97-7" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>,</span>
-<span id="cb97-8"><a href="analysis1.html#cb97-8" tabindex="-1"></a>           <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb97-9"><a href="analysis1.html#cb97-9" tabindex="-1"></a>      <span class="fu">tidy</span>()                        </span>
-<span id="cb97-10"><a href="analysis1.html#cb97-10" tabindex="-1"></a>  )</span></code></pre></div>
+<p>Or use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/do.html">do()</a></code> to split it by continent:</p>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span><span class="op">(</span>                               </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">~</span> <span class="va">year</span>, </span>
+<span>           data <span class="op">=</span> <span class="va">.</span>,</span>
+<span>           alternative <span class="op">=</span> <span class="st">"less"</span>,</span>
+<span>           paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
+<span>      <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>                        </span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-continent
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="10%">
+<col width="10%">
+<col width="11%">
+<col width="10%">
+<col width="10%">
+<col width="9%">
+<col width="11%">
+<col width="14%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">continent</th>
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Africa
-</td>
-<td style="text-align:right;">
--1.207769
-</td>
-<td style="text-align:right;">
--1.922156
-</td>
-<td style="text-align:right;">
-0.0300905
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--0.1551191
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
+<tr class="odd">
+<td align="left">Africa</td>
+<td align="right">-1.207769</td>
+<td align="right">-1.922156</td>
+<td align="right">0.0300905</td>
+<td align="right">51</td>
+<td align="right">-Inf</td>
+<td align="right">-0.1551191</td>
+<td align="left">Paired t-test</td>
+<td align="left">less</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Americas
-</td>
-<td style="text-align:right;">
--2.457640
-</td>
-<td style="text-align:right;">
--11.815866
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--2.1017852
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
+<tr class="even">
+<td align="left">Americas</td>
+<td align="right">-2.457640</td>
+<td align="right">-11.815866</td>
+<td align="right">0.0000000</td>
+<td align="right">24</td>
+<td align="right">-Inf</td>
+<td align="right">-2.1017852</td>
+<td align="left">Paired t-test</td>
+<td align="left">less</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Asia
-</td>
-<td style="text-align:right;">
--2.707970
-</td>
-<td style="text-align:right;">
--14.035916
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--2.3811653
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
+<tr class="odd">
+<td align="left">Asia</td>
+<td align="right">-2.707970</td>
+<td align="right">-14.035916</td>
+<td align="right">0.0000000</td>
+<td align="right">32</td>
+<td align="right">-Inf</td>
+<td align="right">-2.3811653</td>
+<td align="left">Paired t-test</td>
+<td align="left">less</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Europe
-</td>
-<td style="text-align:right;">
--2.143433
-</td>
-<td style="text-align:right;">
--15.844473
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-<td style="text-align:right;">
-29
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--1.9135762
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
+<tr class="even">
+<td align="left">Europe</td>
+<td align="right">-2.143433</td>
+<td align="right">-15.844473</td>
+<td align="right">0.0000000</td>
+<td align="right">29</td>
+<td align="right">-Inf</td>
+<td align="right">-1.9135762</td>
+<td align="left">Paired t-test</td>
+<td align="left">less</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Oceania
-</td>
-<td style="text-align:right;">
--2.529500
-</td>
-<td style="text-align:right;">
--20.317269
-</td>
-<td style="text-align:right;">
-0.0156543
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--Inf
-</td>
-<td style="text-align:right;">
--1.7434379
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-less
-</td>
+<tr class="odd">
+<td align="left">Oceania</td>
+<td align="right">-2.529500</td>
+<td align="right">-20.317269</td>
+<td align="right">0.0156543</td>
+<td align="right">1</td>
+<td align="right">-Inf</td>
+<td align="right">-1.7434379</td>
+<td align="left">Paired t-test</td>
+<td align="left">less</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <p>Because we've run multiple tests, we might also want to add on a column that has p-values corrected for multiple comparisons, and tidy up the table whilst we're at it.</p>
 <ul>
-<li>We use <code>select()</code> to just retain the columns we want, and rename a few of them at the same time.</li>
-<li><code>mutate()</code> adds on a new column using the function <code>p.adjust</code> to calculate an adjusted p-value. You can specify multiple different methods - full details via the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html">help documentation</a>. Importantly, in order for this to work, you have to include <code>ungroup()</code> first, otherwise <code>p.adjust</code> will be performed by groups (i.e., it won't consider them all at once, which is the entire point).</li>
+<li>We use <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> to just retain the columns we want, and rename a few of them at the same time.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds on a new column using the function <code>p.adjust</code> to calculate an adjusted p-value. You can specify multiple different methods - full details via the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html">help documentation</a>. Importantly, in order for this to work, you have to include <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> first, otherwise <code>p.adjust</code> will be performed by groups (i.e., it won't consider them all at once, which is the entire point).</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="analysis1.html#cb98-1" tabindex="-1"></a>gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb98-2"><a href="analysis1.html#cb98-2" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1997</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb98-3"><a href="analysis1.html#cb98-3" tabindex="-1"></a>  <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb98-4"><a href="analysis1.html#cb98-4" tabindex="-1"></a>  <span class="fu">do</span>(                               </span>
-<span id="cb98-5"><a href="analysis1.html#cb98-5" tabindex="-1"></a>    <span class="fu">t.test</span>(lifeExp <span class="sc">~</span> year, </span>
-<span id="cb98-6"><a href="analysis1.html#cb98-6" tabindex="-1"></a>           <span class="at">data =</span> .,</span>
-<span id="cb98-7"><a href="analysis1.html#cb98-7" tabindex="-1"></a>           <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb98-8"><a href="analysis1.html#cb98-8" tabindex="-1"></a>      <span class="fu">tidy</span>()                        </span>
-<span id="cb98-9"><a href="analysis1.html#cb98-9" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb98-10"><a href="analysis1.html#cb98-10" tabindex="-1"></a>  <span class="fu">select</span>(continent, </span>
-<span id="cb98-11"><a href="analysis1.html#cb98-11" tabindex="-1"></a>         <span class="st">&quot;lifeExp_diff&quot;</span> <span class="ot">=</span> estimate,</span>
-<span id="cb98-12"><a href="analysis1.html#cb98-12" tabindex="-1"></a>         p.value,</span>
-<span id="cb98-13"><a href="analysis1.html#cb98-13" tabindex="-1"></a>         <span class="st">&quot;df&quot;</span> <span class="ot">=</span> parameter,</span>
-<span id="cb98-14"><a href="analysis1.html#cb98-14" tabindex="-1"></a>         conf.low, </span>
-<span id="cb98-15"><a href="analysis1.html#cb98-15" tabindex="-1"></a>         conf.high) <span class="sc">%&gt;%</span></span>
-<span id="cb98-16"><a href="analysis1.html#cb98-16" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb98-17"><a href="analysis1.html#cb98-17" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p.adjusted =</span> <span class="fu">p.adjust</span>(p.value, <span class="at">method =</span> <span class="st">&quot;bonferroni&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span><span class="op">(</span>                               </span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">~</span> <span class="va">year</span>, </span>
+<span>           data <span class="op">=</span> <span class="va">.</span>,</span>
+<span>           paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
+<span>      <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>                        </span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">continent</span>, </span>
+<span>         <span class="st">"lifeExp_diff"</span> <span class="op">=</span> <span class="va">estimate</span>,</span>
+<span>         <span class="va">p.value</span>,</span>
+<span>         <span class="st">"df"</span> <span class="op">=</span> <span class="va">parameter</span>,</span>
+<span>         <span class="va">conf.low</span>, </span>
+<span>         <span class="va">conf.high</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>p.adjusted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span><span class="op">(</span><span class="va">p.value</span>, method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-continent
-</th>
-<th style="text-align:right;">
-lifeExp_diff
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-df
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:right;">
-p.adjusted
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="14%">
+<col width="19%">
+<col width="14%">
+<col width="4%">
+<col width="14%">
+<col width="16%">
+<col width="16%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">continent</th>
+<th align="right">lifeExp_diff</th>
+<th align="right">p.value</th>
+<th align="right">df</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="right">p.adjusted</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-Africa
-</td>
-<td style="text-align:right;">
--1.207769
-</td>
-<td style="text-align:right;">
-0.0601809
-</td>
-<td style="text-align:right;">
-51
-</td>
-<td style="text-align:right;">
--2.469216
-</td>
-<td style="text-align:right;">
-0.0536778
-</td>
-<td style="text-align:right;">
-0.3009047
-</td>
+<tr class="odd">
+<td align="left">Africa</td>
+<td align="right">-1.207769</td>
+<td align="right">0.0601809</td>
+<td align="right">51</td>
+<td align="right">-2.469216</td>
+<td align="right">0.0536778</td>
+<td align="right">0.3009047</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Americas
-</td>
-<td style="text-align:right;">
--2.457640
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:right;">
--2.886920
-</td>
-<td style="text-align:right;">
--2.0283596
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
+<tr class="even">
+<td align="left">Americas</td>
+<td align="right">-2.457640</td>
+<td align="right">0.0000000</td>
+<td align="right">24</td>
+<td align="right">-2.886920</td>
+<td align="right">-2.0283596</td>
+<td align="right">0.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Asia
-</td>
-<td style="text-align:right;">
--2.707970
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:right;">
--3.100958
-</td>
-<td style="text-align:right;">
--2.3149812
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
+<tr class="odd">
+<td align="left">Asia</td>
+<td align="right">-2.707970</td>
+<td align="right">0.0000000</td>
+<td align="right">32</td>
+<td align="right">-3.100958</td>
+<td align="right">-2.3149812</td>
+<td align="right">0.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Europe
-</td>
-<td style="text-align:right;">
--2.143433
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-<td style="text-align:right;">
-29
-</td>
-<td style="text-align:right;">
--2.420111
-</td>
-<td style="text-align:right;">
--1.8667556
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
+<tr class="even">
+<td align="left">Europe</td>
+<td align="right">-2.143433</td>
+<td align="right">0.0000000</td>
+<td align="right">29</td>
+<td align="right">-2.420111</td>
+<td align="right">-1.8667556</td>
+<td align="right">0.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-Oceania
-</td>
-<td style="text-align:right;">
--2.529500
-</td>
-<td style="text-align:right;">
-0.0313087
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--4.111422
-</td>
-<td style="text-align:right;">
--0.9475775
-</td>
-<td style="text-align:right;">
-0.1565433
-</td>
+<tr class="odd">
+<td align="left">Oceania</td>
+<td align="right">-2.529500</td>
+<td align="right">0.0313087</td>
+<td align="right">1</td>
+<td align="right">-4.111422</td>
+<td align="right">-0.9475775</td>
+<td align="right">0.1565433</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <p>Now we've seen how the paired-samples test works,let's return to the <code>polyps</code> dataset. The problem is that this dataset is wide-form and in order to run the test we need the grouping variable (time point) in one column and the measurement (number of polyps in a separate column). Therefore, in order to run the t-test, we will first need to tidy the dataset as we did in chapter 3.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="analysis1.html#cb99-1" tabindex="-1"></a>polyps_tidy <span class="ot">&lt;-</span> polyps_outliers <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href="analysis1.html#cb99-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;number3m&quot;</span>, <span class="st">&quot;number12m&quot;</span>), <span class="co"># columns to make long </span></span>
-<span id="cb99-3"><a href="analysis1.html#cb99-3" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;time&quot;</span>, <span class="co"># new column name for headers</span></span>
-<span id="cb99-4"><a href="analysis1.html#cb99-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;polyps_n&quot;</span>) <span class="co"># new column name for values</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op">&lt;-</span> <span class="va">polyps_outliers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number3m"</span>, <span class="st">"number12m"</span><span class="op">)</span>, <span class="co"># columns to make long </span></span>
+<span>               names_to <span class="op">=</span> <span class="st">"time"</span>, <span class="co"># new column name for headers</span></span>
+<span>               values_to <span class="op">=</span> <span class="st">"polyps_n"</span><span class="op">)</span> <span class="co"># new column name for values</span></span></code></pre></div>
 <p>We can then run the paired t-test on the tidied data. It will take time and practice with different datasets to learn when and where you need to reshape data for analysis but you will get there!</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="analysis1.html#cb100-1" tabindex="-1"></a>polyps_tidy <span class="sc">%&gt;%</span></span>
-<span id="cb100-2"><a href="analysis1.html#cb100-2" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;number12m&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb100-3"><a href="analysis1.html#cb100-3" tabindex="-1"></a>  <span class="fu">t.test</span>(polyps_n <span class="sc">~</span> time, <span class="at">data =</span> ., <span class="at">paired =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb100-4"><a href="analysis1.html#cb100-4" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number12m"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">polyps_n</span> <span class="op">~</span> <span class="va">time</span>, data <span class="op">=</span> <span class="va">.</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:right;">
-parameter
-</th>
-<th style="text-align:right;">
-conf.low
-</th>
-<th style="text-align:right;">
-conf.high
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
--0.6666667
-</td>
-<td style="text-align:right;">
--0.2155182
-</td>
-<td style="text-align:right;">
-0.8319279
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
--7.193001
-</td>
-<td style="text-align:right;">
-5.859668
-</td>
-<td style="text-align:left;">
-Paired t-test
-</td>
-<td style="text-align:left;">
-two.sided
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="12%">
+<col width="12%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="11%">
+<col width="15%">
+<col width="13%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">estimate</th>
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="right">parameter</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">-0.6666667</td>
+<td align="right">-0.2155182</td>
+<td align="right">0.8319279</td>
+<td align="right">17</td>
+<td align="right">-7.193001</td>
+<td align="right">5.859668</td>
+<td align="left">Paired t-test</td>
+<td align="left">two.sided</td>
+</tr></tbody>
+</table></div>
 </div>
 </div>
 </div>
 <div id="comparing-more-than-two-means" class="section level2" number="5.5">
-<h2><span class="header-section-number">5.5</span> Comparing more than two means</h2>
-<p>We often have more than two means to compare. One approach is to use Analysis of Variance (ANOVA) techniques. There are numerous ways to perform ANOVA in R, in this course, we're going to use the <code class='package'>afex</code> package but just be aware that if you Google for help, you might see different approaches.</p>
+<h2>
+<span class="header-section-number">5.5</span> Comparing more than two means<a class="anchor" aria-label="anchor" href="#comparing-more-than-two-means"><i class="fas fa-link"></i></a>
+</h2>
+<p>We often have more than two means to compare. One approach is to use Analysis of Variance (ANOVA) techniques. There are numerous ways to perform ANOVA in R, in this course, we're going to use the <code class="package">afex</code> package but just be aware that if you Google for help, you might see different approaches.</p>
 <div id="one-way-anova" class="section level3" number="5.5.1">
-<h3><span class="header-section-number">5.5.1</span> One-way ANOVA</h3>
+<h3>
+<span class="header-section-number">5.5.1</span> One-way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"><i class="fas fa-link"></i></a>
+</h3>
 <p>Let's use the <code>gapminder</code> dataset to look at life expectancy by continent in 2007. First, we'll create an object that just has the data we need and visualize it.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="analysis1.html#cb101-1" tabindex="-1"></a><span class="co"># filter the data to just 2007 values</span></span>
-<span id="cb101-2"><a href="analysis1.html#cb101-2" tabindex="-1"></a>gapminder_2007 <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb101-3"><a href="analysis1.html#cb101-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>)</span>
-<span id="cb101-4"><a href="analysis1.html#cb101-4" tabindex="-1"></a></span>
-<span id="cb101-5"><a href="analysis1.html#cb101-5" tabindex="-1"></a><span class="co"># visualize with a boxplot</span></span>
-<span id="cb101-6"><a href="analysis1.html#cb101-6" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder_2007, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> lifeExp, <span class="at">fill =</span> continent)) <span class="sc">+</span></span>
-<span id="cb101-7"><a href="analysis1.html#cb101-7" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
-<span id="cb101-8"><a href="analysis1.html#cb101-8" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;E&quot;</span>) <span class="sc">+</span></span>
-<span id="cb101-9"><a href="analysis1.html#cb101-9" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span></span>
-<span id="cb101-10"><a href="analysis1.html#cb101-10" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div>
-<p><img src="05-analysis1_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>It looks like there should be a significant difference with these groups. To run the ANOVA, we use the <code>aov_ez()</code> function from the <code>afex</code> package.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="analysis1.html#cb102-1" tabindex="-1"></a>lifeExp_anova <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="at">id =</span> <span class="st">&quot;country&quot;</span>, <span class="co">#unique identifier in this case, country name</span></span>
-<span id="cb102-2"><a href="analysis1.html#cb102-2" tabindex="-1"></a>       <span class="at">dv =</span> <span class="st">&quot;lifeExp&quot;</span>,</span>
-<span id="cb102-3"><a href="analysis1.html#cb102-3" tabindex="-1"></a>       <span class="at">between =</span> <span class="st">&quot;continent&quot;</span>,</span>
-<span id="cb102-4"><a href="analysis1.html#cb102-4" tabindex="-1"></a>       <span class="at">es =</span> <span class="st">&quot;pes&quot;</span>, <span class="co"># desired effect size, set to partial eta squared</span></span>
-<span id="cb102-5"><a href="analysis1.html#cb102-5" tabindex="-1"></a>       <span class="at">type =</span> <span class="dv">3</span>, <span class="co"># type of sums of squares to use</span></span>
-<span id="cb102-6"><a href="analysis1.html#cb102-6" tabindex="-1"></a>       <span class="at">include_aov =</span> <span class="cn">TRUE</span>, <span class="co"># set to true to allow post hoc-comparisons</span></span>
-<span id="cb102-7"><a href="analysis1.html#cb102-7" tabindex="-1"></a>       <span class="at">data =</span> gapminder_2007) </span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># filter the data to just 2007 values</span></span>
+<span><span class="va">gapminder_2007</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># visualize with a boxplot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_2007</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, fill <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.6</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
+<div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>It looks like there should be a significant difference with these groups. To run the ANOVA, we use the <code><a href="https://rdrr.io/pkg/afex/man/aov_car.html">aov_ez()</a></code> function from the <code>afex</code> package.</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lifeExp_anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/afex/man/aov_car.html">aov_ez</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"country"</span>, <span class="co">#unique identifier in this case, country name</span></span>
+<span>       dv <span class="op">=</span> <span class="st">"lifeExp"</span>,</span>
+<span>       between <span class="op">=</span> <span class="st">"continent"</span>,</span>
+<span>       es <span class="op">=</span> <span class="st">"pes"</span>, <span class="co"># desired effect size, set to partial eta squared</span></span>
+<span>       type <span class="op">=</span> <span class="fl">3</span>, <span class="co"># type of sums of squares to use</span></span>
+<span>       include_aov <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># set to true to allow post hoc-comparisons</span></span>
+<span>       data <span class="op">=</span> <span class="va">gapminder_2007</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## Contrasts set to contr.sum for the following variables: continent</code></pre>
-<p>Just like with the t-tests, we can use <code>tidy()</code> to make the output easier to work with.</p>
+<p>Just like with the t-tests, we can use <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> to make the output easier to work with.</p>
 <p>Run the below code to transform the output. Don't worry about the warning message, it is just telling you it doesn't know how to automatically rename the columns so it will keep the original names.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="analysis1.html#cb104-1" tabindex="-1"></a>lifeExp_anova<span class="sc">$</span>anova_table <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lifeExp_anova</span><span class="op">$</span><span class="va">anova_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in tidy.anova(.): The following column names in ANOVA output were not
 ## recognized or transformed: num.Df, den.Df, MSE, ges</code></pre>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-num.Df
-</th>
-<th style="text-align:right;">
-den.Df
-</th>
-<th style="text-align:right;">
-MSE
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-ges
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
-54.68012
-</td>
-<td style="text-align:right;">
-59.714
-</td>
-<td style="text-align:right;">
-0.6354987
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">num.Df</th>
+<th align="right">den.Df</th>
+<th align="right">MSE</th>
+<th align="right">statistic</th>
+<th align="right">ges</th>
+<th align="right">p.value</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="left">continent</td>
+<td align="right">4</td>
+<td align="right">137</td>
+<td align="right">54.68012</td>
+<td align="right">59.714</td>
+<td align="right">0.6354987</td>
+<td align="right">0</td>
+</tr></tbody>
+</table></div>
 </div>
 <p>To run post-hoc tests on the groups, we use the <code>emmeans</code> function from the <code>emmeans</code> package. This function computes all possible pairwise comparison t-tests and applies a correction to the p-value.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="analysis1.html#cb106-1" tabindex="-1"></a><span class="co"># calculate the comparisons</span></span>
-<span id="cb106-2"><a href="analysis1.html#cb106-2" tabindex="-1"></a>posthoc <span class="ot">&lt;-</span><span class="fu">emmeans</span>(lifeExp_anova, pairwise <span class="sc">~</span> continent, <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb106-3"><a href="analysis1.html#cb106-3" tabindex="-1"></a></span>
-<span id="cb106-4"><a href="analysis1.html#cb106-4" tabindex="-1"></a><span class="co"># pull out the table of comparisons and tidy it up into a table</span></span>
-<span id="cb106-5"><a href="analysis1.html#cb106-5" tabindex="-1"></a>posthoc_contrasts <span class="ot">&lt;-</span> posthoc<span class="sc">$</span>contrasts <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># calculate the comparisons</span></span>
+<span><span class="va">posthoc</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_anova</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">continent</span>, adjust <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># pull out the table of comparisons and tidy it up into a table</span></span>
+<span><span class="va">posthoc_contrasts</span> <span class="op">&lt;-</span> <span class="va">posthoc</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:left;">
-contrast
-</th>
-<th style="text-align:right;">
-null.value
-</th>
-<th style="text-align:right;">
-estimate
-</th>
-<th style="text-align:right;">
-std.error
-</th>
-<th style="text-align:right;">
-df
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-adj.p.value
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="11%">
+<col width="21%">
+<col width="12%">
+<col width="12%">
+<col width="11%">
+<col width="4%">
+<col width="13%">
+<col width="13%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="left">contrast</th>
+<th align="right">null.value</th>
+<th align="right">estimate</th>
+<th align="right">std.error</th>
+<th align="right">df</th>
+<th align="right">statistic</th>
+<th align="right">adj.p.value</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Africa - Americas
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--18.802081
-</td>
-<td style="text-align:right;">
-1.799652
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--10.4476233
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
+<tr class="odd">
+<td align="left">continent</td>
+<td align="left">Africa - Americas</td>
+<td align="right">0</td>
+<td align="right">-18.802081</td>
+<td align="right">1.799652</td>
+<td align="right">137</td>
+<td align="right">-10.4476233</td>
+<td align="right">0.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Africa - Asia
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--15.922446
-</td>
-<td style="text-align:right;">
-1.645756
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--9.6748498
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
+<tr class="even">
+<td align="left">continent</td>
+<td align="left">Africa - Asia</td>
+<td align="right">0</td>
+<td align="right">-15.922446</td>
+<td align="right">1.645756</td>
+<td align="right">137</td>
+<td align="right">-9.6748498</td>
+<td align="right">0.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Africa - Europe
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--22.842561
-</td>
-<td style="text-align:right;">
-1.695350
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--13.4736554
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
+<tr class="odd">
+<td align="left">continent</td>
+<td align="left">Africa - Europe</td>
+<td align="right">0</td>
+<td align="right">-22.842561</td>
+<td align="right">1.695350</td>
+<td align="right">137</td>
+<td align="right">-13.4736554</td>
+<td align="right">0.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Africa - Oceania
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--25.913462
-</td>
-<td style="text-align:right;">
-5.328377
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--4.8632935
-</td>
-<td style="text-align:right;">
-0.0000312
-</td>
+<tr class="even">
+<td align="left">continent</td>
+<td align="left">Africa - Oceania</td>
+<td align="right">0</td>
+<td align="right">-25.913462</td>
+<td align="right">5.328377</td>
+<td align="right">137</td>
+<td align="right">-4.8632935</td>
+<td align="right">0.0000312</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Americas - Asia
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2.879635
-</td>
-<td style="text-align:right;">
-1.960658
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
-1.4687088
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
+<tr class="odd">
+<td align="left">continent</td>
+<td align="left">Americas - Asia</td>
+<td align="right">0</td>
+<td align="right">2.879635</td>
+<td align="right">1.960658</td>
+<td align="right">137</td>
+<td align="right">1.4687088</td>
+<td align="right">1.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Americas - Europe
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--4.040480
-</td>
-<td style="text-align:right;">
-2.002467
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--2.0177507
-</td>
-<td style="text-align:right;">
-0.4557009
-</td>
+<tr class="even">
+<td align="left">continent</td>
+<td align="left">Americas - Europe</td>
+<td align="right">0</td>
+<td align="right">-4.040480</td>
+<td align="right">2.002467</td>
+<td align="right">137</td>
+<td align="right">-2.0177507</td>
+<td align="right">0.4557009</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Americas - Oceania
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--7.111380
-</td>
-<td style="text-align:right;">
-5.433900
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--1.3087065
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
+<tr class="odd">
+<td align="left">continent</td>
+<td align="left">Americas - Oceania</td>
+<td align="right">0</td>
+<td align="right">-7.111380</td>
+<td align="right">5.433900</td>
+<td align="right">137</td>
+<td align="right">-1.3087065</td>
+<td align="right">1.0000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Asia - Europe
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--6.920115
-</td>
-<td style="text-align:right;">
-1.865380
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--3.7097607
-</td>
-<td style="text-align:right;">
-0.0030058
-</td>
+<tr class="even">
+<td align="left">continent</td>
+<td align="left">Asia - Europe</td>
+<td align="right">0</td>
+<td align="right">-6.920115</td>
+<td align="right">1.865380</td>
+<td align="right">137</td>
+<td align="right">-3.7097607</td>
+<td align="right">0.0030058</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Asia - Oceania
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--9.991015
-</td>
-<td style="text-align:right;">
-5.384889
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--1.8553798
-</td>
-<td style="text-align:right;">
-0.6569106
-</td>
+<tr class="odd">
+<td align="left">continent</td>
+<td align="left">Asia - Oceania</td>
+<td align="right">0</td>
+<td align="right">-9.991015</td>
+<td align="right">5.384889</td>
+<td align="right">137</td>
+<td align="right">-1.8553798</td>
+<td align="right">0.6569106</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:left;">
-Europe - Oceania
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
--3.070900
-</td>
-<td style="text-align:right;">
-5.400253
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
--0.5686585
-</td>
-<td style="text-align:right;">
-1.0000000
-</td>
+<tr class="even">
+<td align="left">continent</td>
+<td align="left">Europe - Oceania</td>
+<td align="right">0</td>
+<td align="right">-3.070900</td>
+<td align="right">5.400253</td>
+<td align="right">137</td>
+<td align="right">-0.5686585</td>
+<td align="right">1.0000000</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 </div>
 <div id="factorial-anova" class="section level3" number="5.5.2">
-<h3><span class="header-section-number">5.5.2</span> Factorial ANOVA</h3>
+<h3>
+<span class="header-section-number">5.5.2</span> Factorial ANOVA<a class="anchor" aria-label="anchor" href="#factorial-anova"><i class="fas fa-link"></i></a>
+</h3>
 <p>Factorial ANOVAs can also be specified using the same functions. For example, in the <code>gapminder</code> dataset we could run a mixed two-way ANOVA looking at life expectancy by continent and by year. Again we start by creating an object with the data we need and visualizing it:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="analysis1.html#cb107-1" tabindex="-1"></a><span class="co"># create a subset of the data with filter</span></span>
-<span id="cb107-2"><a href="analysis1.html#cb107-2" tabindex="-1"></a>gapminder_noughties <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb107-3"><a href="analysis1.html#cb107-3" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">2002</span>, <span class="dv">2007</span>))</span>
-<span id="cb107-4"><a href="analysis1.html#cb107-4" tabindex="-1"></a></span>
-<span id="cb107-5"><a href="analysis1.html#cb107-5" tabindex="-1"></a><span class="co"># visualize the data</span></span>
-<span id="cb107-6"><a href="analysis1.html#cb107-6" tabindex="-1"></a></span>
-<span id="cb107-7"><a href="analysis1.html#cb107-7" tabindex="-1"></a><span class="fu">ggplot</span>(gapminder_noughties, <span class="fu">aes</span>(<span class="at">x =</span> continent, <span class="at">y =</span> lifeExp, <span class="at">color =</span> year, <span class="at">group =</span> year)) <span class="sc">+</span></span>
-<span id="cb107-8"><a href="analysis1.html#cb107-8" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">width =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb107-9"><a href="analysis1.html#cb107-9" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb107-10"><a href="analysis1.html#cb107-10" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">geom =</span> <span class="st">&quot;line&quot;</span>, <span class="at">fun =</span> <span class="st">&quot;mean&quot;</span>) <span class="sc">+</span></span>
-<span id="cb107-11"><a href="analysis1.html#cb107-11" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb107-12"><a href="analysis1.html#cb107-12" tabindex="-1"></a>  <span class="fu">scale_colour_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>)</span></code></pre></div>
-<p><img src="05-analysis1_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># create a subset of the data with filter</span></span>
+<span><span class="va">gapminder_noughties</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2002</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># visualize the data</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder_noughties</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">lifeExp</span>, color <span class="op">=</span> <span class="va">year</span>, group <span class="op">=</span> <span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.2</span>, width <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"point"</span>, fun <span class="op">=</span> <span class="st">"mean"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/stat_summary.html">stat_summary</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"line"</span>, fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>And then we run the ANOVA. The code is much the same as the one-way variant with the addition of the <code>within</code> argument to represent our repeated-measures variable. If we had multiple between or within subject variables, you would specify these as <code>between = c("var1", "var2")</code>.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="analysis1.html#cb108-1" tabindex="-1"></a>lifeExp_year <span class="ot">&lt;-</span> <span class="fu">aov_ez</span>(<span class="at">id =</span> <span class="st">&quot;country&quot;</span>, </span>
-<span id="cb108-2"><a href="analysis1.html#cb108-2" tabindex="-1"></a>       <span class="at">dv =</span> <span class="st">&quot;lifeExp&quot;</span>,</span>
-<span id="cb108-3"><a href="analysis1.html#cb108-3" tabindex="-1"></a>       <span class="at">between =</span> <span class="st">&quot;continent&quot;</span>,</span>
-<span id="cb108-4"><a href="analysis1.html#cb108-4" tabindex="-1"></a>       <span class="at">within =</span> <span class="st">&quot;year&quot;</span>,</span>
-<span id="cb108-5"><a href="analysis1.html#cb108-5" tabindex="-1"></a>       <span class="at">es =</span> <span class="st">&quot;pes&quot;</span>, <span class="co"># desired effect size, set to partial eta squared</span></span>
-<span id="cb108-6"><a href="analysis1.html#cb108-6" tabindex="-1"></a>       <span class="at">type =</span> <span class="dv">3</span>, <span class="co"># type of sums of squares to use</span></span>
-<span id="cb108-7"><a href="analysis1.html#cb108-7" tabindex="-1"></a>       <span class="at">include_aov =</span> <span class="cn">TRUE</span>, <span class="co"># set to true to allow post hoc-comparisons</span></span>
-<span id="cb108-8"><a href="analysis1.html#cb108-8" tabindex="-1"></a>       <span class="at">data =</span> gapminder_noughties) </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lifeExp_year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/afex/man/aov_car.html">aov_ez</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"country"</span>, </span>
+<span>       dv <span class="op">=</span> <span class="st">"lifeExp"</span>,</span>
+<span>       between <span class="op">=</span> <span class="st">"continent"</span>,</span>
+<span>       within <span class="op">=</span> <span class="st">"year"</span>,</span>
+<span>       es <span class="op">=</span> <span class="st">"pes"</span>, <span class="co"># desired effect size, set to partial eta squared</span></span>
+<span>       type <span class="op">=</span> <span class="fl">3</span>, <span class="co"># type of sums of squares to use</span></span>
+<span>       include_aov <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># set to true to allow post hoc-comparisons</span></span>
+<span>       data <span class="op">=</span> <span class="va">gapminder_noughties</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## Contrasts set to contr.sum for the following variables: continent</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="analysis1.html#cb110-1" tabindex="-1"></a>lifeExp_year<span class="sc">$</span>anova_table <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">lifeExp_year</span><span class="op">$</span><span class="va">anova_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in tidy.anova(.): The following column names in ANOVA output were not
 ## recognized or transformed: num.Df, den.Df, MSE, ges</code></pre>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-term
-</th>
-<th style="text-align:right;">
-num.Df
-</th>
-<th style="text-align:right;">
-den.Df
-</th>
-<th style="text-align:right;">
-MSE
-</th>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-ges
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-</tr>
-</thead>
+<div class="inline-table"><table style="width:100%;" class="table table-sm">
+<colgroup>
+<col width="21%">
+<col width="10%">
+<col width="10%">
+<col width="17%">
+<col width="14%">
+<col width="14%">
+<col width="12%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">term</th>
+<th align="right">num.Df</th>
+<th align="right">den.Df</th>
+<th align="right">MSE</th>
+<th align="right">statistic</th>
+<th align="right">ges</th>
+<th align="right">p.value</th>
+</tr></thead>
 <tbody>
-<tr>
-<td style="text-align:left;">
-continent
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
-110.5629222
-</td>
-<td style="text-align:right;">
-60.11622
-</td>
-<td style="text-align:right;">
-0.6358851
-</td>
-<td style="text-align:right;">
-0.000000
-</td>
+<tr class="odd">
+<td align="left">continent</td>
+<td align="right">4</td>
+<td align="right">137</td>
+<td align="right">110.5629222</td>
+<td align="right">60.11622</td>
+<td align="right">0.6358851</td>
+<td align="right">0.000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-year
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
-0.5591717
-</td>
-<td style="text-align:right;">
-53.22558
-</td>
-<td style="text-align:right;">
-0.0019512
-</td>
-<td style="text-align:right;">
-0.000000
-</td>
+<tr class="even">
+<td align="left">year</td>
+<td align="right">1</td>
+<td align="right">137</td>
+<td align="right">0.5591717</td>
+<td align="right">53.22558</td>
+<td align="right">0.0019512</td>
+<td align="right">0.000000</td>
 </tr>
-<tr>
-<td style="text-align:left;">
-continent:year
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-137
-</td>
-<td style="text-align:right;">
-0.5591717
-</td>
-<td style="text-align:right;">
-1.60383
-</td>
-<td style="text-align:right;">
-0.0002356
-</td>
-<td style="text-align:right;">
-0.176822
-</td>
+<tr class="odd">
+<td align="left">continent:year</td>
+<td align="right">4</td>
+<td align="right">137</td>
+<td align="right">0.5591717</td>
+<td align="right">1.60383</td>
+<td align="right">0.0002356</td>
+<td align="right">0.176822</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </div>
 <p>The interaction isn't significant although the main effects are so again we can run post-hoc tests to find where the differences are (let's ignore that we already know this from the one-way ANOVA we just did):</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="analysis1.html#cb112-1" tabindex="-1"></a><span class="co"># perform contrasts for the main effect of year</span></span>
-<span id="cb112-2"><a href="analysis1.html#cb112-2" tabindex="-1"></a>posthoc_year <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lifeExp_year, </span>
-<span id="cb112-3"><a href="analysis1.html#cb112-3" tabindex="-1"></a>                             pairwise <span class="sc">~</span> year, </span>
-<span id="cb112-4"><a href="analysis1.html#cb112-4" tabindex="-1"></a>                             <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb112-5"><a href="analysis1.html#cb112-5" tabindex="-1"></a></span>
-<span id="cb112-6"><a href="analysis1.html#cb112-6" tabindex="-1"></a>contrasts_year <span class="ot">&lt;-</span> posthoc_year<span class="sc">$</span>contrasts <span class="sc">%&gt;%</span></span>
-<span id="cb112-7"><a href="analysis1.html#cb112-7" tabindex="-1"></a>  <span class="fu">tidy</span>()</span>
-<span id="cb112-8"><a href="analysis1.html#cb112-8" tabindex="-1"></a></span>
-<span id="cb112-9"><a href="analysis1.html#cb112-9" tabindex="-1"></a><span class="co"># perform contrasts for the main effect of continent</span></span>
-<span id="cb112-10"><a href="analysis1.html#cb112-10" tabindex="-1"></a>posthoc_continent <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lifeExp_year, </span>
-<span id="cb112-11"><a href="analysis1.html#cb112-11" tabindex="-1"></a>                             pairwise <span class="sc">~</span> continent, </span>
-<span id="cb112-12"><a href="analysis1.html#cb112-12" tabindex="-1"></a>                             <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb112-13"><a href="analysis1.html#cb112-13" tabindex="-1"></a></span>
-<span id="cb112-14"><a href="analysis1.html#cb112-14" tabindex="-1"></a>contrasts_continent <span class="ot">&lt;-</span> posthoc_continent<span class="sc">$</span>contrasts <span class="sc">%&gt;%</span></span>
-<span id="cb112-15"><a href="analysis1.html#cb112-15" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># perform contrasts for the main effect of year</span></span>
+<span><span class="va">posthoc_year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
+<span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">year</span>, </span>
+<span>                             adjust <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">contrasts_year</span> <span class="op">&lt;-</span> <span class="va">posthoc_year</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># perform contrasts for the main effect of continent</span></span>
+<span><span class="va">posthoc_continent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
+<span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">continent</span>, </span>
+<span>                             adjust <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">contrasts_continent</span> <span class="op">&lt;-</span> <span class="va">posthoc_continent</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Whilst it's not strictly appropriate given the interaction wasn't significant, if you wanted to look at all pairwise comparisons for the interaction effect, you use the notation <code>pairwise ~ IV1 | IV2</code>:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="analysis1.html#cb113-1" tabindex="-1"></a><span class="co"># run the tests</span></span>
-<span id="cb113-2"><a href="analysis1.html#cb113-2" tabindex="-1"></a>posthoc_factorial <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lifeExp_year, </span>
-<span id="cb113-3"><a href="analysis1.html#cb113-3" tabindex="-1"></a>                             pairwise <span class="sc">~</span> year<span class="sc">|</span> continent, </span>
-<span id="cb113-4"><a href="analysis1.html#cb113-4" tabindex="-1"></a>                             <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb113-5"><a href="analysis1.html#cb113-5" tabindex="-1"></a></span>
-<span id="cb113-6"><a href="analysis1.html#cb113-6" tabindex="-1"></a><span class="co"># tidy up the output of the tests</span></span>
-<span id="cb113-7"><a href="analysis1.html#cb113-7" tabindex="-1"></a>contrasts_factorial <span class="ot">&lt;-</span> posthoc_factorial<span class="sc">$</span>contrasts <span class="sc">%&gt;%</span></span>
-<span id="cb113-8"><a href="analysis1.html#cb113-8" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># run the tests</span></span>
+<span><span class="va">posthoc_factorial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
+<span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">year</span><span class="op">|</span> <span class="va">continent</span>, </span>
+<span>                             adjust <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># tidy up the output of the tests</span></span>
+<span><span class="va">contrasts_factorial</span> <span class="op">&lt;-</span> <span class="va">posthoc_factorial</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Note that because there are two factors, we could also reverse the order of the IVs. Above, we get the results contrasting 2002 and 2007 for each continent. Instead, we could look at the difference between continents in each year.</p>
 <p>Run the below code and look at the output of contrast_factorial and contrasts_factorial2 carefully making sure you understand how to interpret the results. You will find it useful to refer to the interaction plot we made earlier.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="analysis1.html#cb114-1" tabindex="-1"></a><span class="co"># run the tests</span></span>
-<span id="cb114-2"><a href="analysis1.html#cb114-2" tabindex="-1"></a>posthoc_reversed <span class="ot">&lt;-</span> <span class="fu">emmeans</span>(lifeExp_year, </span>
-<span id="cb114-3"><a href="analysis1.html#cb114-3" tabindex="-1"></a>                             pairwise <span class="sc">~</span> continent<span class="sc">|</span> year, </span>
-<span id="cb114-4"><a href="analysis1.html#cb114-4" tabindex="-1"></a>                             <span class="at">adjust =</span> <span class="st">&quot;bonferroni&quot;</span>)</span>
-<span id="cb114-5"><a href="analysis1.html#cb114-5" tabindex="-1"></a></span>
-<span id="cb114-6"><a href="analysis1.html#cb114-6" tabindex="-1"></a><span class="co"># tidy up the output of the tests</span></span>
-<span id="cb114-7"><a href="analysis1.html#cb114-7" tabindex="-1"></a>contrasts_reversed <span class="ot">&lt;-</span> posthoc_reversed<span class="sc">$</span>contrasts <span class="sc">%&gt;%</span></span>
-<span id="cb114-8"><a href="analysis1.html#cb114-8" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># run the tests</span></span>
+<span><span class="va">posthoc_reversed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
+<span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">continent</span><span class="op">|</span> <span class="va">year</span>, </span>
+<span>                             adjust <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># tidy up the output of the tests</span></span>
+<span><span class="va">contrasts_reversed</span> <span class="op">&lt;-</span> <span class="va">posthoc_reversed</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div id="non-parametric-options" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Non-parametric options</h2>
+<h2>
+<span class="header-section-number">5.6</span> Non-parametric options<a class="anchor" aria-label="anchor" href="#non-parametric-options"><i class="fas fa-link"></i></a>
+</h2>
 <p>Finally, you may also need to compare groups where the data are non-parametric. This might be because they violate an assumption of normality or linearity, or it could be that you're working with ordinal data from, for example, Likert scales.</p>
 <p>In the <code>polyps</code> dataset, one option (not a particularly sophisticated option I'll admit but it will suffice for showing the code) might be to conduct a Wilcoxon Rank Sum test (also known as a Mann-Whitney U test) on the <code>reduction</code> variable so that the data are transformed into ranks.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="analysis1.html#cb115-1" tabindex="-1"></a><span class="fu">wilcox.test</span>(reduction <span class="sc">~</span> treatment, </span>
-<span id="cb115-2"><a href="analysis1.html#cb115-2" tabindex="-1"></a>            <span class="at">data =</span> polyps) <span class="sc">%&gt;%</span> </span>
-<span id="cb115-3"><a href="analysis1.html#cb115-3" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">treatment</span>, </span>
+<span>            data <span class="op">=</span> <span class="va">polyps</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
 ## compute exact p-value with ties</code></pre>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:right;">
-0.0568632
-</td>
-<td style="text-align:left;">
-Wilcoxon rank sum test with continuity correction
-</td>
-<td style="text-align:left;">
-two.sided
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="12%">
+<col width="12%">
+<col width="60%">
+<col width="14%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">24</td>
+<td align="right">0.0568632</td>
+<td align="left">Wilcoxon rank sum test with continuity correction</td>
+<td align="left">two.sided</td>
+</tr></tbody>
+</table></div>
 </div>
 <p>Performing this test will produce a warning about not being able to compute exact p-values when there are ties in the data (that is, more than one data point has the same rank) and instead an approximation is being used. If you'd like a deep dive into the maths behind this, you might find this <a href="https://stats.stackexchange.com/questions/597782/why-does-r-say-cannot-compute-exact-p-values-with-ties-when-i-can-do-it-with-p">Stack Overflow thread</a> helpful.</p>
 <p>The same function can be used for the repeated-measures Wilcoxon Signed Ranks test:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="analysis1.html#cb117-1" tabindex="-1"></a>polyps_tidy <span class="sc">%&gt;%</span></span>
-<span id="cb117-2"><a href="analysis1.html#cb117-2" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;baseline&quot;</span>, <span class="st">&quot;number12m&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb117-3"><a href="analysis1.html#cb117-3" tabindex="-1"></a>  <span class="fu">wilcox.test</span>(polyps_n <span class="sc">~</span> treatment, </span>
-<span id="cb117-4"><a href="analysis1.html#cb117-4" tabindex="-1"></a>            <span class="at">data =</span> .) <span class="sc">%&gt;%</span> </span>
-<span id="cb117-5"><a href="analysis1.html#cb117-5" tabindex="-1"></a>  <span class="fu">tidy</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number12m"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">polyps_n</span> <span class="op">~</span> <span class="va">treatment</span>, </span>
+<span>            data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in wilcox.test.default(x = DATA[[1L]], y = DATA[[2L]], ...): cannot
 ## compute exact p-value with ties</code></pre>
 <div class="kable-table">
-<table>
-<thead>
-<tr>
-<th style="text-align:right;">
-statistic
-</th>
-<th style="text-align:right;">
-p.value
-</th>
-<th style="text-align:left;">
-method
-</th>
-<th style="text-align:left;">
-alternative
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-255
-</td>
-<td style="text-align:right;">
-0.0026073
-</td>
-<td style="text-align:left;">
-Wilcoxon rank sum test with continuity correction
-</td>
-<td style="text-align:left;">
-two.sided
-</td>
-</tr>
-</tbody>
-</table>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="12%">
+<col width="12%">
+<col width="60%">
+<col width="14%">
+</colgroup>
+<thead><tr class="header">
+<th align="right">statistic</th>
+<th align="right">p.value</th>
+<th align="left">method</th>
+<th align="left">alternative</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">255</td>
+<td align="right">0.0026073</td>
+<td align="left">Wilcoxon rank sum test with continuity correction</td>
+<td align="left">two.sided</td>
+</tr></tbody>
+</table></div>
 </div>
 </div>
 <div id="resources-analysis1" class="section level2" number="5.7">
-<h2><span class="header-section-number">5.7</span> Further resources</h2>
+<h2>
+<span class="header-section-number">5.7</span> Further resources<a class="anchor" aria-label="anchor" href="#resources-analysis1"><i class="fas fa-link"></i></a>
+</h2>
 <p>As noted, this isn't a statistics course and our purpose here isn't to do a deep dive on statistical tests and theory. Instead, we aim to provide a basic overview of statistical analysis in R because once you have the basics, the coding you'll need to use for more complex additional tests is very similar. Once you've completed this course we'd recommend consulting some specific statistical resources to help guide you on the analyses you want to conduct.</p>
 <ul>
 <li><a href="https://learningstatisticswithr.com/">Learning statistics with R by Danielle Navarro</a></li>
@@ -1750,7 +1132,6 @@ two.sided
 <li><a href="https://openintro-ims.netlify.app/index.html">Introduction to Modern Statistics</a></li>
 <li><a href="https://moderndive.com/">Statistical inference via data science</a></li>
 </ul>
-
 </div>
 </div>
 <script>
@@ -1926,8 +1307,7 @@ window.onload = function() {
   update_total_correct();
 }
 
-</script>
-<script>
+</script><script>
 $( document ).ready(function() {
   var cite = ' ';
   var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
@@ -1955,28 +1335,46 @@ $( document ).ready(function() {
   move_sidebar();
   window.onresize = move_sidebar;
 });
-</script>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+</script><div class="chapter-nav">
+<div class="prev"><a href="live-office-hour-1.html"><span class="header-section-number">4</span> Live Office Hour 1</a></div>
+<div class="next"><a href="analysis2.html"><span class="header-section-number">6</span> Correlation and Regression</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#analysis1"><span class="header-section-number">5</span> Comparing Means</a></li>
+<li><a class="nav-link" href="#ilo-analysis"><span class="header-section-number">5.1</span> Intended Learning Outcomes</a></li>
+<li><a class="nav-link" href="#walkthrough-analysis"><span class="header-section-number">5.2</span> Walkthrough video</a></li>
+<li><a class="nav-link" href="#setup-analysis1"><span class="header-section-number">5.3</span> Set-up</a></li>
+<li>
+<a class="nav-link" href="#comparing-two-means"><span class="header-section-number">5.4</span> Comparing two means</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#one-sample-t-test"><span class="header-section-number">5.4.1</span> One-sample t-test</a></li>
+<li><a class="nav-link" href="#independent-samples-t-test"><span class="header-section-number">5.4.2</span> Independent samples t-test</a></li>
+<li><a class="nav-link" href="#paired-samples-t-test"><span class="header-section-number">5.4.3</span> Paired-samples t-test</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#comparing-more-than-two-means"><span class="header-section-number">5.5</span> Comparing more than two means</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#one-way-anova"><span class="header-section-number">5.5.1</span> One-way ANOVA</a></li>
+<li><a class="nav-link" href="#factorial-anova"><span class="header-section-number">5.5.2</span> Factorial ANOVA</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#non-parametric-options"><span class="header-section-number">5.6</span> Non-parametric options</a></li>
+<li><a class="nav-link" href="#resources-analysis1"><span class="header-section-number">5.7</span> Further resources</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/05-analysis1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/05-analysis1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2024-01-08.</p>
@@ -1988,8 +1386,5 @@ $( document ).ready(function() {
 
 </div></div>
 </footer>
-
-
 </body>
-
 </html>

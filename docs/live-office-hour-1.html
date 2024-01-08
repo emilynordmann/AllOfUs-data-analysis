@@ -1,50 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 4 Live Office Hour 1 | Intro to Data Wrangling and Analysis Using R</title>
-
-    <meta name="author" content="Emily Nordmann &amp; Javan Carter" />
-  
-   <meta name="description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 4 Live Office Hour 1 | Intro to Data Wrangling and Analysis Using R" />
-  <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis" />
-  <meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png" />
-  <meta property="og:description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Live Office Hour 1 | Intro to Data Wrangling and Analysis Using R" />
-  
-  <meta name="twitter:description" content="The accompanying book for the All of Us Research Program Intro to R and Data Visualization course." />
-  <meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png" />
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.4.2/transition.js"></script>
-    <script src="libs/bs3compat-0.4.2/tabs.js"></script>
-    <script src="libs/bs3compat-0.4.2/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
-    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Live Office Hour 1 | Intro to Data Wrangling and Analysis Using R</title>
+<meta name="author" content="Emily Nordmann &amp; Javan Carter">
+<meta name="description" content="4.1 Schedule and Zoom link The first live office hour session will take place on Thursday 18th January at 3-4pm EST via Zoom (Meeting ID: 852 5852 1368). The waiting room will be enabled. Please...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Live Office Hour 1 | Intro to Data Wrangling and Analysis Using R">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://emilynordmann.github.io/AllOfUs-data-analysis/live-office-hour-1.html">
+<meta property="og:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<meta property="og:description" content="4.1 Schedule and Zoom link The first live office hour session will take place on Thursday 18th January at 3-4pm EST via Zoom (Meeting ID: 852 5852 1368). The waiting room will be enabled. Please...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Live Office Hour 1 | Intro to Data Wrangling and Analysis Using R">
+<meta name="twitter:description" content="4.1 Schedule and Zoom link The first live office hour session will take place on Thursday 18th January at 3-4pm EST via Zoom (Meeting ID: 852 5852 1368). The waiting room will be enabled. Please...">
+<meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-    <style type="text/css">
+<style type="text/css">
     /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
     div.csl-bib-body { }
     div.csl-entry {
@@ -66,18 +47,15 @@
       margin-left: 2em;
     }
   </style>
-      <link rel="stylesheet" href="include/psyteachr.css" />
-    <link rel="stylesheet" href="include/webex.css" />
-    <link rel="stylesheet" href="include/style.css" />
-  
+<link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -89,32 +67,48 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Introduction</a></li>
+<li><a class="" href="prerequisites.html"><span class="header-section-number">1</span> Pre-requisites</a></li>
+<li><a class="" href="wrangle.html"><span class="header-section-number">2</span> Data Wrangling</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></li>
+<li><a class="active" href="live-office-hour-1.html"><span class="header-section-number">4</span> Live Office Hour 1</a></li>
+<li><a class="" href="analysis1.html"><span class="header-section-number">5</span> Comparing Means</a></li>
+<li><a class="" href="analysis2.html"><span class="header-section-number">6</span> Correlation and Regression</a></li>
+<li><a class="" href="live-office-hour-2.html"><span class="header-section-number">7</span> Live Office Hour 2</a></li>
+<li><a class="" href="completion-quiz.html"><span class="header-section-number">8</span> Completion Quiz</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="ai-and-coding.html"><span class="header-section-number">A</span> AI and coding</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="live-office-hour-1" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Live Office Hour 1</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="live-office-hour-1" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Live Office Hour 1<a class="anchor" aria-label="anchor" href="#live-office-hour-1"><i class="fas fa-link"></i></a>
+</h1>
 <div id="schedule-and-zoom-link" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Schedule and Zoom link</h2>
+<h2>
+<span class="header-section-number">4.1</span> Schedule and Zoom link<a class="anchor" aria-label="anchor" href="#schedule-and-zoom-link"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
-<li>The first live office hour session will take place on Thursday 18th January at 3-4pm EST via <a href="https://uofglasgow.zoom.us/j/85258521368">Zoom</a> (Meeting ID: 852 5852 1368).<br />
+<li>The first live office hour session will take place on Thursday 18th January at 3-4pm EST via <a href="https://uofglasgow.zoom.us/j/85258521368">Zoom</a> (Meeting ID: 852 5852 1368).<br>
 </li>
 <li>The waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the <em>All of Us</em> Researcher Academy otherwise you may not be allowed entry to the session.</li>
 </ul>
 </div>
 <div id="content" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Content</h2>
+<h2>
+<span class="header-section-number">4.2</span> Content<a class="anchor" aria-label="anchor" href="#content"><i class="fas fa-link"></i></a>
+</h2>
 <p>Live office hours are primarily an opportunity for you to ask questions to the instructors, get support with any problems you have been having, or request additional information on any aspect of the course so far.</p>
 <ul>
 <li>Emily will lead a Q&amp;A session on material covered in the workbook from Week 1</li>
@@ -122,12 +116,13 @@
 </ul>
 </div>
 <div id="pre-requisites" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Pre-requisites</h2>
+<h2>
+<span class="header-section-number">4.3</span> Pre-requisites<a class="anchor" aria-label="anchor" href="#pre-requisites"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Before joining the office hour, please ensure that you have worked through all the material from Week 1 - consult the Progress Tracker if you're not sure what you need to do.</li>
 <li>You can ask questions on the day, but you can also complete the <a href="https://forms.gle/4WXn5UCcaUmcjdfW7">Q&amp;A form</a> in advance to let your instructors know what you would like the session to focus on.</li>
 </ul>
-
 </div>
 </div>
 <script>
@@ -303,8 +298,7 @@ window.onload = function() {
   update_total_correct();
 }
 
-</script>
-<script>
+</script><script>
 $( document ).ready(function() {
   var cite = ' ';
   var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
@@ -332,28 +326,31 @@ $( document ).ready(function() {
   move_sidebar();
   window.onresize = move_sidebar;
 });
-</script>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+</script><div class="chapter-nav">
+<div class="prev"><a href="tidy.html"><span class="header-section-number">3</span> Data Tidying</a></div>
+<div class="next"><a href="analysis1.html"><span class="header-section-number">5</span> Comparing Means</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#live-office-hour-1"><span class="header-section-number">4</span> Live Office Hour 1</a></li>
+<li><a class="nav-link" href="#schedule-and-zoom-link"><span class="header-section-number">4.1</span> Schedule and Zoom link</a></li>
+<li><a class="nav-link" href="#content"><span class="header-section-number">4.2</span> Content</a></li>
+<li><a class="nav-link" href="#pre-requisites"><span class="header-section-number">4.3</span> Pre-requisites</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/04-office-hour-1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/04-office-hour-1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2024-01-08.</p>
@@ -365,8 +362,5 @@ $( document ).ready(function() {
 
 </div></div>
 </footer>
-
-
 </body>
-
 </html>
