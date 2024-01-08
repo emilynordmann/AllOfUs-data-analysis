@@ -3,7 +3,7 @@
 
 ## Schedule and Zoom link
 
-* The second live office hour session will take place on Thursday 18th January at 3-4pm EST via [Zoom](https://uofglasgow.zoom.us/j/85258521368) (Meeting ID: 852 5852 1368). 
+* The second live office hour session will take place w/c 2nd January and will be confirmed shortly.
 * The waiting room will be enabled. Please ensure that your Zoom name is set to the name that you used to register with the *All of Us* Researcher Academy otherwise you may not be allowed entry to the session.
 
 ## Content

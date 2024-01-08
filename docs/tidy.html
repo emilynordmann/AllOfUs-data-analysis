@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -121,10 +121,12 @@
 <li>Create and save a new R Markdown document named <code>chapter_3.Rmd</code>, get rid of the default template text from line 11 onwards.</li>
 <li>Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> </span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: package 'medicaldata' was built under R version 4.3.2</code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"theoph"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span></span></code></pre></div>
 <p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf">Data tidying cheat sheet</a>.</p>
@@ -137,9 +139,9 @@
 <p>Data cleaning and tidying will likely be the most time consuming and difficult task you perform. Whilst you can create code recipes for analyses and visualisations, as Hadley Whickham puts it, <a href="https://vita.had.co.nz/papers/tidy-data.pdf">"every messy dataset is messy in its own way"</a>, which means that you will often have to solve new problems that are specific to the dataset. Additionally, moving between data structures that are intuitive to read by humans and those that are useful for a computer requires a conceptual shift that only comes with practice.</p>
 <p>This is all a verbose way of saying that what lies ahead in this chapter is unlikely to sink in on the first attempt and you will need to practice with different examples (preferably with data you know well) before you truly feel comfortable with it.</p>
 <p>First, some terminology.</p>
-<p>An <a class="glossary">observation<span class="def"></span></a> is all the information about a single "thing" in a single condition, such as at one point in time. These things can be patients, sales, participants, feedback questionnaires, or really anything. Observations should have a way to identify them, such as a unique ID or a unique combination of values like ID and time-point</p>
-<p>A <a class="glossary">variable<span class="def"></span></a> is one type of information about the observation. For example, if observation is a participant, the variables you might have about the participant are the participant ID, the participant's sex and age, which condition of the experiment they were in, and their score.</p>
-<p>A <a class="glossary">value<span class="def"></span></a> is the data for one variable for one observation. For example, the value of the age variable from the observation of a participant might be <code>23</code>.</p>
+<p>An <a class="glossary" target="_blank" title="All of the data about a single trial or question." href="https://psyteachr.github.io/glossary/o#observation">observation</a> is all the information about a single "thing" in a single condition, such as at one point in time. These things can be patients, sales, participants, feedback questionnaires, or really anything. Observations should have a way to identify them, such as a unique ID or a unique combination of values like ID and time-point</p>
+<p>A <a class="glossary" target="_blank" title="(coding): A word that identifies and stores the value of some data for later use; (stats): An attribute or characteristic of an observation that you can measure, count, or describe" href="https://psyteachr.github.io/glossary/v#variable">variable</a> is one type of information about the observation. For example, if observation is a participant, the variables you might have about the participant are the participant ID, the participant's sex and age, which condition of the experiment they were in, and their score.</p>
+<p>A <a class="glossary" target="_blank" title="A single number or piece of data." href="https://psyteachr.github.io/glossary/v#value">value</a> is the data for one variable for one observation. For example, the value of the age variable from the observation of a participant might be <code>23</code>.</p>
 <div class="try">
 <p>The dataset <code>theoph</code> that you loaded in during set-up is from a study looking at anti-asthma medication. There are 12 participants who were given a dose of the medication and whose plasma was tested at 11 different time points (you can read the full details by running the help documentation <code><a href="https://higgi13425.github.io/medicaldata/reference/theoph.html">?theoph</a></code>). Have a look at this dataset and then answer the following questions:</p>
 <ul>
@@ -174,7 +176,7 @@ Explain these answers
 <h2>
 <span class="header-section-number">3.5</span> Reshaping Data<a class="anchor" aria-label="anchor" href="#reshaping-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>Data tables can be in <a class="glossary">wide<span class="def"></span></a> format or <a class="glossary">long<span class="def"></span></a> format (or a mix of the two). Wide data are where all the observations about one thing are in the same row, while long data are where each observation is on a separate row. You often need to convert between these formats to do different types of summaries or visualisation. You may have done something similar using pivot tables in Excel.</p>
+<p>Data tables can be in <a class="glossary" target="_blank" title="A data format where all of the observations about one subject are in the same row" href="https://psyteachr.github.io/glossary/w#wide">wide</a> format or <a class="glossary" target="_blank" title="A data format where each observation is on a separate row" href="https://psyteachr.github.io/glossary/l#long">long</a> format (or a mix of the two). Wide data are where all the observations about one thing are in the same row, while long data are where each observation is on a separate row. You often need to convert between these formats to do different types of summaries or visualisation. You may have done something similar using pivot tables in Excel.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:img-pivot-table"></span>
 <img src="images/tidy/excel_pivot_table.png" alt="Converting between wide and long formats using pivot tables in Excel." width="100%"><p class="caption">
@@ -188,69 +190,167 @@ Figure 3.1: Converting between wide and long formats using pivot tables in Excel
 <p>The <code>polyps</code> dataset we've used in the previous chapter is an example of a wide-form dataset. All the observations about each participant are in the same row. Each participant has data from three time-points (<code>baseline</code>, <code>number3m</code>, <code>number12m</code>) which are stored in three separate columns</p>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">participant_id</th>
-<th align="left">sex</th>
-<th align="right">age</th>
-<th align="right">baseline</th>
-<th align="left">treatment</th>
-<th align="right">number3m</th>
-<th align="right">number12m</th>
+<thead><tr>
+<th style="text-align:left;">
+participant_id
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:right;">
+baseline
+</th>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:right;">
+number3m
+</th>
+<th style="text-align:right;">
+number12m
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">001</td>
-<td align="left">female</td>
-<td align="right">17</td>
-<td align="right">7</td>
-<td align="left">sulindac</td>
-<td align="right">6</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+001
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">002</td>
-<td align="left">female</td>
-<td align="right">20</td>
-<td align="right">77</td>
-<td align="left">placebo</td>
-<td align="right">67</td>
-<td align="right">63</td>
+<tr>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+63
+</td>
 </tr>
-<tr class="odd">
-<td align="left">003</td>
-<td align="left">male</td>
-<td align="right">16</td>
-<td align="right">7</td>
-<td align="left">sulindac</td>
-<td align="right">4</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+003
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">004</td>
-<td align="left">female</td>
-<td align="right">18</td>
-<td align="right">5</td>
-<td align="left">placebo</td>
-<td align="right">5</td>
-<td align="right">28</td>
+<tr>
+<td style="text-align:left;">
+004
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+28
+</td>
 </tr>
-<tr class="odd">
-<td align="left">005</td>
-<td align="left">male</td>
-<td align="right">22</td>
-<td align="right">23</td>
-<td align="left">sulindac</td>
-<td align="right">16</td>
-<td align="right">17</td>
+<tr>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+17
+</td>
 </tr>
-<tr class="even">
-<td align="left">006</td>
-<td align="left">female</td>
-<td align="right">13</td>
-<td align="right">35</td>
-<td align="left">placebo</td>
-<td align="right">31</td>
-<td align="right">61</td>
+<tr>
+<td style="text-align:left;">
+006
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+61
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -273,7 +373,7 @@ Explain this answer
 <h3>
 <span class="header-section-number">3.5.2</span> Tidy data<a class="anchor" aria-label="anchor" href="#tidy-data"><i class="fas fa-link"></i></a>
 </h3>
-<p>Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class="glossary">tidy data<span class="def"></span></a> in long-form <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Just because a table is long doesn't mean it is tidy (see examples &lt;a href=&quot;https://kiwidamien.github.io/what-is-tidy-data.html&quot;&gt;here&lt;/a&gt;) but they're often used synonymously which we're going to adopt for the purposes of this chapter.&lt;/p&gt;"><sup>1</sup></a>, which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.</p>
+<p>Whilst wide-form data is intuitive for humans to read and enter data into, it can also be a little difficult to work with in R. Instead, we often need to use "<a class="glossary" target="_blank" title="A format for data that maps the meaning onto the structure." href="https://psyteachr.github.io/glossary/t#tidy-data">tidy data</a> in long-form <a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;Just because a table is long doesn't mean it is tidy (see examples &lt;a href=&quot;https://kiwidamien.github.io/what-is-tidy-data.html&quot;&gt;here&lt;/a&gt;) but they're often used synonymously which we're going to adopt for the purposes of this chapter.&lt;/p&gt;"><sup>1</sup></a>, which is data in a format that makes it easier to combine data from different tables, create summary tables, and visualise your data.</p>
 <ul>
 <li>Each observation must have its own row</li>
 <li>Each variable must have its own column</li>
@@ -282,55 +382,125 @@ Explain this answer
 <p>We've already seen an example of tidy data - the <code>theoph</code> dataset and the easy way to spot this is that there are multiple rows of data for the same <code>Subject</code> rather than all observations being spread out across columns in a single row:</p>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">Subject</th>
-<th align="right">Wt</th>
-<th align="right">Dose</th>
-<th align="right">Time</th>
-<th align="right">conc</th>
+<thead><tr>
+<th style="text-align:left;">
+Subject
+</th>
+<th style="text-align:right;">
+Wt
+</th>
+<th style="text-align:right;">
+Dose
+</th>
+<th style="text-align:right;">
+Time
+</th>
+<th style="text-align:right;">
+conc
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">79.6</td>
-<td align="right">4.02</td>
-<td align="right">0.00</td>
-<td align="right">0.74</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+79.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+0.74
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="right">79.6</td>
-<td align="right">4.02</td>
-<td align="right">0.25</td>
-<td align="right">2.84</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+79.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+2.84
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">79.6</td>
-<td align="right">4.02</td>
-<td align="right">0.57</td>
-<td align="right">6.57</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+79.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+0.57
+</td>
+<td style="text-align:right;">
+6.57
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="right">79.6</td>
-<td align="right">4.02</td>
-<td align="right">1.12</td>
-<td align="right">10.50</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+79.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+1.12
+</td>
+<td style="text-align:right;">
+10.50
+</td>
 </tr>
-<tr class="odd">
-<td align="left">1</td>
-<td align="right">79.6</td>
-<td align="right">4.02</td>
-<td align="right">2.02</td>
-<td align="right">9.66</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+79.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+2.02
+</td>
+<td style="text-align:right;">
+9.66
+</td>
 </tr>
-<tr class="even">
-<td align="left">1</td>
-<td align="right">79.6</td>
-<td align="right">4.02</td>
-<td align="right">3.82</td>
-<td align="right">8.58</td>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+79.6
+</td>
+<td style="text-align:right;">
+4.02
+</td>
+<td style="text-align:right;">
+3.82
+</td>
+<td style="text-align:right;">
+8.58
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -338,62 +508,146 @@ Explain this answer
 <p>The tidy version of the <code>polyps</code> dataset would look like this:</p>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">participant_id</th>
-<th align="left">sex</th>
-<th align="right">age</th>
-<th align="left">treatment</th>
-<th align="left">time</th>
-<th align="right">polyps_n</th>
+<thead><tr>
+<th style="text-align:left;">
+participant_id
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:left;">
+time
+</th>
+<th style="text-align:right;">
+polyps_n
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">001</td>
-<td align="left">female</td>
-<td align="right">17</td>
-<td align="left">sulindac</td>
-<td align="left">baseline</td>
-<td align="right">7</td>
+<tr>
+<td style="text-align:left;">
+001
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:left;">
+baseline
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="even">
-<td align="left">001</td>
-<td align="left">female</td>
-<td align="right">17</td>
-<td align="left">sulindac</td>
-<td align="left">number3m</td>
-<td align="right">6</td>
+<tr>
+<td style="text-align:left;">
+001
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:left;">
+number3m
+</td>
+<td style="text-align:right;">
+6
+</td>
 </tr>
-<tr class="odd">
-<td align="left">001</td>
-<td align="left">female</td>
-<td align="right">17</td>
-<td align="left">sulindac</td>
-<td align="left">number12m</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+001
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:left;">
+number12m
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">002</td>
-<td align="left">female</td>
-<td align="right">20</td>
-<td align="left">placebo</td>
-<td align="left">baseline</td>
-<td align="right">77</td>
+<tr>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:left;">
+baseline
+</td>
+<td style="text-align:right;">
+77
+</td>
 </tr>
-<tr class="odd">
-<td align="left">002</td>
-<td align="left">female</td>
-<td align="right">20</td>
-<td align="left">placebo</td>
-<td align="left">number3m</td>
-<td align="right">67</td>
+<tr>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:left;">
+number3m
+</td>
+<td style="text-align:right;">
+67
+</td>
 </tr>
-<tr class="even">
-<td align="left">002</td>
-<td align="left">female</td>
-<td align="right">20</td>
-<td align="left">placebo</td>
-<td align="left">number12m</td>
-<td align="right">63</td>
+<tr>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:left;">
+number12m
+</td>
+<td style="text-align:right;">
+63
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -421,60 +675,88 @@ Explain this answer
 </li>
 </ul>
 <p>With the pivot functions, it can be easier to show than tell - run the below code and then compare <code>polyps</code> with <code>polyps_tidy</code> and the pivot code and try to map each argument to what has changed.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number3m"</span>, <span class="st">"number12m"</span><span class="op">)</span>, <span class="co"># columns to make long </span></span>
 <span>               names_to <span class="op">=</span> <span class="st">"time"</span>, <span class="co"># new column name for headers</span></span>
 <span>               values_to <span class="op">=</span> <span class="st">"polyps_n"</span><span class="op">)</span> <span class="co"># new column name for values</span></span></code></pre></div>
 <p>The long-form dataset makes it possible to use tidyverse functions to flexibly summarize and visualise our dataset. For example, with the wide-form dataset, in order to calculate the mean number of polyps at each time-point, we would need to specify the calculation for each time-point individually:</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_baseline <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">baseline</span><span class="op">)</span>,</span>
 <span>            mean_3m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">number3m</span><span class="op">)</span>,</span>
 <span>            mean_12m <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">number12m</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="right">mean_baseline</th>
-<th align="right">mean_3m</th>
-<th align="right">mean_12m</th>
+<thead><tr>
+<th style="text-align:right;">
+mean_baseline
+</th>
+<th style="text-align:right;">
+mean_3m
+</th>
+<th style="text-align:right;">
+mean_12m
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">40.95455</td>
-<td align="right">38.40909</td>
-<td align="right">24.05</td>
+<tbody><tr>
+<td style="text-align:right;">
+40.95455
+</td>
+<td style="text-align:right;">
+38.40909
+</td>
+<td style="text-align:right;">
+24.05
+</td>
 </tr></tbody>
 </table></div>
 </div>
 <p>However, with the tidy version, not only does the code become more concise (and therefore less error-prone) but it also means that if additional time-points were added to the same dataset, the code doesn't need to change: it will return the calculation of all groups.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">polyps_n</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">time</th>
-<th align="right">mean</th>
+<thead><tr>
+<th style="text-align:left;">
+time
+</th>
+<th style="text-align:right;">
+mean
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">baseline</td>
-<td align="right">40.95455</td>
+<tr>
+<td style="text-align:left;">
+baseline
+</td>
+<td style="text-align:right;">
+40.95455
+</td>
 </tr>
-<tr class="even">
-<td align="left">number12m</td>
-<td align="right">24.05000</td>
+<tr>
+<td style="text-align:left;">
+number12m
+</td>
+<td style="text-align:right;">
+24.05000
+</td>
 </tr>
-<tr class="odd">
-<td align="left">number3m</td>
-<td align="right">38.40909</td>
+<tr>
+<td style="text-align:left;">
+number3m
+</td>
+<td style="text-align:right;">
+38.40909
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>An added benefit is that tidy datasets work very well with <code class="package">ggplot</code> (the below plot would be quite tricky to create with the wide-form dataset):</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">polyps_tidy</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">polyps_n</span>, fill <span class="op">=</span> <span class="va">time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">F</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">time</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
@@ -499,7 +781,7 @@ Explain this answer
 <code>values_from</code>: the column that contains the values for the new columns</li>
 </ul>
 <p>Again, it's easier to show than tell so run this code and then compare <code>polyps_tidy</code> with <code>polys_wide</code> (which should look like the original <code>polyps</code> dataset).</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_wide</span> <span class="op">&lt;-</span> <span class="va">polyps_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span></span>
 <span>  id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"participant_id"</span>, <span class="st">"sex"</span>, <span class="st">"age"</span>, <span class="st">"treatment"</span><span class="op">)</span>, <span class="co"># identifying column(s)</span></span>
@@ -508,75 +790,173 @@ Explain this answer
 <span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">participant_id</th>
-<th align="left">sex</th>
-<th align="right">age</th>
-<th align="left">treatment</th>
-<th align="right">baseline</th>
-<th align="right">number3m</th>
-<th align="right">number12m</th>
+<thead><tr>
+<th style="text-align:left;">
+participant_id
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:right;">
+baseline
+</th>
+<th style="text-align:right;">
+number3m
+</th>
+<th style="text-align:right;">
+number12m
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">001</td>
-<td align="left">female</td>
-<td align="right">17</td>
-<td align="left">sulindac</td>
-<td align="right">7</td>
-<td align="right">6</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:left;">
+001
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="left">002</td>
-<td align="left">female</td>
-<td align="right">20</td>
-<td align="left">placebo</td>
-<td align="right">77</td>
-<td align="right">67</td>
-<td align="right">63</td>
+<tr>
+<td style="text-align:left;">
+002
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+63
+</td>
 </tr>
-<tr class="odd">
-<td align="left">003</td>
-<td align="left">male</td>
-<td align="right">16</td>
-<td align="left">sulindac</td>
-<td align="right">7</td>
-<td align="right">4</td>
-<td align="right">2</td>
+<tr>
+<td style="text-align:left;">
+003
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td align="left">004</td>
-<td align="left">female</td>
-<td align="right">18</td>
-<td align="left">placebo</td>
-<td align="right">5</td>
-<td align="right">5</td>
-<td align="right">28</td>
+<tr>
+<td style="text-align:left;">
+004
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+28
+</td>
 </tr>
-<tr class="odd">
-<td align="left">005</td>
-<td align="left">male</td>
-<td align="right">22</td>
-<td align="left">sulindac</td>
-<td align="right">23</td>
-<td align="right">16</td>
-<td align="right">17</td>
+<tr>
+<td style="text-align:left;">
+005
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+17
+</td>
 </tr>
-<tr class="even">
-<td align="left">006</td>
-<td align="left">female</td>
-<td align="right">13</td>
-<td align="left">placebo</td>
-<td align="right">35</td>
-<td align="right">31</td>
-<td align="right">61</td>
+<tr>
+<td style="text-align:left;">
+006
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+61
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>An example of when wide-format data is required is if you needed to create a scatterplot or conduct a correlation between two levels of a grouping variable so and so you need the data in separate columns:</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_wide</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">baseline</span> <span class="op">&lt;</span> <span class="fl">200</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove the outliers</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">baseline</span>, y <span class="op">=</span> <span class="va">number12m</span>, colour <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -591,7 +971,7 @@ Explain this answer
 </h2>
 <p>Restructuring data between wide and long-form is arguably one of the most difficult tasks you will need to do whilst coding, because the nature of the problem depends not only on the design of your study but on the idiosyncrasies of the dataset organisation, and the interaction between the two. So, let's run through another example, this time with a slightly more complicated dataset that will require us to create intermediate objects.</p>
 <p>For this example, we're going to use the <code>laryngoscope</code> dataset about intubation methods - I'd recommend reviewing the help documentation to familiarize yourself with the variables before you go any further (<code><a href="https://higgi13425.github.io/medicaldata/reference/laryngoscope.html">?laryngoscope</a></code>). This dataset is quite large so we're going to reduce the number of variables to just those we need for this example:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_subset</span> <span class="op">&lt;-</span> <span class="va">laryngoscope</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">Randomization</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span></span></code></pre></div>
 <div id="adding-id-variables" class="section level3" number="3.6.1">
@@ -600,7 +980,7 @@ Explain this answer
 </h3>
 <p>This dataset doesn't originally have any participant ID codes. This is likely because it's in wide-form so we know which data points relate to which participant because they're all on the same row, however, when we start pulling apart and putting the data back together, it can prevent a number of issues to ensure you have a clear ID column for which observations all belong to the same thing.</p>
 <p>To add on an ID number, we'll use <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> to create a column where the ID number equals the row number. We'll also move it to be the first column of the dataset using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> and <code><a href="https://tidyselect.r-lib.org/reference/everything.html">everything()</a></code> which then selects the <code>id</code> column, and then everything else in the dataset.</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_subset</span> <span class="op">&lt;-</span> <span class="va">laryn_subset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">id</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -627,71 +1007,155 @@ Explain this answer
 <code>method</code> the method used for the intubation attempt</li>
 </ul>
 <p>Let's try the code we used to transform the previous, simpler dataset:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy1</span> <span class="op">&lt;-</span> <span class="va">laryn_subset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"attempt"</span><span class="op">)</span>, <span class="co">#tidy all variables that start with "attempt"</span></span>
 <span>               names_to <span class="op">=</span> <span class="st">"variable"</span>, </span>
 <span>               values_to <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">laryn_tidy1</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="right">id</th>
-<th align="right">age</th>
-<th align="right">gender</th>
-<th align="right">Randomization</th>
-<th align="left">variable</th>
-<th align="right">score</th>
+<thead><tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:right;">
+gender
+</th>
+<th style="text-align:right;">
+Randomization
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:right;">
+score
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt1_time</td>
-<td align="right">29</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt1_time
+</td>
+<td style="text-align:right;">
+29
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt1_S_F</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt1_S_F
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2_time</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2_time
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2_assigned_method</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2_assigned_method
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2_S_F</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2_S_F
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt3_time</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt3_time
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -699,7 +1163,7 @@ Explain this answer
 <p>This isn't right - we've got multiple different types of information in both the <code>variable</code> and <code>score</code> columns. First, let's separate out the attempt from the measurement. This is somewhat straightforward in that the information about which attempt it is is always to the left of the first underscore in the variable name (e.g., <code>attempt1_time</code>), so we can use the argument <code>names_sep</code> to tell R to split the column at the underscore and put the data from each side into two columns named <code>attempt</code> and <code>measurement</code>.</p>
 <p>If you do have control over your data, this is a key reason why consistent naming conventions are super important. If you have consistent and meaningful uses of capital letters, underscores, and periods in your variable names, you can then use this information to manipulate your data frames far more easily. The <code>laryn</code> dataset has used underscores to separate the names bits of information (e.g., <code>attempt1_time</code>) but has also used them as generic spaces (e.g., <code>attempt2_assignment_method</code>).</p>
 <p>What this means is that when we tidy the dataset with the <code>names_sep</code> argument, we'll get a warning message:</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy2</span> <span class="op">&lt;-</span> <span class="va">laryn_subset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">attempt1_time</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span>,</span>
 <span>               names_sep <span class="op">=</span> <span class="st">"_"</span>,</span>
@@ -710,75 +1174,173 @@ Explain this answer
 <p>Because we have asked R to separate the variables by an underscore and have only given it two column names, it has discarded the information that comes after the second underscore. This doesn't actually make a great deal of difference to this dataset, the labeling is still relatively meaningful:</p>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="right">id</th>
-<th align="right">age</th>
-<th align="right">gender</th>
-<th align="right">Randomization</th>
-<th align="left">attempt</th>
-<th align="left">measurement</th>
-<th align="right">score</th>
+<thead><tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:right;">
+gender
+</th>
+<th style="text-align:right;">
+Randomization
+</th>
+<th style="text-align:left;">
+attempt
+</th>
+<th style="text-align:left;">
+measurement
+</th>
+<th style="text-align:right;">
+score
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt1</td>
-<td align="left">time</td>
-<td align="right">29</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt1
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+29
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt1</td>
-<td align="left">S</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt1
+</td>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2</td>
-<td align="left">time</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2</td>
-<td align="left">assigned</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:left;">
+assigned
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2</td>
-<td align="left">S</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt3</td>
-<td align="left">time</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt3
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>However, if you'd like more precise control over your separation, you can use the <code>names_pattern</code> argument. <code>(.*?)_(.*)</code> uses two groups of data where the first group is everything until the first underscore <code>((.*?))</code> in the column name and the second group is everything after the underscore following the first group <code>((.*))</code> (Thank you to <a href="https://stackoverflow.com/questions/64150083/using-pivot-longer-in-tidyr-with-a-complex-separator">Stack Overflow</a> for this solution!).</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy3</span> <span class="op">&lt;-</span> <span class="va">laryn_subset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">attempt1_time</span><span class="op">:</span><span class="va">attempt3_S_F</span><span class="op">)</span>,</span>
 <span>               names_pattern <span class="op">=</span> <span class="st">'(.*?)_(.*)'</span>,</span>
@@ -786,69 +1348,167 @@ Explain this answer
 <span>               values_to <span class="op">=</span> <span class="st">"score"</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="right">id</th>
-<th align="right">age</th>
-<th align="right">gender</th>
-<th align="right">Randomization</th>
-<th align="left">attempt</th>
-<th align="left">measurement</th>
-<th align="right">score</th>
+<thead><tr>
+<th style="text-align:right;">
+id
+</th>
+<th style="text-align:right;">
+age
+</th>
+<th style="text-align:right;">
+gender
+</th>
+<th style="text-align:right;">
+Randomization
+</th>
+<th style="text-align:left;">
+attempt
+</th>
+<th style="text-align:left;">
+measurement
+</th>
+<th style="text-align:right;">
+score
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt1</td>
-<td align="left">time</td>
-<td align="right">29</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt1
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+29
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt1</td>
-<td align="left">S_F</td>
-<td align="right">1</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt1
+</td>
+<td style="text-align:left;">
+S_F
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2</td>
-<td align="left">time</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2</td>
-<td align="left">assigned_method</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:left;">
+assigned_method
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="odd">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt2</td>
-<td align="left">S_F</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:left;">
+S_F
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">51</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="left">attempt3</td>
-<td align="left">time</td>
-<td align="right">NA</td>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+attempt3
+</td>
+<td style="text-align:left;">
+time
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -859,7 +1519,7 @@ Explain this answer
 <span class="header-section-number">3.6.3</span> Spreading variables to create tidy data<a class="anchor" aria-label="anchor" href="#spreading-variables-to-create-tidy-data"><i class="fas fa-link"></i></a>
 </h3>
 <p>This still isn't quite right because whilst we have sorted out the names, the <code>score</code> variable contains three different types of measurement (the intubation time, whether it was a success or failure, and the assignment method). Instead we need an additional step where we spread these measurements across different variables:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy4</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"age"</span>, <span class="st">"gender"</span>, <span class="st">"Randomization"</span>, <span class="st">"attempt"</span><span class="op">)</span>,</span>
 <span>              names_from <span class="op">=</span> <span class="st">"measurement"</span>, </span>
@@ -873,7 +1533,7 @@ Explain this answer
 <span class="header-section-number">3.6.4</span> Correcting factors<a class="anchor" aria-label="anchor" href="#correcting-factors"><i class="fas fa-link"></i></a>
 </h3>
 <p>Finally, we can also tidy up some of the categorical variables: <code>gender</code>, <code>Randomization</code> and <code>S_F</code> are represented as numerical data but they're actually categories. We could just tell R that this data is a factor and leave the values as they are:</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">laryn_tidy4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">laryn_tidy5</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -883,7 +1543,7 @@ Explain this answer
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">laryn_tidy5</span><span class="op">)</span></span></code></pre></div>
 <p>But we might as well take the opportunity to make our dataset more readable. The great thing about working in R is that you don't have to have everything coded numerically as you would in e.g., SPSS. Instead, we can use text labels which means we don't have to remember what 0 and 1 means.</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy6</span> <span class="op">&lt;-</span> <span class="va">laryn_tidy4</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, </span>
 <span>                         levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>,</span>
@@ -897,34 +1557,50 @@ Explain this answer
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">laryn_tidy6</span><span class="op">)</span></span></code></pre></div>
 <p>Now the data are finally in tidy format we can use our tidyverse functions to easily summarize and visualize by different variables.For example, we can calculate the average intubation time for each attempt:</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">attempt</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean_time <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">time</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">attempt</th>
-<th align="right">mean_time</th>
+<thead><tr>
+<th style="text-align:left;">
+attempt
+</th>
+<th style="text-align:right;">
+mean_time
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">attempt1</td>
-<td align="right">33.40909</td>
+<tr>
+<td style="text-align:left;">
+attempt1
+</td>
+<td style="text-align:right;">
+33.40909
+</td>
 </tr>
-<tr class="even">
-<td align="left">attempt2</td>
-<td align="right">42.90000</td>
+<tr>
+<td style="text-align:left;">
+attempt2
+</td>
+<td style="text-align:right;">
+42.90000
+</td>
 </tr>
-<tr class="odd">
-<td align="left">attempt3</td>
-<td align="right">21.33333</td>
+<tr>
+<td style="text-align:left;">
+attempt3
+</td>
+<td style="text-align:right;">
+21.33333
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>Or we could visualize the numberof success and failures on each attempt:</p>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">laryn_tidy6</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S_F</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># remove NAs from plot</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">S_F</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -942,7 +1618,7 @@ Explain this answer
 </div>
 <p>We've used pipes <code>%&gt;%</code> throughout this course but this type of data processing is where they really start to shine, as they can significantly reduce the amount of code you write.</p>
 <p>As a recap, a pipe takes the result of the previous function and sends it to the next function as its first argument, which means that you do not need to create intermediate objects. Below is all the code we've used in this chapter, and in the process we created multiple objects. This can get very confusing in longer scripts.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># read in data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span></span>
 <span></span>
@@ -984,7 +1660,7 @@ Explain this answer
 <p>You <em>can</em> give each object the same name and keep replacing the old data object with the new one at each step. This will keep your environment clean, but it makes debugging code much harder.</p>
 </div>
 <p>For longer series of steps like the one above, using pipes can eliminate many intermediate objects. This also makes it easier to add an intermediate step to your process without having to think of a new table name and edit the table input to the next step (which is really easy to accidentally miss).</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">laryn_tidy</span> <span class="op">&lt;-</span>  <span class="va">laryngoscope</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -1031,7 +1707,7 @@ Explain this answer
 <li>In the set-up code chunk, load the <code class="package">tidyverse</code> then load the two data files in using <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> and name the objects <code>wide1</code> and <code>wide2</code>
 </li>
 </ul>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="va">wide1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/ads-v1/data/wide_exercise-1.csv"</span><span class="op">)</span></span>
 <span><span class="va">wide2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://psyteachr.github.io/ads-v1/data/wide_exercise-2.csv"</span><span class="op">)</span></span></code></pre></div>
@@ -1049,7 +1725,7 @@ Explain this answer
 Solution
 </button>
 <p>You can click on the object to view it in the viewing pane or you could use any of the following:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">wide1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">wide1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">wide1</span><span class="op">)</span></span></code></pre></div>
@@ -1080,7 +1756,7 @@ Explain these answers
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tidy1</span> <span class="op">&lt;-</span> <span class="va">wide1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">q1</span><span class="op">:</span><span class="va">q5</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"question"</span>, </span>
@@ -1128,7 +1804,7 @@ Hint 2
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tidy2a</span> <span class="op">&lt;-</span> <span class="va">wide2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">q1_sat</span><span class="op">:</span><span class="va">q5_rec</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"question"</span>, <span class="st">"category"</span><span class="op">)</span>, </span>
@@ -1169,7 +1845,7 @@ Hint 2
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tidy2b</span> <span class="op">&lt;-</span> <span class="va">wide2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="va">q1_sat</span><span class="op">:</span><span class="va">q5_rec</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"question"</span>, <span class="st">"category"</span><span class="op">)</span>, </span>
@@ -1188,7 +1864,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tidy2a</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">id</span>, <span class="va">category</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span><span class="op">)</span></span>
@@ -1215,7 +1891,7 @@ Hint
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">tidy2b</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sat</span>, y <span class="op">=</span> <span class="va">rec</span>, colour <span class="op">=</span> <span class="va">repeat_patient</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1233,7 +1909,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">tidy2a</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">repeat_patient</span>, y <span class="op">=</span> <span class="va">response</span>, fill <span class="op">=</span> <span class="va">repeat_patient</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">category</span><span class="op">)</span><span class="op">+</span></span>
@@ -1251,7 +1927,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">tidy2a</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">response</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"Grey"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Responses across all questions and categories"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1283,44 +1959,50 @@ definition
 <tbody>
 <tr>
 <td style="text-align:left;">
-long
+<a href="https://psyteachr.github.io/glossary/l.html#long" class="glossary" target="_blank">long</a>
 </td>
 <td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-observation
-</td>
-<td style="text-align:left;">
+A data format where each observation is on a separate row
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-tidy data
+<a href="https://psyteachr.github.io/glossary/o.html#observation" class="glossary" target="_blank">observation</a>
 </td>
 <td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-value
-</td>
-<td style="text-align:left;">
+All of the data about a single trial or question.
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-variable
+<a href="https://psyteachr.github.io/glossary/t.html#tidy-data" class="glossary" target="_blank">tidy data</a>
 </td>
 <td style="text-align:left;">
+A format for data that maps the meaning onto the structure.
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-wide
+<a href="https://psyteachr.github.io/glossary/v.html#value" class="glossary" target="_blank">value</a>
 </td>
 <td style="text-align:left;">
+A single number or piece of data.
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/v.html#variable" class="glossary" target="_blank">variable</a>
+</td>
+<td style="text-align:left;">
+(coding): A word that identifies and stores the value of some data for later use; (stats): An attribute or characteristic of an observation that you can measure, count, or describe
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="https://psyteachr.github.io/glossary/w.html#wide" class="glossary" target="_blank">wide</a>
+</td>
+<td style="text-align:left;">
+A data format where all of the observations about one subject are in the same row
 </td>
 </tr>
 </tbody>
@@ -1600,7 +2282,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2023-12-18.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2024-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
