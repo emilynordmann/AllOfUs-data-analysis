@@ -292,7 +292,7 @@ And combine different criteria:
 
 polyps5 <- polyps4 %>%
   mutate(risk = case_when(category == "High" ~ "High risk",
-                          sex == "Male" & age < 25 ~ "High risk",
+                          sex == "male" & age < 25 ~ "High risk",
                           TRUE ~ "Not high risk")) # set all other values to "no bonus"
 ```
 

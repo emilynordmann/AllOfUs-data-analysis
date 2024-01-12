@@ -19,7 +19,7 @@
 <meta name="twitter:image" content="https://emilynordmann.github.io/AllOfUs-data-analysis/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
@@ -124,16 +124,18 @@
 <li>Create and save a new R Markdown document named <code>chapter_5.Rmd</code>, get rid of the default template text from line 11 onwards.</li>
 <li>Add the below code to the set-up chunk and then run the code to load the packages and data.You may need to install the packages if you don't have them installed already.</li>
 </ul>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>   </span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://afex.singmann.science/">afex</a></span><span class="op">)</span></span></code></pre></div>
-<pre><code>## Warning: package 'afex' was built under R version 4.3.2</code></pre>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans">emmeans</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://afex.singmann.science/">afex</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rvlenth/emmeans">emmeans</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: package 'gapminder' was built under R version 4.3.2</code></pre>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://higgi13425.github.io/medicaldata/">medicaldata</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code>## Warning: package 'medicaldata' was built under R version 4.3.2</code></pre>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"polyps"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"gapminder"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"laryngoscope"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -142,7 +144,7 @@
 <span class="header-section-number">5.4</span> Comparing two means<a class="anchor" aria-label="anchor" href="#comparing-two-means"><i class="fas fa-link"></i></a>
 </h2>
 <p>We're going to use the <code>polyps</code> dataset to run a number of different t-tests. You may find it useful to familiarize yourself with the dataset before proceeding further. As a first step, we'll create a new variable <code>reduction</code> which is the difference in the number of polyps at baseline compared to 12 months after treatment began - a higher number reflects a greater reduction in polpys (i.e., a positive number is a good thing). Additionally, to avoid any issues, we're also just going to use a complete dataset, so we only include participants who have data for all time-points.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">number12m</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># drop missing values</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>reduction <span class="op">=</span> <span class="va">baseline</span> <span class="op">-</span> <span class="va">number12m</span><span class="op">)</span></span></code></pre></div>
@@ -152,7 +154,7 @@
 </h3>
 <p>We can perform a one-sample t-test on the new <code>reduction</code> variable to determine whether the reduction in polyps after treatment is significantly different to zero.</p>
 <p>First, let's visualize the data using a simple boxplot. Because we've only got one, we set the x variable to <code>x = ""</code>.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">polyps</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">reduction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="st">"Reduction in polyps"</span><span class="op">)</span></span></code></pre></div>
@@ -167,7 +169,7 @@
 <li>
 <code>conf.high</code> will be displayed as <code>Inf</code> because we have specified a one-tailed test.</li>
 </ul>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># keep the outliers, i.e., use the full dataset as is</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">polyps</span><span class="op">$</span><span class="va">reduction</span>,</span>
 <span>       mu <span class="op">=</span> <span class="fl">0</span>,</span>
@@ -175,39 +177,61 @@
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="10%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="20%">
-<col width="13%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">estimate</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">19.85</td>
-<td align="right">1.301766</td>
-<td align="right">0.1042795</td>
-<td align="right">19</td>
-<td align="right">-6.516709</td>
-<td align="right">Inf</td>
-<td align="left">One Sample t-test</td>
-<td align="left">greater</td>
+<tbody><tr>
+<td style="text-align:right;">
+19.85
+</td>
+<td style="text-align:right;">
+1.301766
+</td>
+<td style="text-align:right;">
+0.1042795
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+-6.516709
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:left;">
+One Sample t-test
+</td>
+<td style="text-align:left;">
+greater
+</td>
 </tr></tbody>
 </table></div>
 </div>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># remove the outliers</span></span>
 <span></span>
 <span><span class="va">polyps_outliers</span> <span class="op">&lt;-</span> <span class="va">polyps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -219,41 +243,63 @@
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="11%">
-<col width="11%">
-<col width="10%">
-<col width="10%">
-<col width="10%">
-<col width="10%">
-<col width="19%">
-<col width="13%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">estimate</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">-0.6666667</td>
-<td align="right">-0.2155182</td>
-<td align="right">0.5840361</td>
-<td align="right">17</td>
-<td align="right">-6.047827</td>
-<td align="right">Inf</td>
-<td align="left">One Sample t-test</td>
-<td align="left">greater</td>
+<tbody><tr>
+<td style="text-align:right;">
+-0.6666667
+</td>
+<td style="text-align:right;">
+-0.2155182
+</td>
+<td style="text-align:right;">
+0.5840361
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+-6.047827
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:left;">
+One Sample t-test
+</td>
+<td style="text-align:left;">
+greater
+</td>
 </tr></tbody>
 </table></div>
 </div>
 <p>There's no significant difference in the number of polyps after treatment according to this test, but of course, we've included the data from both the control and treatment group in this analysis.</p>
 <p>You can use the function <code><a href="https://dplyr.tidyverse.org/reference/do.html">do()</a></code> combined with <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to perform this test on different groups. For example, we can run the one-sample t-test on both <code>treatment</code> groups separately and if we do this we see that the reduction in polyps is significantly different to zero but only for the sulindac condition.</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_outliers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">treatment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span><span class="op">(</span>                               </span>
@@ -263,51 +309,94 @@
 <span>      <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span>                        </span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<div class="inline-table"><table style="width:100%;" class="table table-sm">
-<colgroup>
-<col width="10%">
-<col width="9%">
-<col width="10%">
-<col width="10%">
-<col width="10%">
-<col width="11%">
-<col width="10%">
-<col width="18%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">treatment</th>
-<th align="right">estimate</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+treatment
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">placebo</td>
-<td align="right">-7.300</td>
-<td align="right">-1.659234</td>
-<td align="right">0.9342791</td>
-<td align="right">9</td>
-<td align="right">-15.365002</td>
-<td align="right">Inf</td>
-<td align="left">One Sample t-test</td>
-<td align="left">greater</td>
+<tr>
+<td style="text-align:left;">
+placebo
+</td>
+<td style="text-align:right;">
+-7.300
+</td>
+<td style="text-align:right;">
+-1.659234
+</td>
+<td style="text-align:right;">
+0.9342791
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+-15.365002
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:left;">
+One Sample t-test
+</td>
+<td style="text-align:left;">
+greater
+</td>
 </tr>
-<tr class="even">
-<td align="left">sulindac</td>
-<td align="right">7.625</td>
-<td align="right">4.077034</td>
-<td align="right">0.0023536</td>
-<td align="right">7</td>
-<td align="right">4.081698</td>
-<td align="right">Inf</td>
-<td align="left">One Sample t-test</td>
-<td align="left">greater</td>
+<tr>
+<td style="text-align:left;">
+sulindac
+</td>
+<td style="text-align:right;">
+7.625
+</td>
+<td style="text-align:right;">
+4.077034
+</td>
+<td style="text-align:right;">
+0.0023536
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4.081698
+</td>
+<td style="text-align:right;">
+Inf
+</td>
+<td style="text-align:left;">
+One Sample t-test
+</td>
+<td style="text-align:left;">
+greater
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -319,7 +408,7 @@
 </h3>
 <p>The same <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function can be used to perform other types of t-tests, we just need to include different arguments. In this example, we conduct an independent t-test to determine whether the reduction in polyps is significantly different between the two groups.</p>
 <p>First, we'll visualize this difference using a violin-boxplot (try running this plot with the original dataset <code>polyps</code> to see what a difference removing the outliers makes):</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">polyps_outliers</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">treatment</span>, y <span class="op">=</span> <span class="va">reduction</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span></span>
@@ -335,7 +424,7 @@
 <li>
 <code>var.equal</code> is whether the variances of the two groups are equal. If set to TRUE, the test performed will be the standard Student's independent t-test. If set to FALSE (the default in R which is not the case in all stats programs), it will run a Welch t-test (see <a href="https://www.rips-irsp.com/articles/10.5334/irsp.82/">this paper by Delacre et al.</a> that argues why the Welch test should be the default)</li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># specify data set </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">treatment</span>, </span>
 <span>       data <span class="op">=</span> <span class="va">polyps_outliers</span>,</span>
@@ -350,81 +439,137 @@
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="8%">
-<col width="9%">
-<col width="9%">
-<col width="9%">
-<col width="8%">
-<col width="9%">
-<col width="8%">
-<col width="9%">
-<col width="16%">
-<col width="11%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">estimate</th>
-<th align="right">estimate1</th>
-<th align="right">estimate2</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+estimate1
+</th>
+<th style="text-align:right;">
+estimate2
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">-14.925</td>
-<td align="right">-7.3</td>
-<td align="right">7.625</td>
-<td align="right">-2.858966</td>
-<td align="right">0.005684</td>
-<td align="right">16</td>
-<td align="right">-Inf</td>
-<td align="right">-5.810756</td>
-<td align="left">Two Sample t-test</td>
-<td align="left">less</td>
+<tbody><tr>
+<td style="text-align:right;">
+-14.925
+</td>
+<td style="text-align:right;">
+-7.3
+</td>
+<td style="text-align:right;">
+7.625
+</td>
+<td style="text-align:right;">
+-2.858966
+</td>
+<td style="text-align:right;">
+0.005684
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-5.810756
+</td>
+<td style="text-align:left;">
+Two Sample t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr></tbody>
 </table></div>
 </div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="8%">
-<col width="9%">
-<col width="9%">
-<col width="9%">
-<col width="8%">
-<col width="9%">
-<col width="8%">
-<col width="9%">
-<col width="16%">
-<col width="11%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">estimate</th>
-<th align="right">estimate1</th>
-<th align="right">estimate2</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+estimate1
+</th>
+<th style="text-align:right;">
+estimate2
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">-14.925</td>
-<td align="right">-7.3</td>
-<td align="right">7.625</td>
-<td align="right">-2.858966</td>
-<td align="right">0.005684</td>
-<td align="right">16</td>
-<td align="right">-Inf</td>
-<td align="right">-5.810756</td>
-<td align="left">Two Sample t-test</td>
-<td align="left">less</td>
+<tbody><tr>
+<td style="text-align:right;">
+-14.925
+</td>
+<td style="text-align:right;">
+-7.3
+</td>
+<td style="text-align:right;">
+7.625
+</td>
+<td style="text-align:right;">
+-2.858966
+</td>
+<td style="text-align:right;">
+0.005684
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-5.810756
+</td>
+<td style="text-align:left;">
+Two Sample t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -435,7 +580,7 @@
 </h3>
 <p>The paired-samples t-test throws up our first real need for data wrangling. Let's take a quick detour and use the <code>gampinder</code> dataset (again take a moment to familiarize yourself with the dataset using the help documentation). The <code>gapminder</code> dataset is in tidy format: each country has multiple rows of data, one for each year in the dataset. This means that it is easy to conduct a paired-samples t-test. For example, could compare life expectancy between 1997 and 2007.</p>
 <p>As always, let's visualize it first:</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># just pull out the two years we're interested in</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -445,11 +590,11 @@
 ## ℹ did you forget `aes(group = ...)`?</code></pre>
 <div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-9-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Well that doesn't look right does it. The issue here is that year is coded as a numeric variable and we've tried to create a plot that requires a categorical variable on the x-axis. In order to get out plot to work, we need to change year to a factor:</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>That's better.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -457,7 +602,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Now we can run the t-test to look at life expectancy between 1997 and 2007 collapsing across all countries:</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">lifeExp</span> <span class="op">~</span> <span class="va">year</span>, </span>
@@ -466,40 +611,62 @@
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="11%">
-<col width="11%">
-<col width="9%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="16%">
-<col width="14%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">estimate</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">-1.992746</td>
-<td align="right">-8.195187</td>
-<td align="right">0</td>
-<td align="right">141</td>
-<td align="right">-2.473458</td>
-<td align="right">-1.512035</td>
-<td align="left">Paired t-test</td>
-<td align="left">two.sided</td>
+<tbody><tr>
+<td style="text-align:right;">
+-1.992746
+</td>
+<td style="text-align:right;">
+-8.195187
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+-2.473458
+</td>
+<td style="text-align:right;">
+-1.512035
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+two.sided
+</td>
 </tr></tbody>
 </table></div>
 </div>
 <p>Or use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/do.html">do()</a></code> to split it by continent:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -512,83 +679,180 @@
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="10%">
-<col width="10%">
-<col width="11%">
-<col width="10%">
-<col width="10%">
-<col width="9%">
-<col width="11%">
-<col width="14%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">continent</th>
-<th align="right">estimate</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:left;">
+continent
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">Africa</td>
-<td align="right">-1.207769</td>
-<td align="right">-1.922156</td>
-<td align="right">0.0300905</td>
-<td align="right">51</td>
-<td align="right">-Inf</td>
-<td align="right">-0.1551191</td>
-<td align="left">Paired t-test</td>
-<td align="left">less</td>
+<tr>
+<td style="text-align:left;">
+Africa
+</td>
+<td style="text-align:right;">
+-1.207769
+</td>
+<td style="text-align:right;">
+-1.922156
+</td>
+<td style="text-align:right;">
+0.0300905
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-0.1551191
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr>
-<tr class="even">
-<td align="left">Americas</td>
-<td align="right">-2.457640</td>
-<td align="right">-11.815866</td>
-<td align="right">0.0000000</td>
-<td align="right">24</td>
-<td align="right">-Inf</td>
-<td align="right">-2.1017852</td>
-<td align="left">Paired t-test</td>
-<td align="left">less</td>
+<tr>
+<td style="text-align:left;">
+Americas
+</td>
+<td style="text-align:right;">
+-2.457640
+</td>
+<td style="text-align:right;">
+-11.815866
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-2.1017852
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Asia</td>
-<td align="right">-2.707970</td>
-<td align="right">-14.035916</td>
-<td align="right">0.0000000</td>
-<td align="right">32</td>
-<td align="right">-Inf</td>
-<td align="right">-2.3811653</td>
-<td align="left">Paired t-test</td>
-<td align="left">less</td>
+<tr>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+-2.707970
+</td>
+<td style="text-align:right;">
+-14.035916
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-2.3811653
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr>
-<tr class="even">
-<td align="left">Europe</td>
-<td align="right">-2.143433</td>
-<td align="right">-15.844473</td>
-<td align="right">0.0000000</td>
-<td align="right">29</td>
-<td align="right">-Inf</td>
-<td align="right">-1.9135762</td>
-<td align="left">Paired t-test</td>
-<td align="left">less</td>
+<tr>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+-2.143433
+</td>
+<td style="text-align:right;">
+-15.844473
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-1.9135762
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">-2.529500</td>
-<td align="right">-20.317269</td>
-<td align="right">0.0156543</td>
-<td align="right">1</td>
-<td align="right">-Inf</td>
-<td align="right">-1.7434379</td>
-<td align="left">Paired t-test</td>
-<td align="left">less</td>
+<tr>
+<td style="text-align:left;">
+Oceania
+</td>
+<td style="text-align:right;">
+-2.529500
+</td>
+<td style="text-align:right;">
+-20.317269
+</td>
+<td style="text-align:right;">
+0.0156543
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-Inf
+</td>
+<td style="text-align:right;">
+-1.7434379
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+less
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -599,7 +863,7 @@
 <li>
 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> adds on a new column using the function <code>p.adjust</code> to calculate an adjusted p-value. You can specify multiple different methods - full details via the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html">help documentation</a>. Importantly, in order for this to work, you have to include <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup()</a></code> first, otherwise <code>p.adjust</code> will be performed by groups (i.e., it won't consider them all at once, which is the entire point).</li>
 </ul>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1997</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -619,116 +883,213 @@
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>p.adjusted <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span><span class="op">(</span><span class="va">p.value</span>, method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="14%">
-<col width="19%">
-<col width="14%">
-<col width="4%">
-<col width="14%">
-<col width="16%">
-<col width="16%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">continent</th>
-<th align="right">lifeExp_diff</th>
-<th align="right">p.value</th>
-<th align="right">df</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="right">p.adjusted</th>
+<thead><tr>
+<th style="text-align:left;">
+continent
+</th>
+<th style="text-align:right;">
+lifeExp_diff
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:right;">
+p.adjusted
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">Africa</td>
-<td align="right">-1.207769</td>
-<td align="right">0.0601809</td>
-<td align="right">51</td>
-<td align="right">-2.469216</td>
-<td align="right">0.0536778</td>
-<td align="right">0.3009047</td>
+<tr>
+<td style="text-align:left;">
+Africa
+</td>
+<td style="text-align:right;">
+-1.207769
+</td>
+<td style="text-align:right;">
+0.0601809
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+-2.469216
+</td>
+<td style="text-align:right;">
+0.0536778
+</td>
+<td style="text-align:right;">
+0.3009047
+</td>
 </tr>
-<tr class="even">
-<td align="left">Americas</td>
-<td align="right">-2.457640</td>
-<td align="right">0.0000000</td>
-<td align="right">24</td>
-<td align="right">-2.886920</td>
-<td align="right">-2.0283596</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+Americas
+</td>
+<td style="text-align:right;">
+-2.457640
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+-2.886920
+</td>
+<td style="text-align:right;">
+-2.0283596
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Asia</td>
-<td align="right">-2.707970</td>
-<td align="right">0.0000000</td>
-<td align="right">32</td>
-<td align="right">-3.100958</td>
-<td align="right">-2.3149812</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+Asia
+</td>
+<td style="text-align:right;">
+-2.707970
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+-3.100958
+</td>
+<td style="text-align:right;">
+-2.3149812
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="even">
-<td align="left">Europe</td>
-<td align="right">-2.143433</td>
-<td align="right">0.0000000</td>
-<td align="right">29</td>
-<td align="right">-2.420111</td>
-<td align="right">-1.8667556</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+Europe
+</td>
+<td style="text-align:right;">
+-2.143433
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+-2.420111
+</td>
+<td style="text-align:right;">
+-1.8667556
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Oceania</td>
-<td align="right">-2.529500</td>
-<td align="right">0.0313087</td>
-<td align="right">1</td>
-<td align="right">-4.111422</td>
-<td align="right">-0.9475775</td>
-<td align="right">0.1565433</td>
+<tr>
+<td style="text-align:left;">
+Oceania
+</td>
+<td style="text-align:right;">
+-2.529500
+</td>
+<td style="text-align:right;">
+0.0313087
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-4.111422
+</td>
+<td style="text-align:right;">
+-0.9475775
+</td>
+<td style="text-align:right;">
+0.1565433
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>Now we've seen how the paired-samples test works,let's return to the <code>polyps</code> dataset. The problem is that this dataset is wide-form and in order to run the test we need the grouping variable (time point) in one column and the measurement (number of polyps in a separate column). Therefore, in order to run the t-test, we will first need to tidy the dataset as we did in chapter 3.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op">&lt;-</span> <span class="va">polyps_outliers</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number3m"</span>, <span class="st">"number12m"</span><span class="op">)</span>, <span class="co"># columns to make long </span></span>
 <span>               names_to <span class="op">=</span> <span class="st">"time"</span>, <span class="co"># new column name for headers</span></span>
 <span>               values_to <span class="op">=</span> <span class="st">"polyps_n"</span><span class="op">)</span> <span class="co"># new column name for values</span></span></code></pre></div>
 <p>We can then run the paired t-test on the tidied data. It will take time and practice with different datasets to learn when and where you need to reshape data for analysis but you will get there!</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number12m"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">polyps_n</span> <span class="op">~</span> <span class="va">time</span>, data <span class="op">=</span> <span class="va">.</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="12%">
-<col width="12%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="11%">
-<col width="15%">
-<col width="13%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">estimate</th>
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="right">parameter</th>
-<th align="right">conf.low</th>
-<th align="right">conf.high</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameter
+</th>
+<th style="text-align:right;">
+conf.low
+</th>
+<th style="text-align:right;">
+conf.high
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">-0.6666667</td>
-<td align="right">-0.2155182</td>
-<td align="right">0.8319279</td>
-<td align="right">17</td>
-<td align="right">-7.193001</td>
-<td align="right">5.859668</td>
-<td align="left">Paired t-test</td>
-<td align="left">two.sided</td>
+<tbody><tr>
+<td style="text-align:right;">
+-0.6666667
+</td>
+<td style="text-align:right;">
+-0.2155182
+</td>
+<td style="text-align:right;">
+0.8319279
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+-7.193001
+</td>
+<td style="text-align:right;">
+5.859668
+</td>
+<td style="text-align:left;">
+Paired t-test
+</td>
+<td style="text-align:left;">
+two.sided
+</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -744,7 +1105,7 @@
 <span class="header-section-number">5.5.1</span> One-way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"><i class="fas fa-link"></i></a>
 </h3>
 <p>Let's use the <code>gapminder</code> dataset to look at life expectancy by continent in 2007. First, we'll create an object that just has the data we need and visualize it.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># filter the data to just 2007 values</span></span>
 <span><span class="va">gapminder_2007</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span></span>
@@ -757,7 +1118,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
 <div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-17-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>It looks like there should be a significant difference with these groups. To run the ANOVA, we use the <code><a href="https://rdrr.io/pkg/afex/man/aov_car.html">aov_ez()</a></code> function from the <code>afex</code> package.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lifeExp_anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/afex/man/aov_car.html">aov_ez</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"country"</span>, <span class="co">#unique identifier in this case, country name</span></span>
 <span>       dv <span class="op">=</span> <span class="st">"lifeExp"</span>,</span>
 <span>       between <span class="op">=</span> <span class="st">"continent"</span>,</span>
@@ -768,161 +1129,355 @@
 <pre><code>## Contrasts set to contr.sum for the following variables: continent</code></pre>
 <p>Just like with the t-tests, we can use <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> to make the output easier to work with.</p>
 <p>Run the below code to transform the output. Don't worry about the warning message, it is just telling you it doesn't know how to automatically rename the columns so it will keep the original names.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lifeExp_anova</span><span class="op">$</span><span class="va">anova_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in tidy.anova(.): The following column names in ANOVA output were not
 ## recognized or transformed: num.Df, den.Df, MSE, ges</code></pre>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<thead><tr class="header">
-<th align="left">term</th>
-<th align="right">num.Df</th>
-<th align="right">den.Df</th>
-<th align="right">MSE</th>
-<th align="right">statistic</th>
-<th align="right">ges</th>
-<th align="right">p.value</th>
+<thead><tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+num.Df
+</th>
+<th style="text-align:right;">
+den.Df
+</th>
+<th style="text-align:right;">
+MSE
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+ges
+</th>
+<th style="text-align:right;">
+p.value
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="left">continent</td>
-<td align="right">4</td>
-<td align="right">137</td>
-<td align="right">54.68012</td>
-<td align="right">59.714</td>
-<td align="right">0.6354987</td>
-<td align="right">0</td>
+<tbody><tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+54.68012
+</td>
+<td style="text-align:right;">
+59.714
+</td>
+<td style="text-align:right;">
+0.6354987
+</td>
+<td style="text-align:right;">
+0
+</td>
 </tr></tbody>
 </table></div>
 </div>
 <p>To run post-hoc tests on the groups, we use the <code>emmeans</code> function from the <code>emmeans</code> package. This function computes all possible pairwise comparison t-tests and applies a correction to the p-value.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># calculate the comparisons</span></span>
 <span><span class="va">posthoc</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_anova</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">continent</span>, adjust <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># pull out the table of comparisons and tidy it up into a table</span></span>
 <span><span class="va">posthoc_contrasts</span> <span class="op">&lt;-</span> <span class="va">posthoc</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="kable-table">
-<div class="inline-table"><table style="width:100%;" class="table table-sm">
-<colgroup>
-<col width="11%">
-<col width="21%">
-<col width="12%">
-<col width="12%">
-<col width="11%">
-<col width="4%">
-<col width="13%">
-<col width="13%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">term</th>
-<th align="left">contrast</th>
-<th align="right">null.value</th>
-<th align="right">estimate</th>
-<th align="right">std.error</th>
-<th align="right">df</th>
-<th align="right">statistic</th>
-<th align="right">adj.p.value</th>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:left;">
+contrast
+</th>
+<th style="text-align:right;">
+null.value
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std.error
+</th>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+adj.p.value
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">continent</td>
-<td align="left">Africa - Americas</td>
-<td align="right">0</td>
-<td align="right">-18.802081</td>
-<td align="right">1.799652</td>
-<td align="right">137</td>
-<td align="right">-10.4476233</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Africa - Americas
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-18.802081
+</td>
+<td style="text-align:right;">
+1.799652
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-10.4476233
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="even">
-<td align="left">continent</td>
-<td align="left">Africa - Asia</td>
-<td align="right">0</td>
-<td align="right">-15.922446</td>
-<td align="right">1.645756</td>
-<td align="right">137</td>
-<td align="right">-9.6748498</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Africa - Asia
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-15.922446
+</td>
+<td style="text-align:right;">
+1.645756
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-9.6748498
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="odd">
-<td align="left">continent</td>
-<td align="left">Africa - Europe</td>
-<td align="right">0</td>
-<td align="right">-22.842561</td>
-<td align="right">1.695350</td>
-<td align="right">137</td>
-<td align="right">-13.4736554</td>
-<td align="right">0.0000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Africa - Europe
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-22.842561
+</td>
+<td style="text-align:right;">
+1.695350
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-13.4736554
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
 </tr>
-<tr class="even">
-<td align="left">continent</td>
-<td align="left">Africa - Oceania</td>
-<td align="right">0</td>
-<td align="right">-25.913462</td>
-<td align="right">5.328377</td>
-<td align="right">137</td>
-<td align="right">-4.8632935</td>
-<td align="right">0.0000312</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Africa - Oceania
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-25.913462
+</td>
+<td style="text-align:right;">
+5.328377
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-4.8632935
+</td>
+<td style="text-align:right;">
+0.0000312
+</td>
 </tr>
-<tr class="odd">
-<td align="left">continent</td>
-<td align="left">Americas - Asia</td>
-<td align="right">0</td>
-<td align="right">2.879635</td>
-<td align="right">1.960658</td>
-<td align="right">137</td>
-<td align="right">1.4687088</td>
-<td align="right">1.0000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Americas - Asia
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2.879635
+</td>
+<td style="text-align:right;">
+1.960658
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+1.4687088
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
 </tr>
-<tr class="even">
-<td align="left">continent</td>
-<td align="left">Americas - Europe</td>
-<td align="right">0</td>
-<td align="right">-4.040480</td>
-<td align="right">2.002467</td>
-<td align="right">137</td>
-<td align="right">-2.0177507</td>
-<td align="right">0.4557009</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Americas - Europe
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-4.040480
+</td>
+<td style="text-align:right;">
+2.002467
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-2.0177507
+</td>
+<td style="text-align:right;">
+0.4557009
+</td>
 </tr>
-<tr class="odd">
-<td align="left">continent</td>
-<td align="left">Americas - Oceania</td>
-<td align="right">0</td>
-<td align="right">-7.111380</td>
-<td align="right">5.433900</td>
-<td align="right">137</td>
-<td align="right">-1.3087065</td>
-<td align="right">1.0000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Americas - Oceania
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-7.111380
+</td>
+<td style="text-align:right;">
+5.433900
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-1.3087065
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
 </tr>
-<tr class="even">
-<td align="left">continent</td>
-<td align="left">Asia - Europe</td>
-<td align="right">0</td>
-<td align="right">-6.920115</td>
-<td align="right">1.865380</td>
-<td align="right">137</td>
-<td align="right">-3.7097607</td>
-<td align="right">0.0030058</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Asia - Europe
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-6.920115
+</td>
+<td style="text-align:right;">
+1.865380
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-3.7097607
+</td>
+<td style="text-align:right;">
+0.0030058
+</td>
 </tr>
-<tr class="odd">
-<td align="left">continent</td>
-<td align="left">Asia - Oceania</td>
-<td align="right">0</td>
-<td align="right">-9.991015</td>
-<td align="right">5.384889</td>
-<td align="right">137</td>
-<td align="right">-1.8553798</td>
-<td align="right">0.6569106</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Asia - Oceania
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-9.991015
+</td>
+<td style="text-align:right;">
+5.384889
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-1.8553798
+</td>
+<td style="text-align:right;">
+0.6569106
+</td>
 </tr>
-<tr class="even">
-<td align="left">continent</td>
-<td align="left">Europe - Oceania</td>
-<td align="right">0</td>
-<td align="right">-3.070900</td>
-<td align="right">5.400253</td>
-<td align="right">137</td>
-<td align="right">-0.5686585</td>
-<td align="right">1.0000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:left;">
+Europe - Oceania
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+-3.070900
+</td>
+<td style="text-align:right;">
+5.400253
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+-0.5686585
+</td>
+<td style="text-align:right;">
+1.0000000
+</td>
 </tr>
 </tbody>
 </table></div>
@@ -933,7 +1488,7 @@
 <span class="header-section-number">5.5.2</span> Factorial ANOVA<a class="anchor" aria-label="anchor" href="#factorial-anova"><i class="fas fa-link"></i></a>
 </h3>
 <p>Factorial ANOVAs can also be specified using the same functions. For example, in the <code>gapminder</code> dataset we could run a mixed two-way ANOVA looking at life expectancy by continent and by year. Again we start by creating an object with the data we need and visualizing it:</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># create a subset of the data with filter</span></span>
 <span><span class="va">gapminder_noughties</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2002</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span></span>
@@ -948,7 +1503,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="05-analysis1_files/figure-html/unnamed-chunk-22-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>And then we run the ANOVA. The code is much the same as the one-way variant with the addition of the <code>within</code> argument to represent our repeated-measures variable. If we had multiple between or within subject variables, you would specify these as <code>between = c("var1", "var2")</code>.</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lifeExp_year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/afex/man/aov_car.html">aov_ez</a></span><span class="op">(</span>id <span class="op">=</span> <span class="st">"country"</span>, </span>
 <span>       dv <span class="op">=</span> <span class="st">"lifeExp"</span>,</span>
 <span>       between <span class="op">=</span> <span class="st">"continent"</span>,</span>
@@ -958,63 +1513,110 @@
 <span>       include_aov <span class="op">=</span> <span class="cn">TRUE</span>, <span class="co"># set to true to allow post hoc-comparisons</span></span>
 <span>       data <span class="op">=</span> <span class="va">gapminder_noughties</span><span class="op">)</span> </span></code></pre></div>
 <pre><code>## Contrasts set to contr.sum for the following variables: continent</code></pre>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">lifeExp_year</span><span class="op">$</span><span class="va">anova_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Warning in tidy.anova(.): The following column names in ANOVA output were not
 ## recognized or transformed: num.Df, den.Df, MSE, ges</code></pre>
 <div class="kable-table">
-<div class="inline-table"><table style="width:100%;" class="table table-sm">
-<colgroup>
-<col width="21%">
-<col width="10%">
-<col width="10%">
-<col width="17%">
-<col width="14%">
-<col width="14%">
-<col width="12%">
-</colgroup>
-<thead><tr class="header">
-<th align="left">term</th>
-<th align="right">num.Df</th>
-<th align="right">den.Df</th>
-<th align="right">MSE</th>
-<th align="right">statistic</th>
-<th align="right">ges</th>
-<th align="right">p.value</th>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+num.Df
+</th>
+<th style="text-align:right;">
+den.Df
+</th>
+<th style="text-align:right;">
+MSE
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+ges
+</th>
+<th style="text-align:right;">
+p.value
+</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
-<td align="left">continent</td>
-<td align="right">4</td>
-<td align="right">137</td>
-<td align="right">110.5629222</td>
-<td align="right">60.11622</td>
-<td align="right">0.6358851</td>
-<td align="right">0.000000</td>
+<tr>
+<td style="text-align:left;">
+continent
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+110.5629222
+</td>
+<td style="text-align:right;">
+60.11622
+</td>
+<td style="text-align:right;">
+0.6358851
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
 </tr>
-<tr class="even">
-<td align="left">year</td>
-<td align="right">1</td>
-<td align="right">137</td>
-<td align="right">0.5591717</td>
-<td align="right">53.22558</td>
-<td align="right">0.0019512</td>
-<td align="right">0.000000</td>
+<tr>
+<td style="text-align:left;">
+year
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+0.5591717
+</td>
+<td style="text-align:right;">
+53.22558
+</td>
+<td style="text-align:right;">
+0.0019512
+</td>
+<td style="text-align:right;">
+0.000000
+</td>
 </tr>
-<tr class="odd">
-<td align="left">continent:year</td>
-<td align="right">4</td>
-<td align="right">137</td>
-<td align="right">0.5591717</td>
-<td align="right">1.60383</td>
-<td align="right">0.0002356</td>
-<td align="right">0.176822</td>
+<tr>
+<td style="text-align:left;">
+continent:year
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+137
+</td>
+<td style="text-align:right;">
+0.5591717
+</td>
+<td style="text-align:right;">
+1.60383
+</td>
+<td style="text-align:right;">
+0.0002356
+</td>
+<td style="text-align:right;">
+0.176822
+</td>
 </tr>
 </tbody>
 </table></div>
 </div>
 <p>The interaction isn't significant although the main effects are so again we can run post-hoc tests to find where the differences are (let's ignore that we already know this from the one-way ANOVA we just did):</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># perform contrasts for the main effect of year</span></span>
 <span><span class="va">posthoc_year</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
 <span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">year</span>, </span>
@@ -1031,7 +1633,7 @@
 <span><span class="va">contrasts_continent</span> <span class="op">&lt;-</span> <span class="va">posthoc_continent</span><span class="op">$</span><span class="va">contrasts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Whilst it's not strictly appropriate given the interaction wasn't significant, if you wanted to look at all pairwise comparisons for the interaction effect, you use the notation <code>pairwise ~ IV1 | IV2</code>:</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># run the tests</span></span>
 <span><span class="va">posthoc_factorial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
 <span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">year</span><span class="op">|</span> <span class="va">continent</span>, </span>
@@ -1042,7 +1644,7 @@
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>Note that because there are two factors, we could also reverse the order of the IVs. Above, we get the results contrasting 2002 and 2007 for each continent. Instead, we could look at the difference between continents in each year.</p>
 <p>Run the below code and look at the output of contrast_factorial and contrasts_factorial2 carefully making sure you understand how to interpret the results. You will find it useful to refer to the interaction plot we made earlier.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># run the tests</span></span>
 <span><span class="va">posthoc_reversed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/emmeans/man/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">lifeExp_year</span>, </span>
 <span>                             <span class="va">pairwise</span> <span class="op">~</span> <span class="va">continent</span><span class="op">|</span> <span class="va">year</span>, </span>
@@ -1059,7 +1661,7 @@
 </h2>
 <p>Finally, you may also need to compare groups where the data are non-parametric. This might be because they violate an assumption of normality or linearity, or it could be that you're working with ordinal data from, for example, Likert scales.</p>
 <p>In the <code>polyps</code> dataset, one option (not a particularly sophisticated option I'll admit but it will suffice for showing the code) might be to conduct a Wilcoxon Rank Sum test (also known as a Mann-Whitney U test) on the <code>reduction</code> variable so that the data are transformed into ranks.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">reduction</span> <span class="op">~</span> <span class="va">treatment</span>, </span>
 <span>            data <span class="op">=</span> <span class="va">polyps</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -1067,29 +1669,39 @@
 ## compute exact p-value with ties</code></pre>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="12%">
-<col width="12%">
-<col width="60%">
-<col width="14%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">24</td>
-<td align="right">0.0568632</td>
-<td align="left">Wilcoxon rank sum test with continuity correction</td>
-<td align="left">two.sided</td>
+<tbody><tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+0.0568632
+</td>
+<td style="text-align:left;">
+Wilcoxon rank sum test with continuity correction
+</td>
+<td style="text-align:left;">
+two.sided
+</td>
 </tr></tbody>
 </table></div>
 </div>
 <p>Performing this test will produce a warning about not being able to compute exact p-values when there are ties in the data (that is, more than one data point has the same rank) and instead an approximation is being used. If you'd like a deep dive into the maths behind this, you might find this <a href="https://stats.stackexchange.com/questions/597782/why-does-r-say-cannot-compute-exact-p-values-with-ties-when-i-can-do-it-with-p">Stack Overflow thread</a> helpful.</p>
 <p>The same function can be used for the repeated-measures Wilcoxon Signed Ranks test:</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">polyps_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"baseline"</span>, <span class="st">"number12m"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html">wilcox.test</a></span><span class="op">(</span><span class="va">polyps_n</span> <span class="op">~</span> <span class="va">treatment</span>, </span>
@@ -1099,23 +1711,33 @@
 ## compute exact p-value with ties</code></pre>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
-<colgroup>
-<col width="12%">
-<col width="12%">
-<col width="60%">
-<col width="14%">
-</colgroup>
-<thead><tr class="header">
-<th align="right">statistic</th>
-<th align="right">p.value</th>
-<th align="left">method</th>
-<th align="left">alternative</th>
+<thead><tr>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:left;">
+method
+</th>
+<th style="text-align:left;">
+alternative
+</th>
 </tr></thead>
-<tbody><tr class="odd">
-<td align="right">255</td>
-<td align="right">0.0026073</td>
-<td align="left">Wilcoxon rank sum test with continuity correction</td>
-<td align="left">two.sided</td>
+<tbody><tr>
+<td style="text-align:right;">
+255
+</td>
+<td style="text-align:right;">
+0.0026073
+</td>
+<td style="text-align:left;">
+Wilcoxon rank sum test with continuity correction
+</td>
+<td style="text-align:left;">
+two.sided
+</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -1377,7 +1999,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2024-01-12.</p>
+    <p>"<strong>Intro to Data Wrangling and Analysis Using R</strong>" was written by Emily Nordmann &amp; Javan Carter. It was last built on 2024-01-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
